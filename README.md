@@ -10,13 +10,13 @@ Trello Link - Placeholder
 
 Disclone is a web application based off Discord(link placeholder). Disclone is built using Ruby on Rails and React w/ Redux.  Following week 9 (30 June 2017), this application will satisfy the following criteria with bug-free navigation, adequate seed data and sleek CSS styling;
 
-- [] New account creation/login, guest/demo login
-- [] Production README
-- [] Hosting on Heroku
-- [] Live Chat 
-- [] Servers w/ multiple chat channels
-- [] Direct messaging/chat between using two users
-- [] Search messages
+- New account creation/login, guest/demo login
+- Production README
+- Hosting on Heroku
+- Live Chat 
+- Servers w/ multiple chat channels
+- Direct messaging
+- Search messages
 
 ## Design Docs
 * [View Wireframes][wireframes]
@@ -54,4 +54,5 @@ Disclone is a web application based off Discord(link placeholder). Disclone is b
 **Objective:** 
 
 ### Bonus Features
-- [] Live Voice Chat
+- Live voice channels
+- Multi-person direct messages
