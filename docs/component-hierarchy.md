@@ -14,7 +14,6 @@
   + DirectMessagesButton
   + AddServerButton
 
-
 **HeaderContainer**
 - Header
   + MemberIndexToggle
