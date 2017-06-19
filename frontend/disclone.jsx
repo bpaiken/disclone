@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import {signup, login, logout} from './actions/session_actions';
+import {register, login, logout} from './actions/session_actions';
 import configureStore from './store/store';
 import Root from './components/root'
 
 
 
-// window.login = login;
-// window.logout = logout;
-// window.signup = signup;
+window.login = login;
+window.logout = logout;
+window.register = register;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // } else {
 //   store = configureStore();
 // }
-//   window.store = store;
   let store = configureStore();
+  window.store = store;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

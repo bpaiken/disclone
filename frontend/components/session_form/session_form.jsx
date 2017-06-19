@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 class SessionForm extends React.Component {
@@ -43,6 +44,8 @@ class SessionForm extends React.Component {
                 onChange={this.update('password')}
                 value={this.state.password}/>
               </label>
+
+              <Link to={this.props.linkPath}>{this.props.linkText}</Link>
 
               <input type="submit" value={this.props.buttonText}/>
           </form>

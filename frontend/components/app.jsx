@@ -8,10 +8,9 @@ import { Route } from 'react-router-dom';
 export default () => (
   <div>
     <h1>Hello Disclone</h1>
-    <CreateAccountContainer />
+    <Route exact path="/" component={LoginContainer}/>
+    <Route exact path="/register" component={CreateAccountContainer}/>
   </div>
 );
 
     // <GreetingContainer />
-  //  <AuthRoute exact path="/login" component={SessionFormContainer}/>
-  //  <AuthRoute exact path="/signup" component={SignupFormContainer}/>

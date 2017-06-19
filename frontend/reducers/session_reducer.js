@@ -14,7 +14,7 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     
     case RECEIVE_CURRENT_USER:
-      currentState.currentUser = action.currentUser;
+      currentState = action.user;
       return currentState;
     
       // NEED FORMS REDUCER FOR ERRORS?

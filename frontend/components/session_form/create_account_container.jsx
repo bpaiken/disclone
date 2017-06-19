@@ -5,8 +5,10 @@ import { register } from '../../actions/session_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     ownProps,
-    buttonText: "Sign Up",
-    headerText: "CREATE AN ACCOUNT"
+    buttonText: "Continue",
+    headerText: "CREATE AN ACCOUNT",
+    linkPath: '/',
+    linkText: 'Login'
   };
 };
 
