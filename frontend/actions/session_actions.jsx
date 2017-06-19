@@ -6,16 +6,14 @@ export const login = (user) => (dispatch) => {
     return APIUtil.login(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)));
   };
 
-
 export const logout = () => (dispatch) => {
   return APIUtil.logout().then(() =>
   dispatch(receiveCurrentUser(null)));
 };
 
-export const signup = (user) => dispatch => {
-  return APIUtil.signup(user).then((currentUser)=> dispatch(receiveCurrentUser(currentUser)));
+export const createAccount = (user) => dispatch => {
+  return APIUtil.createAccount(user).then((currentUser)=> dispatch(receiveCurrentUser(currentUser)));
   };
-
 
 export const receiveCurrentUser = (user) => {
   return {
