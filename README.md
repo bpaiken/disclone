@@ -35,25 +35,29 @@ Disclone is a web application based off Discord(link placeholder). Disclone is b
 
 ## Implementation Timeline
 
-### Phase 1:
+### Phase 1: Backend setup and front end user auth (2 day)
 
-**Objective:** 
+**Objective:** Functioning back end along with front end auth components.
 
-### Phase 2:
+### Phase 2: Messages and Channel model, API, and Messages index component (2 days)
 
-**Objective:** 
+**Objective:** Messages can be created and read through the api.  Integrate pusher websocket for message update.
 
-### Phase 3:
+### Phase 3: Server Model, API, Index.  User and Channel Index.  Add Style to home view. (2 days)
 
-**Objective:** 
+**Objective:** Several functioning components of the home component - server index, channel index, message index, user index.
 
-### Phase 4:
+### Phase 4:  Header component and message Search Logic (1 day)
 
-**Objective:** 
+**Objective:** Add header, with functioning messages search bar to home compoment.
 
-### Phase 5:
+### Phase 5: Direct Messages functionality (2 days)
 
-**Objective:** 
+**Objective:** Add user detail component, direct messages component, along with their supporting routes.
+
+### Phase 6: Complete Styling, fix bugs, Seed database (1 day)
+
+**Objective:** Clean up styling, Fix bugs, seed database for presentation.
 
 ### Bonus Features
 - Live voice channels
