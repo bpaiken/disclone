@@ -11,8 +11,8 @@ export const logout = () => (dispatch) => {
   dispatch(receiveCurrentUser(null)));
 };
 
-export const createAccount = (user) => dispatch => {
-  return APIUtil.createAccount(user).then((currentUser)=> dispatch(receiveCurrentUser(currentUser)));
+export const register = (user) => dispatch => {
+  return APIUtil.register(user).then((currentUser)=> dispatch(receiveCurrentUser(currentUser)));
   };
 
 export const receiveCurrentUser = (user) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 // import GreetingContainer from './greeting/greeting_container';
-// import SessionFormContainer from './session_form/session_form_container';
+import LoginContainer from './session_form/login_container';
 import CreateAccountContainer from './session_form/create_account_container';
 import { Route } from 'react-router-dom';
 // import { AuthRoute } from '../util/route_util';

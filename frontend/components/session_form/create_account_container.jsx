@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form.jsx';
-import { createAccount } from '../../actions/session_actions';
+import { register } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     ownProps,
     buttonText: "Sign Up",
-    headerText: "Create an Account"
+    headerText: "CREATE AN ACCOUNT"
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitForm: (user) => dispatch(createAccount(user)), // sign up user
+    submitForm: (user) => dispatch(register(user)), // sign up user
   };
 };
 
