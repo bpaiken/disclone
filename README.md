@@ -4,7 +4,9 @@
 
 [Trello][trello]
 
-Trello Link - Placeholder
+[heroku]: placeholder
+[trello]: placeholder
+
 
 ## Minimum Viable Produce
 
