@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import {signup, login, logout} from './actions/session_actions';
 // import configureStore from './store/store';
-// import Root from './components/root'
+import Root from './components/root'
 
 
 
@@ -22,5 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 //   window.store = store;
   const root = document.getElementById('root');
-  ReactDOM.render(<span>Hello Disclone!</span>, root);
+  ReactDOM.render(<Root />, root);
 });
