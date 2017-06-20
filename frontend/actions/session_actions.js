@@ -5,7 +5,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 export const login = (user) => (dispatch) => {
     return APIUtil.login(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)),
-    (error)=> dispatch(receiveErrors(error)));
+    (error) => dispatch(receiveErrors(error)));
   };
 
 export const logout = () => (dispatch) => {
@@ -14,7 +14,8 @@ export const logout = () => (dispatch) => {
 };
 
 export const register = (user) => dispatch => {
-  return APIUtil.register(user).then((currentUser)=> dispatch(receiveCurrentUser(currentUser)));
+  return APIUtil.register(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)),
+  (error) => dispatch(receiveErrors(error)));
   };
 
 export const receiveCurrentUser = (currentUser) => {

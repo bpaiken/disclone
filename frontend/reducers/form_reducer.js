@@ -3,18 +3,18 @@ import {RECEIVE_ERRORS, CLEAR_ERRORS} from '../actions/session_actions';
 
 const initialState = {
   sessionErrors: [] ,
-  ServerErrors: [],
-  ChannelErrors: [],
+  serverErrors: [],
+  channelErrors: [],
 };
 
 export default (state = initialState, action) => {
   Object.freeze(state); 
   let nextState = merge({}, state);
-  // debugger
+  debugger
   switch (action.type) {
     case RECEIVE_ERRORS:
-    nextState.sessionErrors = action.errors.responseJSON.formErrors.session ;
-     return nextState;
+    nextState.sessionErrors = nextState.sessionErrors.concat(action.errors.responseJSON);
+    return nextState; 
 
     case CLEAR_ERRORS:
     return initialState;
