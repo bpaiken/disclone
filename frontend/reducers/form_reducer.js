@@ -10,8 +10,7 @@ const initialState = {
 export default (state = initialState, action) => {
   Object.freeze(state); 
   let nextState = merge({}, state);
-  debugger
-  switch (action.type) {
+    switch (action.type) {
     case RECEIVE_ERRORS:
     nextState.sessionErrors = nextState.sessionErrors.concat(action.errors.responseJSON);
     return nextState; 

@@ -16,7 +16,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     // let context = this;
     this.props.clearErrors();
-    
+    this.setState({usernameError: "", passwordError: ""});
 
     let password = this.state.password;
     let username = this.state.username;
@@ -55,16 +55,21 @@ class SessionForm extends React.Component {
               <span className="session-response-error">{this.props.errors}</span>
               
               <div className="session-input-wrapper">
-                <label htmlFor="username-input" className="input-label">Username</label>
-                <span className="form-error">{this.state.usernameError}</span>
+                <div className="label-error-container">
+                  <label htmlFor="username-input" className="input-label">Username</label>
+                  <span className="form-error">{this.state.usernameError}</span>
+                </div>
                 <input className="session-input" id="username-input" type="text"
                   onChange={this.update('username')}
                   value={this.state.username}/>
               </div>
               
               <div className="session-input-wrapper">
+                <div className="label-error-container">
                 <label htmlFor="password-input" className="input-label">Password</label>
                 <span className="form-error">{this.state.passwordError}</span>
+                </div>
+                
                 <input className="session-input" type="text" id="password-input"
                   onChange={this.update('password')}
                   value={this.state.password}/>
