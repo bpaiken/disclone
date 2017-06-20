@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form.jsx';
-import { login } from '../../actions/session_actions';
+import { login, clearErrors } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -9,13 +9,15 @@ const mapStateToProps = (state, ownProps) => {
     headerText: "WELCOME BACK",
     linkPath: '/register',
     linkText: 'Register',
-    footerText: 'Need an account?'
+    footerText: 'Need an account?',
+    errors: state.forms.sessionErrors.join(', '),
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitForm: (user) => dispatch(login(user)), // login user
+    submitForm: (user) => dispatch(login(user)), 
+    clearErrors: () => dispatch(clearErrors()),
   };
 };
 

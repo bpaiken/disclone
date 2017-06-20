@@ -15,6 +15,8 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // let context = this;
+    this.props.clearErrors();
+    
 
     let password = this.state.password;
     let username = this.state.username;
@@ -39,16 +41,18 @@ class SessionForm extends React.Component {
 }
 
   render() {
+    
     return (
       <div className="logo-form-wrapper">
 
-        <div className="logo-wrapper">
-          <img id="session-brand" src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" alt=""/>
-          <img id="session-log" src="https://discordapp.com/assets/9babbea9acbfec5302d832bae6c3c184.svg" alt=""/>
-        </div>
+          <div className="logo-wrapper">
+            <img id="session-brand" src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" alt=""/>
+            <img id="session-log" src="https://discordapp.com/assets/9babbea9acbfec5302d832bae6c3c184.svg" alt=""/>
+          </div>
         
           <form className="session-form">
               <h3 className="session-header">{this.props.headerText}</h3>
+              <span className="session-response-error">{this.props.errors}</span>
               
               <div className="session-input-wrapper">
                 <label htmlFor="username-input" className="input-label">Username</label>
