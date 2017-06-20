@@ -1,4 +1,4 @@
-import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
+import {RECEIVE_CURRENT_USER, RECEIVE_ERRORS} from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 const initialState = {
@@ -14,10 +14,10 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     
     case RECEIVE_CURRENT_USER:
-      currentState = action.user;
+      currentState = action.currentUser;
       return currentState;
     
-      // NEED FORMS REDUCER FOR ERRORS?
+    
     // case RECEIVE_ERRORS:
     //   currentState.errors = action.errors;
     //   return currentState;

@@ -3,7 +3,8 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const login = (user) => (dispatch) => {
-    return APIUtil.login(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)));
+    return APIUtil.login(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)),
+    (error)=> dispatch(receiveErrors(error)));
   };
 
 export const logout = () => (dispatch) => {
@@ -15,10 +16,10 @@ export const register = (user) => dispatch => {
   return APIUtil.register(user).then((currentUser)=> dispatch(receiveCurrentUser(currentUser)));
   };
 
-export const receiveCurrentUser = (user) => {
+export const receiveCurrentUser = (currentUser) => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user,
+    currentUser,
   };
 };
 
