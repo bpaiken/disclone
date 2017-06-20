@@ -8,7 +8,7 @@ export const login = (user) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   return APIUtil.logout().then(() =>
-  dispatch(receiveCurrentUser(null)));
+  dispatch(receiveCurrentUser(nullUser)));
 };
 
 export const register = (user) => dispatch => {
@@ -27,4 +27,11 @@ export const receiveErrors = (errors) => {
     type: RECEIVE_ERRORS,
     errors
   };
+};
+
+const nullUser = {
+  id: null,
+  username: "",
+  servers: [],
+  avatar_url: ""
 };

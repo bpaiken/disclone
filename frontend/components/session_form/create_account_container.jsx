@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
     ownProps,
     buttonText: "Continue",
     headerText: "CREATE AN ACCOUNT",
-    linkPath: '/',
+    linkPath: '/login',
     linkText: 'Login'
   };
 };
