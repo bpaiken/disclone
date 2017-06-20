@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import sessionReducer from './session_reducer';
+import SessionReducer from './session_reducer';
+import FormReducer from './form_reducer'
+
 
 const rootReducer = combineReducers({
-  currentUser: sessionReducer,
+  currentUser: SessionReducer,
+  forms: FormReducer,
 });
 
 export default rootReducer;

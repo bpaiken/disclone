@@ -6,7 +6,7 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "" ,usernameError: "", passwordError: ""};
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -15,6 +15,16 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // let context = this;
+
+    let password = this.state.password;
+    let username = this.state.username;
+
+    if (password.length < 6 || username.length < 1) {
+    if (password.length < 6) this.setState({ passwordError: "password must be at least 6 chars" })  
+    if (username.length < 1) this.setState({ usernameError: "username is required" })
+    return;
+  }
+  
     this.props.submitForm(this.state).then(() => {
       this.props.history.push('/')
     })
@@ -37,23 +47,23 @@ class SessionForm extends React.Component {
           <img id="session-log" src="https://discordapp.com/assets/9babbea9acbfec5302d832bae6c3c184.svg" alt=""/>
         </div>
         
-
           <form className="session-form">
               <h3 className="session-header">{this.props.headerText}</h3>
               
               <div className="session-input-wrapper">
-              <label for="username-input" className="input-label">Username</label>
+                <label htmlFor="username-input" className="input-label">Username</label>
+                <span className="form-error">{this.state.usernameError}</span>
                 <input className="session-input" id="username-input" type="text"
-                onChange={this.update('username')}
-                value={this.state.username}/>
-              
+                  onChange={this.update('username')}
+                  value={this.state.username}/>
               </div>
               
               <div className="session-input-wrapper">
-              <label for="password-input" className="input-label">Password</label>
+                <label htmlFor="password-input" className="input-label">Password</label>
+                <span className="form-error">{this.state.passwordError}</span>
                 <input className="session-input" type="text" id="password-input"
-                onChange={this.update('password')}
-                value={this.state.password}/>
+                  onChange={this.update('password')}
+                  value={this.state.password}/>
               </div>
 
               <button className="session-button" onClick={this.handleSubmit}>{this.props.buttonText}</button>
