@@ -30,24 +30,31 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-          <form onSubmit={this.handleSubmit}>
-              <h3>{this.props.headerText}</h3>
+          <form className="session-form">
+              <h3 className="session-header">{this.props.headerText}</h3>
               
-              <label htmlFor="">Username
-                <input type="text"
+              <div className="session-input-wrapper">
+              <label for="username-input" className="input-label">Username</label>
+                <input className="session-input" id="username-input" type="text"
                 onChange={this.update('username')}
                 value={this.state.username}/>
-              </label>
               
-              <label htmlFor="">Password
-                <input type="text" 
+              </div>
+              
+              <div className="session-input-wrapper">
+              <label for="password-input" className="input-label">Password</label>
+                <input className="session-input" type="text" id="password-input"
                 onChange={this.update('password')}
                 value={this.state.password}/>
-              </label>
+              </div>
 
-              <Link to={this.props.linkPath}>{this.props.linkText}</Link>
+              <button className="session-button" onClick={this.handleSubmit}>{this.props.buttonText}</button>
+              {/*<input className="session-button" type="submit" value={this.props.buttonText}/>*/}
 
-              <input type="submit" value={this.props.buttonText}/>
+              <footer className="session-footer">
+                {this.props.footerText}
+                <Link to={this.props.linkPath}>{this.props.linkText}</Link>
+              </footer>
           </form>
     );
   }

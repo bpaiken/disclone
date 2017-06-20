@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
     buttonText: "Login",
     headerText: "WELCOME BACK",
     linkPath: '/register',
-    linkText: 'Register'
+    linkText: 'Register',
+    footerText: "FooterText"
   };
 };
 

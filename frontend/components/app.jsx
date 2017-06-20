@@ -12,8 +12,10 @@ export default () => (
     
     {/*<LoggedAuthRoute exact path="/login" redirect="/"  component={LogoutTestContainer} />
     <LoggedAuthRoute exact path="/register" redirect="/" component={CreateAccountContainer}/>*/}
-    <LoggedAuthRoute path ="/register" component={CreateAccountContainer} redirect="/" />
-    <LoggedAuthRoute path ="/login" component={LoginContainer} redirect="/" />
+    <div className="session-wrapper"> 
+      <LoggedAuthRoute path ="/login" component={LoginContainer} redirect="/" />
+      <LoggedAuthRoute path ="/register" component={CreateAccountContainer} redirect="/" />
+    </div>
     <NotLoggedAuthRoute exact path="/" redirect="/login" component={LogoutTestContainer}/>
   </div>
 );

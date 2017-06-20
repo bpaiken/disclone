@@ -1,0 +1,58 @@
+.session-wrapper {
+
+  display: flex;
+  justify-content: center
+}
+
+form.session-form {
+  border-radius: 0;
+  background: rgba(40,43,48,.75);
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.input-label {
+  /*display: block;*/
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #87909c;
+  font-weight: 700;
+}
+
+.session-header {
+  color: white;
+  font-size: 18px;
+  font-weight: 700; 
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.session-input-wrapper {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.session-input {
+  display: block;
+  width: 375px;
+  height: 34px;
+  margin-top: 12px;
+  
+}
+
+.session-button {
+  margin-top: 70px;
+  height: 60px;
+  border-radius: 3px;
+  background-color: #7289da;
+  color: #fff;   
+  border: none; 
+  font-family: inherit;
+}
+
+.session-footer {
+  margin-top: 8px;
+}
