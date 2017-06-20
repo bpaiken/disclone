@@ -30,6 +30,14 @@ class SessionForm extends React.Component {
 
   render() {
     return (
+      <div className="logo-form-wrapper">
+
+        <div className="logo-wrapper">
+          <img id="session-brand" src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" alt=""/>
+          <img id="session-log" src="https://discordapp.com/assets/9babbea9acbfec5302d832bae6c3c184.svg" alt=""/>
+        </div>
+        
+
           <form className="session-form">
               <h3 className="session-header">{this.props.headerText}</h3>
               
@@ -53,9 +61,10 @@ class SessionForm extends React.Component {
 
               <footer className="session-footer">
                 {this.props.footerText}
-                <Link to={this.props.linkPath}>{this.props.linkText}</Link>
+                <Link to={this.props.linkPath} className="session-link">{this.props.linkText}</Link>
               </footer>
           </form>
+      </div>
     );
   }
 }

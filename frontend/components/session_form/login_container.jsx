@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     headerText: "WELCOME BACK",
     linkPath: '/register',
     linkText: 'Register',
-    footerText: "FooterText"
+    footerText: 'Need an account?'
   };
 };
 

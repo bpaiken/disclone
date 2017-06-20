@@ -1,7 +1,38 @@
-.session-wrapper {
 
+.session-wrapper {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  background: url(https://discordapp.com/assets/85e031dc63742b86264cc0dbc2a6fdb8.jpg) 50% no-repeat;
+  background-size: 1920px 1080px;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.logo-form-wrapper {
+  align-self: center;
+  display: flex;
+}
+
+.logo-wrapper {
+  width: 168px;
+  padding: 30px;
+ background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+#session-brand {
+align-self: flex-start;
+width: 168px;
+height: 168px;
+margin-bottom: 30px;
+}
+
+#session-logo {
+  width: 1px;
+  height: 24px;
+  margin: 30px;
 }
 
 form.session-form {
@@ -17,14 +48,14 @@ form.session-form {
   /*display: block;*/
   text-transform: uppercase;
   font-size: 11px;
-  color: #87909c;
+  color: #99AAB5;
   font-weight: 700;
 }
 
 .session-header {
   color: white;
   font-size: 18px;
-  font-weight: 700; 
+  font-weight: 900; 
   margin-bottom: 30px;
   text-align: center;
 }
@@ -40,8 +71,24 @@ form.session-form {
   width: 375px;
   height: 34px;
   margin-top: 12px;
-  
+  background-color: rgba(40,43,48,0);
+  border: none;
+  border-bottom: solid #99AAB5;
+  color: #fff;
+  border-width: 1px;
+  font-size: 16px;
+  text-align: start
 }
+
+.session-input:hover {
+  -webkit-filter: brightness(150%);
+}
+
+/*.sestion-input:focus {
+ background-color: white
+}*/
+
+/*background: asset_url('string_name')*/
 
 .session-button {
   margin-top: 70px;
@@ -53,6 +100,22 @@ form.session-form {
   font-family: inherit;
 }
 
+.session-button:hover {
+  -webkit-filter: brightness(150%); 
+}
+
+.session-link {
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.session-link:hover {
+  text-decoration: underline;
+}
+
 .session-footer {
-  margin-top: 8px;
+  margin-top: 12px;
+  color: #99AAB5;
+  font-size: 12px;
 }
