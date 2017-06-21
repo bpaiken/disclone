@@ -12,9 +12,9 @@ class Api::ServersController < ApplicationController
     @server = Server.new(server_params)
 
     if @server.save
-      render :show @server
+      render show: @server
     else
-      render :json @server.errors.full_messages
+      render json: @server.errors.full_messages
     end
   end
 

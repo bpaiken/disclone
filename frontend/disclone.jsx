@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {register, login, logout} from './actions/session_actions.js';
 import configureStore from './store/store';
 import Root from './components/root'
+import {register, login, logout} from './actions/session_actions.js';
+import { fetchServer } from './actions/server_actions.js'
 
 
-
+window.fetchServer = fetchServer;
 window.login = login;
 window.logout = logout;
 window.register = register;

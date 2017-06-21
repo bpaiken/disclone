@@ -12,8 +12,6 @@
 
 - `POST /api/users`
 - `GET /api/users/:id`
-- `GET /api/users/:id/channels`
-  - index of all the direct message conversations a user has started
 
 ### Session
 
@@ -23,7 +21,6 @@
 ### Servers
 
 - `POST /api/servers`
-- `GET /api/servers/`
 - `GET /api/servers/:id`
 - `DELETE /api/servers/:id`
 - `PATCH /api/servers/:id`

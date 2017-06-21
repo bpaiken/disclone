@@ -63,7 +63,7 @@ class SessionForm extends React.Component {
                   <label htmlFor="username-input" className="input-label">Username</label>
                   <span className="form-error">{this.state.usernameError}</span>
                 </div>
-                <input className="session-input" id="username-input" type="text"
+                <input className="session-input" id="username-input" type="password"
                   onChange={this.update('username')}
                   value={this.state.username}/>
               </div>
@@ -74,7 +74,7 @@ class SessionForm extends React.Component {
                 <span className="form-error">{this.state.passwordError}</span>
                 </div>
                 
-                <input className="session-input" type="text" id="password-input"
+                <input className="session-input" type="password" id="password-input"
                   onChange={this.update('password')}
                   value={this.state.password}/>
               </div>
