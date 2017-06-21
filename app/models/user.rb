@@ -14,10 +14,15 @@ class User < ActiveRecord::Base
   validates :username, :session_token, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :username, uniqueness: true
-
   after_initialize :ensure_session_token
 
   attr_accessor :password
+
+  has_many :subscriptions
+  has_many :servers, through: :subscriptions
+
+  has_many :directs
+  has_many :channels, through: :directs
 
   def password=(pw)
     @password = pw

@@ -12,4 +12,10 @@
 #
 
 class Channel < ActiveRecord::Base
+  validates :name, presence: true
+
+  has_one :server
+
+  has_many :directs
+  has_many :users, through: :directs
 end
