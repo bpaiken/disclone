@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621173518) do
+ActiveRecord::Schema.define(version: 20170621211606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170621173518) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "channels", ["name", "server_id"], name: "index_channels_on_name_and_server_id", unique: true, using: :btree
   add_index "channels", ["server_id"], name: "index_channels_on_server_id", unique: true, using: :btree
 
   create_table "directs", force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170621173518) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "default_id", null: false
   end
 
   add_index "servers", ["name"], name: "index_servers_on_name", unique: true, using: :btree

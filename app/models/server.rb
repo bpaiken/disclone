@@ -6,6 +6,7 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  default_id :integer          not null
 #
 
 class Server < ActiveRecord::Base
