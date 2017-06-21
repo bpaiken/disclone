@@ -6,7 +6,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    @channel = channel.find(params[:id])    
+    @channel = Channel.find(params[:id])    
   end
 
   def create

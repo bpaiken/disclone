@@ -15,6 +15,7 @@ class Channel < ActiveRecord::Base
   validates :name, presence: true
 
   belongs_to :server
+  has_many :messages
 
   has_many :directs
   has_many :users, through: :directs

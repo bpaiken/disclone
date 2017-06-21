@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :directs
   has_many :channels, through: :directs
 
+  has_many :messages
+
   def password=(pw)
     @password = pw
     self.password_digest = BCrypt::Password.create(pw)
