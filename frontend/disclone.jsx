@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root'
 import {register, login, logout} from './actions/session_actions.js';
-import { fetchServer } from './actions/server_actions.js'
+import { fetchServer } from './actions/server_actions.js';
+import { fetchMessages } from './actions/message_actions.js';
 
 
+window.fetchMessages = fetchMessages;
 window.fetchServer = fetchServer;
 window.login = login;
 window.logout = logout;

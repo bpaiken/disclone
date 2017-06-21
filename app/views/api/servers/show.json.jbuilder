@@ -18,7 +18,7 @@ end
 
 json.channels do
   @server.channels.each do |channel|
-    json.set! channel.id do 
+    json.set! channel.id do
       json.id channel.id
       json.name channel.name
       json.topic channel.topic
