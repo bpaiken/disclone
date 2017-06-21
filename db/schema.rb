@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621024220) do
+ActiveRecord::Schema.define(version: 20170621025657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20170621024220) do
 
   add_index "channels", ["server_id"], name: "index_channels_on_server_id", unique: true, using: :btree
 
+  create_table "directs", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "directs", ["channel_id"], name: "index_directs_on_channel_id", using: :btree
+  add_index "directs", ["user_id"], name: "index_directs_on_user_id", using: :btree
+
   create_table "servers", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -41,6 +51,9 @@ ActiveRecord::Schema.define(version: 20170621024220) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "subscriptions", ["server_id"], name: "index_subscriptions_on_server_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
