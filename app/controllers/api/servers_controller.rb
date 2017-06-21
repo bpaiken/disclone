@@ -23,13 +23,13 @@ class Api::ServersController < ApplicationController
   # end
 
   def update
-    @server = server.find(params[id])
+    @server = server.find(params[:id])
     @server.update(server_params)
   end
 
 
   def destroy
-    @server = Server.find(:id)
+    @server = Server.find(params[:id])
     @server.destroy
     #render updated index?
   end
