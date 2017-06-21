@@ -18,7 +18,7 @@ Disclone is a web application based off Discord. Disclone is built using Ruby on
 - Live Chat 
 - Servers w/ multiple chat channels
 - Direct messaging
-- Search messages
+- Multi-person direct messaging
 
 ## Design Docs
 * [View Wireframes][wireframes]
@@ -61,4 +61,4 @@ Disclone is a web application based off Discord. Disclone is built using Ruby on
 
 ### Bonus Features
 - Live voice channels
-- Multi-person direct messages
+- Search Messages
