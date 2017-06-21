@@ -16,8 +16,7 @@ export const login = (user) => (dispatch) => {
   };
 
 export const logout = () => (dispatch) => {
-  return APIUtil.logout().then(() =>
-  dispatch(receiveCurrentUser(nullUser)));
+  return APIUtil.logout().then(() => dispatch(receiveCurrentUser(nullUser)));
 };
 
 export const register = (user) => dispatch => {
