@@ -23,6 +23,7 @@ json.channels do
       json.name channel.name
       json.topic channel.topic
       json.direct channel.direct
+      json.messages channel.messages.map(&:id)
     end
   end
 end

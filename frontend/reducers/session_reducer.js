@@ -5,7 +5,6 @@ const initialState = {
     id: null,
     username: "",
     servers: [],
-    avatar_url: ""
   };
 
 const sessionReducer = (state = initialState, action) => {
@@ -14,9 +13,9 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     
     case RECEIVE_CURRENT_USER:
-      currentState = action.currentUser;
-      return currentState;
-    
+      // currentState = action.currentUser;
+      // return currentState;
+      return merge(currentState, action.currentUser)
     
     // case RECEIVE_ERRORS:
     //   currentState.errors = action.errors;

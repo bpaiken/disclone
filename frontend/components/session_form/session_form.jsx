@@ -47,8 +47,8 @@ class SessionForm extends React.Component {
   render() {
     
     return (
+    <div className="session-wrapper"> 
       <div className="logo-form-wrapper">
-
           <div className="logo-wrapper">
             <img id="session-brand" src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" alt=""/>
             <img id="session-log" src="https://discordapp.com/assets/9babbea9acbfec5302d832bae6c3c184.svg" alt=""/>
@@ -63,7 +63,7 @@ class SessionForm extends React.Component {
                   <label htmlFor="username-input" className="input-label">Username</label>
                   <span className="form-error">{this.state.usernameError}</span>
                 </div>
-                <input className="session-input" id="username-input" type="password"
+                <input className="session-input" id="username-input" type="text"
                   onChange={this.update('username')}
                   value={this.state.username}/>
               </div>
@@ -88,6 +88,7 @@ class SessionForm extends React.Component {
               </footer>
           </form>
       </div>
+    </div>
     );
   }
 }

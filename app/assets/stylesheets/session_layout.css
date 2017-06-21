@@ -2,7 +2,7 @@
 .session-wrapper {
   display: flex;
   justify-content: center;
-  background: url(https://discordapp.com/assets/85e031dc63742b86264cc0dbc2a6fdb8.jpg) 50% no-repeat;
+  background: url(http://i.imgur.com/IKphdgB.jpg) 50% no-repeat;
   background-size: 1920px 1080px;
   position: relative;
   overflow: hidden;
@@ -92,7 +92,7 @@ form.session-form {
 
 .session-input {
   display: block;
-  width: 375px;
+  width: 367px;
   height: 34px;
   margin-top: 12px;
   background-color: rgba(40,43,48,0);
@@ -101,6 +101,7 @@ form.session-form {
   color: #fff;
   border-width: 1px;
   font-size: 16px;
+  padding: 0 4px;
 }
 
 .session-input:hover {
