@@ -11,8 +11,7 @@
 ### Users
 
 - `POST /api/users`
-- `GET /api/users/:id/servers`
-  - index of all servers the current user has subscribed to
+- `GET /api/users/:id`
 - `GET /api/users/:id/channels`
   - index of all the direct message conversations a user has started
 
@@ -24,21 +23,17 @@
 ### Servers
 
 - `POST /api/servers`
+- `GET /api/servers/`
+- `GET /api/servers/:id`
 - `DELETE /api/servers/:id`
 - `PATCH /api/servers/:id`
-- `GET /api/servers/:id/channels`
-  - index of all channels belonging to a server
-- `GET /api/servers/:id/users`
-  - index of all users subscribing to a server
-
 
 ### Channels
 
 - `POST /api/channels`
 - `PATCH /api/channels/:id`
 - `DELETE /api/channels/:id`
-- `GET /api/channels/:id/messages`
-  - index of all messages belonging to a channel
+- `GET /api/channels/:id`
 
 ### Messages 
 

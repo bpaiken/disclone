@@ -4,7 +4,6 @@
     id: 1,
     username: "average_user",
     servers: [2,5,7,3,4],
-    avatar_url: "assets/images/your_pic_here.png"
   },
   forms: {
     signUp: {errors: []},
@@ -16,7 +15,6 @@
   currentServer: {
     id: 22,
     name: "best_server",
-    avatar_url: "assets/images/your_image_here.png",
     users: [1,2,3,6],
     channels: [2,6,8,23]
   },
