@@ -5,7 +5,6 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
-avatar_url      | string    | 
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
@@ -31,7 +30,6 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 name            | string    | not null
-avatar_url      | string    | 
 
 ## subscriptions
 column name     | data type | details
