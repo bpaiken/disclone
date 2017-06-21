@@ -12,13 +12,13 @@
     createChannel: {errors: ["channel name can't be blank"]},
     joinServer: {errors: ["server not found"]}
   },
-  currentServer: {
+  servers: {
     id: 22,
     name: "best_server",
     users: [1,2,3,6],
     channels: [2,6,8,23]
   },
-  currentChannel: {
+  channels: {
     id: 8
     name: "best_channel",
     topic: "the best memes!",

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
       resources :channels, only: [:index] #index of direct message channels belonging to a user
     end
     resource :session, only: [:create, :destroy]
-    resources :servers, only: [:create, :destroy, :index, :show, :patch]
-    resources :channels, only: [:create, :destroy, :show, :patch]
+    resources :servers, only: [:create, :destroy, :index, :show, :update]
+    resources :channels, only: [:create, :destroy, :show, :update]
     resources :messages, only: [:create]
  end
 end

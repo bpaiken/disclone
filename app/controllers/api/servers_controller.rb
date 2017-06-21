@@ -4,11 +4,9 @@ class Api::ServersController < ApplicationController
     @servers = Server.all
   end
 
-
   def show
     @server = Server.find(params[:id])
   end
-
 
   def create
     @server = Server.new(server_params)
@@ -16,13 +14,17 @@ class Api::ServersController < ApplicationController
     if @server.save
       render :show @server
     else
-      #render server errors
+      render :json @server.errors.full_messages
     end
   end
 
-
-  def patch
+  # def edit
     
+  # end
+
+  def update
+    @server = server.find(params[id])
+    @server.update(server_params)
   end
 
 
