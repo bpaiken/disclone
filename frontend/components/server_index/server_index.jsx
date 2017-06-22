@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {createServer} from '../../actions/server_actions.js';
 
 class ServerIndex extends React.Component {
   constructor(props) {
@@ -25,7 +26,13 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createServer: (server) => dispatch(createServer(server)), 
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ServerIndex)

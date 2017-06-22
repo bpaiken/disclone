@@ -9,11 +9,12 @@ class Api::ServersController < ApplicationController
   end
 
   def create
+    @server = Server.new(server_params)
     default_channel = Channel.create(name:'General', topic: "")
-    @server = Server.new(default_id: default_channel.id, server_params)
-    debugger
+    @server.default_id = default_channel.id
     
     if @server.save
+      default_channel.update(server_id: @server.id)
       render show: @server
     else
       render json: @server.errors.full_messages
