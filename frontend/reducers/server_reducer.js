@@ -4,6 +4,7 @@ import { RECEIVE_SERVER } from '../actions/server_actions'
 export default (state = {}, action) => {
   Object.freeze(state);
   let newState = merge({}, state)
+  debugger
   switch (action.type) {
     
     case RECEIVE_SERVER:

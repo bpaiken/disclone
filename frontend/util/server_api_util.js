@@ -3,5 +3,5 @@ export const fetchServer = (id) => {
 };
 
 export const createServer = (server) => {
-  return $.post('/api/servers',server);
+  return $.post('/api/servers',{server: {name: server.name}});
 }
