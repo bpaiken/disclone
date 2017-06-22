@@ -1,7 +1,7 @@
-json.extract! @user, :id, :username
+json.extract! user, :id, :username
 
 json.servers do
-  @user.servers.each do |server|
+  user.servers.each do |server|
     json.set! server.id do
       json.id server.id
       json.name server.name

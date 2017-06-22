@@ -1,0 +1,2 @@
+Remove servers from currentUser slice of state - this is no longer needed since the servers are being pulled off of the currentUser info in the defintion of preloaded state
+- update preloaded state accordingly (make sure currentUser only get user info)

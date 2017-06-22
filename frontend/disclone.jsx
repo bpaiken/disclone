@@ -17,7 +17,9 @@ window.register = register;
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
-    const preloadedState = { currentUser: window.currentUser };
+    const preloadedState = { currentUser: window.currentUser,
+      servers: window.currentUser.servers
+   };
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {

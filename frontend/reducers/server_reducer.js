@@ -5,7 +5,7 @@ import {RECEIVE_CURRENT_USER} from '../actions/session_actions'
 export default (state = {}, action) => {
   Object.freeze(state);
   let newState = merge({}, state)
-  debugger
+  // debugger
   switch (action.type) {
     
     case RECEIVE_SERVER:
