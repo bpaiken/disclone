@@ -4,8 +4,8 @@ import ServerIndexContainer from '../server_index/server_index';
 import ServerForm from '../server_form/server_form';
 import CreateServer from '../server_form/create_server'; //test only
 import ChannelIndexContainer from '../channel_index/channel_index';
-import {Route} from 'react-router-dom';
-
+import MessageIndexContainer  from '../message_index/message_index';
+import { Route } from 'react-router-dom';
 
 class Core extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Core extends React.Component {
   }
 
   componentDidMount() {
-   
+  
   }
 
   component
@@ -26,7 +26,8 @@ class Core extends React.Component {
       <ServerIndexContainer />
       {/*<ServerForm />
       <CreateServer />*/}
-      <Route path="/app/channels/:serverId/:channelId" component={ChannelIndexContainer} />
+      <Route path="/app/channels/:serverId/" component={ChannelIndexContainer} />
+      <Route path="/app/channels/:serverId/:channelId" component={MessageIndexContainer} />
     </div>
     );
   } 

@@ -6,7 +6,7 @@ export default (state = {}, action) => {
   let newState = merge({}, state)  
   switch (action.type) {
     case RECEIVE_MESSAGES:
-      return merge(newState, action.messages)
+      return merge(newState, action.messages.messages)
     default:
       return state;
   }

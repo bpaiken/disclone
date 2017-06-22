@@ -20,10 +20,9 @@ class ServerIndex extends React.Component {
               </div> )}
           </div>
           
-          <div className="add-server-button">
+          {/*<div className="add-server-button">
             add server button
-          </div>
-
+          </div>*/}
           {/*TODO: Route for add server form*/}
       </div>
     );
