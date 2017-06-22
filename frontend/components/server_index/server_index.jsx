@@ -9,16 +9,28 @@ class ServerIndex extends React.Component {
     this.state = {}
   }
 
+  addServer() {
+    
+  }
+
   render() {
     return (
     <div>
-      {this.props.servers.map((server)=><div>{server.name}</div> )}
+
+        <div className="index-item-wrapper">
+          {this.props.servers.map((server)=><div>{server.name}</div> )}
+        </div>
+        
+        <div className="add-server-button">
+          add server button
+        </div>
+
+
+        {/*Route for add server form*/}
     </div>
     );
   }
 }
-
-
 
 const mapStateToProps = (state) => {
   return {
