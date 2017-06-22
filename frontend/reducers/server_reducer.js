@@ -8,7 +8,7 @@ export default (state = {}, action) => {
   switch (action.type) {
     
     case RECEIVE_SERVER:
-      return merge(newState, action.server)
+      return merge(newState, action.response.server)
       
     default:
       return state;

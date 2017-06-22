@@ -1,10 +1,10 @@
 import * as APIUtil from '../util/server_api_util';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER'
 
-export const receiveServer = (server) => {
+export const receiveServer = (response) => {
   return {
     type: RECEIVE_SERVER,
-    server
+    response
   }
 }
 
