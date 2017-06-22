@@ -1,6 +1,6 @@
 import React from 'react';
 // import MessageLogContainer from '../message_log/message_log_container';
-import ServerIndexContainer from '../server_index/server_index';
+import SidebarContainer from '../sidebar/sidebar';
 import ServerForm from '../server_form/server_form';
 import CreateServer from '../server_form/create_server'; //test only
 import ChannelIndexContainer from '../channel_index/channel_index';
@@ -22,8 +22,9 @@ class Core extends React.Component {
 
   render() {
     return (
-    <div>
-      <ServerIndexContainer />
+      
+    <div className="core-wrapper">
+      <SidebarContainer />
       {/*<ServerForm />
       <CreateServer />*/}
       <Route path="/app/channels/:serverId/" component={ChannelIndexContainer} />

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-class ServerIndex extends React.Component {
+class Sidebar extends React.Component {
   constructor(props) {
     super(props)
 
@@ -12,19 +12,28 @@ class ServerIndex extends React.Component {
   render() {
     let servers = this.props.servers;
       return (
-      <div>
-          <div className="index-item-wrapper">
-            {Object.keys(servers).map((key)=>
-              <div key={key}>
-                <Link to={`/app/channels/${key}/${servers[key].defaultId}`}>{servers[key].name}</Link>
-              </div> )}
+        <div className='sidebar-wrapper'>
+
+          <div className='direct-message-button'>
+            direct message placeholder
           </div>
-          
-          {/*<div className="add-server-button">
+
+          <div className='sidebar-control'>
+
+          </div>
+
+          <ul className="index-item-wrapper">
+            {Object.keys(servers).map((key)=>
+              <li className='server-index-item' key={key}>
+                <Link id="temp-link" to={`/app/channels/${key}/${servers[key].defaultId}`}>{servers[key].name}</Link>
+             </li> )}
+          </ul>
+
+          <div className="add-server-button">
             add server button
-          </div>*/}
+          </div>
           {/*TODO: Route for add server form*/}
-      </div>
+        </div>
     );
   }
 }
@@ -46,4 +55,4 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
   mapStateToProps
   // mapDispatchToProps
-)(ServerIndex)
+)(Sidebar)

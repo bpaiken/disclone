@@ -26,11 +26,23 @@ class ChannelIndex extends React.Component {
     if (Object.keys(this.props.channels).length !== 0) {
       let channelArray = this.props.servers[serverId].channels
       return (
-        <div>
+        <div className='channel-index'>
+          <div className='server-header' >
+            options placeholder
+          </div>
+
+          <div className='channel-header-wrapper'>
+            <h3 className='channels-header'>text channels</h3>
+            <i className="fa fa-plus add-channel-button" aria-hidden="true"></i>
+          </div>
           <ul>
             {channelArray.map((key) => (
-            <li>
-            <Link to={`/app/channels/${serverId}/${key}`}>{this.props.channels[key].name}</Link>
+            <li className='channel-name-wrapper'>
+              <div className='channel-name-highlight'>
+                <span id='hashtag'>#</span>  
+                <Link to={`/app/channels/${serverId}/${key}`} className='channel-name'>
+                {this.props.channels[key].name}</Link>
+              </div>
             </li>
             ))}
           </ul>
