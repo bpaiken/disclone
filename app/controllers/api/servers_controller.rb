@@ -17,6 +17,8 @@ class Api::ServersController < ApplicationController
     if server.save
       @server = server
       default.update(server_id: @server.id)
+      
+      Subscription.create(user_id: current_user.id, server_id: @server.id)
       render '/api/servers/show' 
     else
       render json: @server.errors.full_messages
