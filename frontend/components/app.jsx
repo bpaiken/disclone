@@ -9,10 +9,10 @@ import { LoggedAuthRoute, NotLoggedAuthRoute } from '../util/route_util';
 
 export default () => (
   <div>
-      <LoggedAuthRoute path ="/login" component={LoginContainer} redirect="/" />
-      <LoggedAuthRoute path ="/register" component={CreateAccountContainer} redirect="/" />
+      <LoggedAuthRoute path ="/login" component={LoginContainer} redirect="/app" />
+      <LoggedAuthRoute path ="/register" component={CreateAccountContainer} redirect="/app" />
     <div className="main-app">
-      <NotLoggedAuthRoute exact path="/" redirect="/login" component={CoreContainer}/>
+      <NotLoggedAuthRoute path="/app" redirect="/login" component={CoreContainer}/>
     </div>
   </div>
 );

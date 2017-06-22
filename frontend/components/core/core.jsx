@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
 // import MessageLogContainer from '../message_log/message_log_container';
-import ServerIndexContainer from '../server_index/server_index'
-import ServerForm from '../server_form/server_form'
-import CreateServer from '../server_form/create_server' //test only
+import ServerIndexContainer from '../server_index/server_index';
+import ServerForm from '../server_form/server_form';
+import CreateServer from '../server_form/create_server'; //test only
+import ChannelIndexContainer from '../channel_index/channel_index';
+import {Route} from 'react-router-dom';
+
 
 class Core extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {}
+    this.state = {};
   }
 
   componentDidMount() {
@@ -21,8 +24,9 @@ class Core extends React.Component {
     return (
     <div>
       <ServerIndexContainer />
-      <ServerForm />
-      <CreateServer />
+      {/*<ServerForm />
+      <CreateServer />*/}
+      <Route path="/app/channels/:serverId/:channelId" component={ChannelIndexContainer} />
     </div>
     );
   } 

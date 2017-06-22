@@ -1,5 +1,6 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class ServerIndex extends React.Component {
   constructor(props) {
@@ -9,13 +10,14 @@ class ServerIndex extends React.Component {
   }
 
   render() {
-    debugger
     let servers = this.props.servers;
       return (
       <div>
-
           <div className="index-item-wrapper">
-            {Object.keys(servers).map((key)=><div>{servers[key].name}</div> )}
+            {Object.keys(servers).map((key)=>
+              <div key={key}>
+                <Link to={`/app/channels/${key}/${servers[key].defaultId}`}>{servers[key].name}</Link>
+              </div> )}
           </div>
           
           <div className="add-server-button">
@@ -30,19 +32,19 @@ class ServerIndex extends React.Component {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // container // 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    servers: state.servers
+    servers: state.servers,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createServer: (server) => dispatch(createServer(server)), 
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+   
+//   }
+// }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
+  // mapDispatchToProps
 )(ServerIndex)
