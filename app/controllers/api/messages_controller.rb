@@ -1,13 +1,27 @@
 class Api::MessagesController < ApplicationController
 
-  def post
+  def show
+  end
+
+  def create
     @message = Message.new(message_params)
     
+    if @message.save
+
+      Pusher.trigger('channel_' + @message.channel_id.to_s, 'post_message', {
+      message: @message.body
+    })
+      render 'api/messages/show'
+    end
     #add pusher
   end
+
+
+
+
   
   private
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :user_id, :channel_id)
   end
 end

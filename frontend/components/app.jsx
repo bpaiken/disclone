@@ -12,7 +12,7 @@ export default () => (
       <LoggedAuthRoute path ="/login" component={LoginContainer} redirect="/app" />
       <LoggedAuthRoute path ="/register" component={CreateAccountContainer} redirect="/app" />
     <div className="main-app">
-      <NotLoggedAuthRoute path="/app" redirect="/login" component={CoreContainer}/>
+      <NotLoggedAuthRoute path="/" redirect="/login" component={CoreContainer}/>
     </div>
   </div>
 );

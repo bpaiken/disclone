@@ -3,7 +3,7 @@ import * as APIUtil from '../util/message_api_util';
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 
-export const receiveMesssages = (messages) => {
+export const receiveMessages = (messages) => {
   return {
     type: RECEIVE_MESSAGES,
     messages
@@ -18,12 +18,12 @@ export const receiveMesssages = (messages) => {
 //   }
 // } 
 
-export const postMessage = (message) => {
+export const postMessage = (message) => dispatch => {
   return APIUtil.postMessage(message)
-  .then((message) => dispatch(recieveMessages(message)))
+  .then((message) => dispatch(receiveMessages(message)))
 }
 
 export const fetchMessages = (id) => dispatch => {
   return APIUtil.fetchMessages(id)
-  .then((messages) => dispatch(receiveMesssages(messages)));
+  .then((messages) => dispatch(receiveMessages(messages)));
 };

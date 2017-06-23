@@ -1,0 +1,16 @@
+.message-index-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #2C2F33;
+  -webkit-filter: brightness(125%);
+  width: 100%;
+}
+
+.message-group {
+  margin-left: 20px;
+  margin-right: 6px;
+  padding: 20px 0px;
+  border-bottom: solid #383838 ;
+  border-width: 1px;
+}
