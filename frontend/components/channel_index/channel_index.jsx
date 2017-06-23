@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchServer } from '../../actions/server_actions.js';
-import {fetchMessages} from '../../actions/message_actions.js'
-import { Link } from 'react-router-dom'
+import {fetchMessages} from '../../actions/message_actions.js';
+import { Link } from 'react-router-dom';
+import CreateChannelContainer from '../channel_form/create_channel.jsx';
 
 class ChannelIndex extends React.Component {
   constructor(props) {
@@ -32,10 +33,10 @@ class ChannelIndex extends React.Component {
             options placeholder
           </div>
 
-          <div className='channel-header-wrapper'>
-            <h3 className='channels-header'>text channels</h3>
-            <i className="fa fa-plus add-channel-button" aria-hidden="true"></i>
-          </div>
+          
+            <CreateChannelContainer />
+          
+
           <ul>
             {channelArray.map((key) => (
             <li className='channel-name-wrapper'>
@@ -73,3 +74,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ChannelIndex)
+

@@ -27,8 +27,10 @@ class MessageBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <input onKeyPress={this.onMessage} placeholder="your message here" />
+      <div className="message-bar-container">
+        <input onKeyPress={this.onMessage} 
+          placeholder={`Message #${this.props.channel.name}`}
+          className="message-bar-input"/>
       </div>
     );
   }
@@ -37,10 +39,11 @@ class MessageBar extends React.Component {
 
 /////////////CONTAINER/////////////////
 
-const mapStateToProps = ({ currentUser }, ownProps) => {
+const mapStateToProps = ({ currentUser, channels }, ownProps) => {
   return {
     currentUser,
-    ownProps
+    ownProps,
+    channel: channels[ownProps.match.params.channelId],
   };
 };
 

@@ -1,10 +1,11 @@
 import merge from 'lodash/merge';
-import { RECEIVE_SERVER } from '../actions/server_actions'
-import { RECEIVE_MESSAGES } from '../actions/message_actions'
+import { RECEIVE_SERVER } from '../actions/server_actions';
+import { RECEIVE_MESSAGES } from '../actions/message_actions';
+import { RECEIVE_CHANNELS } from '../actions/channel_actions';
 
 export default (state = {}, action) => {
   Object.freeze(state);
-  let newState = merge({}, state)
+  let newState = merge({}, state);
   
   switch (action.type) {
     
@@ -12,7 +13,9 @@ export default (state = {}, action) => {
       return merge(newState, action.response.channels);
 
     case RECEIVE_MESSAGES: 
-      debugger
+      return merge(newState, action.channels);
+
+    case RECEIVE_CHANNELS: 
       return merge(newState, action.channels);
 
     default:

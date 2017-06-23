@@ -1,10 +1,11 @@
 .message-index-wrapper {
-  position: relative;
+  /*position: relative;*/
   display: flex;
   flex-direction: column;
   background-color: #2C2F33;
   -webkit-filter: brightness(125%);
   width: 100%;
+  /*overflow: hidden;*/
 }
 
 .message-group {
@@ -13,4 +14,33 @@
   padding: 20px 0px;
   border-bottom: solid #383838 ;
   border-width: 1px;
+  flex-grow: 1;
+}
+
+.message-bar-container {
+  align-self: center;
+  /*position: absolute;*/
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: auto;
+  height: 96px;
+  display: flex;
+  justify-content: center;
+}
+
+.message-bar-input {
+  color: hsla(0,0%,100%,.7);
+  align-self: center;
+  height: 18px;
+  padding: 12px 10px;
+  border: 2px solid #686a6e;
+  width: 100%;
+  background-color: hsla(0,0%,100%,.06);
+  border-radius: 3px;
+}
+
+.message-bar-input:focus {
+  border: 2px solid #686a6e;
 }
