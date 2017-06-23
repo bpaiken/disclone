@@ -18,6 +18,7 @@ class ChannelIndex extends React.Component {
    componentWillReceiveProps(nextProps) {
     if(this.props.match.params.serverId !== nextProps.match.params.serverId) {
     this.props.fetchServer(nextProps.match.params.serverId)
+    //todo fetch channel action
     }
   }
 
@@ -54,7 +55,6 @@ class ChannelIndex extends React.Component {
 }
 
 ///////////////////////  CONTAINER  /////////////////////////////////
-
 const mapStateToProps = ({ servers, channels }, { match })  => {
   return {
     servers,

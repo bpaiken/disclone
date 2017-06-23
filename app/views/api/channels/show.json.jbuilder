@@ -8,3 +8,9 @@ json.messages do
     end
   end
 end
+
+json.channels do
+  json.set! @channel.id do
+    json.messages @channel.messages.pluck(:id)
+  end
+end

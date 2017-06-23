@@ -2,11 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchMessages } from '../../actions/message_actions.js';
 import MessageBarContainer from './message_bar';
-import {fetchServer} from '../../actions/server_actions.js'
+import { fetchServer } from '../../actions/server_actions.js'
 
 class MessageIndex extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.pusher = new Pusher('05f19b135aba7470dff0', {
+      cluster: 'us2',
+      encrypted: true
+    });
    
   this.state = {}
 }
@@ -14,33 +19,22 @@ class MessageIndex extends React.Component {
   componentDidMount() {
     this.props.fetchMessages(this.props.match.params.channelId);
     Pusher.logToConsole = true;
-
-    var pusher = new Pusher('05f19b135aba7470dff0', {
-      cluster: 'us2',
-      encrypted: true
-    });
-    let that = this;
-  var channel = pusher.subscribe('channel_' + this.props.match.params.channelId);
+ 
+    let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('post_message', (data) => {
       this.props.fetchMessages(this.props.match.params.channelId)
-      .then(() => this.props.fetchServer(this.props.match.params.serverId));
     });
-
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
-      var pusher = new Pusher('05f19b135aba7470dff0', {
-      cluster: 'us2',
-      encrypted: true
-    });
-    let that = this;
-  var channel = pusher.subscribe('channel_' + this.props.match.params.channelId);
-    channel.bind('post_message', (data) => {
-      this.props.fetchMessages(this.props.match.params.channelId)
-      .then(() => this.props.fetchServer(this.props.match.params.serverId));
-    });
     this.props.fetchMessages(nextProps.match.params.channelId)
+
+    this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
+    let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
+    channel.bind('post_message', (data) => {
+     this.props.fetchMessages(this.props.match.params.channelId)
+   })
     }
   }
 
@@ -48,7 +42,6 @@ class MessageIndex extends React.Component {
     let channelId = this.props.match.params.channelId
     if (this.props.channels[channelId]) {
       let messageArray = this.props.channels[channelId].messages
-      debugger
       return (
       <div className='message-index-wrapper'>
 

@@ -9,7 +9,11 @@ export default (state = {}, action) => {
   switch (action.type) {
     
     case RECEIVE_SERVER:
-      return merge(newState, action.response.channels)
+      return merge(newState, action.response.channels);
+
+    case RECEIVE_MESSAGES: 
+      debugger
+      return merge(newState, action.channels);
 
     default:
       return state;

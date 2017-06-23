@@ -17,7 +17,6 @@ class MessageBar extends React.Component {
 
     let body = e.target.value
     if (body === "") return;
-    debugger
     let message = {
       body: body,
       userId: this.props.currentUser.id,
