@@ -7,9 +7,11 @@ class CreateChannel extends React.Component {
     this.state = {
       name: "",
       topic: "",
+      serverId: this.props.match.params.serverId,
       nameErrors: "",
     };
     
+    this.hideModal = this.hideModal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -17,11 +19,18 @@ class CreateChannel extends React.Component {
   showModal() {
     this.refs.createChannel.show();
   }
+
+  hideModal() {
+    this.refs.createChannel.hide();
+  }
   
   handleSubmit(e) {
     e.preventDefault();
 
+    //handle errors here
+
     this.props.createChannel(this.state);
+    this.hideModal();
   }
 
   update(field) {
@@ -33,6 +42,7 @@ class CreateChannel extends React.Component {
   }
  
   render() {
+
     return (
       <div>
           <div className='channel-header-wrapper' onClick={this.showModal}>
@@ -40,8 +50,8 @@ class CreateChannel extends React.Component {
             <i className="fa fa-plus add-channel-button" aria-hidden="true"></i>
          </div>
 
-        <SkyLight hideOnOverlayClicked ref="createChannel">
-          <form>
+        <SkyLight className="create-channel-modal" hideOnOverlayClicked ref="createChannel">
+          <form className='create-channel-form'>
             <h3 className="create-channel-header">create text channel</h3>
             
             <label htmlFor="create-channel-name">channel name</label>
@@ -52,7 +62,7 @@ class CreateChannel extends React.Component {
             <input id="create-channel-topic" type="text"
               onChange={this.update('topic')}/>
 
-            <button onClick={this.handleSubmit}>Create Channel</button>
+            <button onClick={this.handleSubmit} >Create Channel</button>
           </form>
         </SkyLight>
       </div>

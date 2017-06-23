@@ -9,7 +9,7 @@ class ChannelIndex extends React.Component {
   constructor(props) {
     super(props);
    
-   this.state = {}
+  this.state = {}
 }
 
   componentDidMount() {
@@ -17,7 +17,8 @@ class ChannelIndex extends React.Component {
   }
 
    componentWillReceiveProps(nextProps) {
-    if(this.props.match.params.serverId !== nextProps.match.params.serverId) {
+    if(this.props.match.params.serverId !== nextProps.match.params.serverId || 
+    Object.keys(this.props.channels) < Object.keys(nextProps.channels)) {
     this.props.fetchServer(nextProps.match.params.serverId)
     //todo fetch channel action
     }

@@ -1,5 +1,5 @@
 export const createChannel = (channel) => {
-  $.post('/api/channels', {
+  return $.post('/api/channels', {
     channel: {
       name: channel.name,
       topic: channel.topic,
