@@ -1,36 +1,50 @@
 import React from 'react';
-import SkyLight from 'react-skylight';
+
 
 class CreateChannel extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      name: "",
-      topic: "",
-      serverId: this.props.match.params.serverId,
-      nameErrors: "",
+    
+    this.state = { 
+        name: "",
+        topic: "",
+        serverId: this.props.match.params.serverId,
+        nameErrors: "",
+        modal: {
+          modalId: "closed",
+          overlayId: "closed"
+        }
     };
     
-    this.hideModal = this.hideModal.bind(this);
-    this.showModal = this.showModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  showModal() {
-    this.refs.createChannel.show();
+  openModal() {
+    this.setState({ modal: 
+      { 
+        modalId: 'create-channel-modal', 
+        overlayId: 'create-channel-overlay'
+      } 
+    });
+  }
+    
+  stopProp(e) {
+    e.stopPropagation();
   }
 
-  hideModal() {
-    this.refs.createChannel.hide();
+  closeModal(e) {
+    this.setState({ modal: { modalId: 'closed', overlayId: 'closed'} })
   }
   
   handleSubmit(e) {
     e.preventDefault();
 
     //handle errors here
-
+  
     this.props.createChannel(this.state);
-    this.hideModal();
+    this.closeModal();
   }
 
   update(field) {
@@ -45,26 +59,34 @@ class CreateChannel extends React.Component {
 
     return (
       <div>
-          <div className='channel-header-wrapper' onClick={this.showModal}>
+          <div className='channel-header-wrapper' onClick={this.openModal}>
             <h3 className='channels-header'>text channels</h3>
             <i className="fa fa-plus add-channel-button" aria-hidden="true"></i>
-         </div>
+          </div>
 
-        <SkyLight className="create-channel-modal" hideOnOverlayClicked ref="createChannel">
-          <form className='create-channel-form'>
-            <h3 className="create-channel-header">create text channel</h3>
-            
-            <label htmlFor="create-channel-name">channel name</label>
-            <input id="create-channel-name "type="text"
-              onChange={this.update('name')}/>
+        <div id={this.state.modal.overlayId} onClick={this.closeModal}>
+          </div>
+          
+          <div id={this.state.modal.modalId}>
+            <form className='create-channel-form'>
+              
+              <div className='create-channel-header-wrapper'>
+              <h3 className="create-channel-header">create text channel</h3>
+              </div>
+              
+              <label className="create-channel-label">channel name</label>
+              <input className="create-channel-input" type="text"
+                onChange={this.update('name')}/>
 
-            <label htmlFor="create-channel-topic">channel topic</label>
-            <input id="create-channel-topic" type="text"
-              onChange={this.update('topic')}/>
-
-            <button onClick={this.handleSubmit} >Create Channel</button>
-          </form>
-        </SkyLight>
+              <label className="create-channel-label">channel topic</label>
+              <input className="create-channel-input" type="text"
+                onChange={this.update('topic')}/>
+              <div className="footer">
+                <span className='cancel-modal' onClick={this.closeModal}>Cancel</span >
+                <button className='create-channel-button' onClick={this.handleSubmit} >Create Channel</button>
+              </div>
+            </form>
+          </div>  
       </div>
     )
   }

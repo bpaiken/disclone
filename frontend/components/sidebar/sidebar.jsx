@@ -25,7 +25,8 @@ class Sidebar extends React.Component {
           <ul className="index-item-wrapper">
             {Object.keys(servers).map((key)=>
               <li className='server-index-item' key={key}>
-                <Link id="temp-link" to={`/app/channels/${key}/${servers[key].defaultId}`}>{servers[key].name}</Link>
+                <Link id="temp-link" to={`/app/channels/${key}/${servers[key].defaultId}`}>
+                <img src={servers[key].avatarUrl} alt=""/></Link>
              </li> )}
           </ul>
 

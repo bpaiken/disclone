@@ -1,0 +1,119 @@
+#create-channel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0, 0.75);
+  z-index: 10;
+}
+
+#create-channel-modal {
+  width: 400px;
+  max-height: 660px;
+  min-height: 200px;
+  position: fixed;
+  left: 50%;
+  top: 50%; 
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: #2f3136;
+  padding: 20px;
+  box-shadow: 0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2);
+  z-index: 20;
+}
+
+#closed {
+  display: none;
+}
+
+.create-channel-header-wrapper {
+  padding-bottom: 25px;
+}
+
+.create-channel-header {
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f6f6f7;
+}
+
+.create-channel-label {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #99AAB5;
+  font-weight: 700;
+  display: block;
+  align-self: flex-end;
+  margin-right: 6px;
+  margin-bottom: 8px;
+  letter-spacing: .3px;
+}
+
+.create-channel-input {
+  background-color: rgba(0,0,0,.1);
+  height: 40px;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  border-color: rgba(0,0,0,.3);
+  border-width: 1px;
+  border-radius: 3px;
+  transition: background-color .15s ease,border .15s ease;
+  padding: 0 4px;
+  color: white;
+  font-size: 15px;
+}
+
+.create-channel-input:hover {
+  border-color: rgba(0,0,0,1);
+}
+
+.create-channel-input:focus {
+  border-color: #7289da;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 3px #7289da;
+    outline: 0 none;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end
+}
+
+.cancel-modal {
+  color: white;
+  align-self: center;
+  margin-right: 16px;
+  font-size: 14px;
+  padding: 2px 0;
+}
+
+.cancel-modal:hover {
+  border-bottom: 1px solid white;
+  cursor: pointer; 
+}
+
+.create-channel-button {
+  min-width: 96px;
+  min-height: 38px;
+  color: white;
+  background-color: #7289da;
+  padding: 2px 16px;
+  border: none;
+  align-self: flex-end;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.create-channel-button:hover {
+   filter: brightness(80%);
+}
+
+
+
+
+
+

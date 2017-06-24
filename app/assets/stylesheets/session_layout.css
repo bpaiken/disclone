@@ -104,6 +104,10 @@ form.session-form {
   padding: 0 4px;
 }
 
+.session-input:focus {
+  border-bottom: solid #99AAB5;
+}
+
 .session-input:hover {
   -webkit-filter: brightness(150%);
 }

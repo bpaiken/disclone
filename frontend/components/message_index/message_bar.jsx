@@ -23,6 +23,7 @@ class MessageBar extends React.Component {
       channelId: this.props.match.params.channelId
     }
     this.props.postMessage(message);
+
   }
 
   render() {
