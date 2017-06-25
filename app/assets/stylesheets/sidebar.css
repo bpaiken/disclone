@@ -22,11 +22,11 @@
 .server-index-item {
   width: 50px;
   height: 50px;
-  margin-bottom: 7px;
   /*text-align: center;*/
 }
 
 .server-index-item-wrapper{
+  margin-bottom: 7px;
   position: relative;
 }
 
@@ -43,6 +43,24 @@
   color: white;
   height: 50px;
   width: 50px;
+  border: 1px dashed #535559;
+  /*text-align: center;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #535559;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.add-server-button:hover {
+  filter: brightness(175%);
+}
+
+
+#add-server-plus {
+  align-self: center;
+  font-size: 42px;
 }
 
 img {

@@ -19,3 +19,8 @@ body {
   padding: 3px 4px;
   font-size: 12px;
 }
+
+.circle-base {
+  border-radius: 50%;
+  behavior: url(PIE.htc)
+}

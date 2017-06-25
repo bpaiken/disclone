@@ -29,8 +29,8 @@ class Sidebar extends React.Component {
             )}
           </ul>
 
-          <div className="add-server-button">
-            add server button
+          <div className="add-server-button circle-base">
+            <div id='add-server-plus'>+</div>
           </div>
           {/*TODO: Route for add server form*/}
         </div>

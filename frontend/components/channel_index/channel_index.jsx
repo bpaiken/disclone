@@ -12,9 +12,10 @@ class ChannelIndex extends React.Component {
   this.state = {}
 }
 
-  componentDidMount() {
-    this.props.fetchServer(this.props.match.params.serverId);
-  }
+  //don't think this is needed...user index seems to mount befor for channel index...so called in user index
+  // componentDidMount() {
+  //   this.props.fetchServer(this.props.match.params.serverId);
+  // }
 
    componentWillReceiveProps(nextProps) {
     if(this.props.match.params.serverId !== nextProps.match.params.serverId || 
@@ -34,9 +35,7 @@ class ChannelIndex extends React.Component {
             options placeholder
           </div>
 
-          
             <CreateChannelContainer />
-          
 
           <ul>
             {channelArray.map((key) => (

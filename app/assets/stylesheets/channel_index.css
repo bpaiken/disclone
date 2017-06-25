@@ -22,7 +22,8 @@
 }
 
 .channel-header-wrapper:hover h3, i {
-  color: #b9bbbe
+  color: #b9bbbe;
+  cursor: pointer;
 }
 
 .channels-header {
@@ -60,6 +61,7 @@
   border-radius: 4px;
   padding: 0 8px;
   background-color: #2C2F33;
+  cursor: pointer;
 }
 
 .channel-name-highlight:hover {

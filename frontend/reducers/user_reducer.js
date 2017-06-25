@@ -1,0 +1,18 @@
+// import RECEIVE_USERS from '../actions/user_actions';
+import merge from 'lodash/merge';
+import { RECEIVE_SERVER } from '../actions/server_actions'
+
+export default (state = {}, action) => {
+  Object.freeze(state);
+  let newState = merge({}, state)
+  switch (action.type) {
+    case RECEIVE_SERVER:
+      return merge(newState, action.response.users)
+
+    // case RECEIVE_USERS:
+    //   return merge(newState, action.users)
+
+    default:
+      return state;
+  }
+};

@@ -34,17 +34,3 @@ class ServerIndexItem extends React.Component {
   }
 }
 export default ServerIndexItem;
-
-/////////// CONTAINER /////////////
-// import { withRouter } from 'react-router-dom'
-
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     servers: state.servers,
-//   };
-// };
-
-
-// export default connect(
-//   mapStateToProps
-// )(ServerIndexItem)
