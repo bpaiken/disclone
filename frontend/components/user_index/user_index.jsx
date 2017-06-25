@@ -12,15 +12,15 @@ class UserIndex extends React.Component {
   render () {
     let users = this.props.users;
     let userArray = this.props.server.users
-    if (userArray.length > 0) { 
+    if (Object.keys(users).length > 0) { 
     return (
       <div className='user-index-container'>
-        <ul>
+        <ul className='user-index'>
           {userArray.map(key => {
             return (
             <li className='user-index-item'>
-              <div className='user-avatar-wrapper'>img placeholder</div>
-              {/*<div className='index-username'>{users[key].username}</div>*/}
+              <div className='user-avatar-wrapper circle-base'>img placeholder</div>
+              <div className='index-username'>{users[key].username}</div>
             </li>
             )}
           )}
@@ -39,6 +39,7 @@ import { fetchServer } from '../../actions/server_actions.js'
 
 
 const mapStateToProps = ({ servers, users }, ownProps) => {
+  
   return {
     server: servers[ownProps.match.params.serverId],
     users,

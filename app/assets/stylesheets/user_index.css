@@ -1,0 +1,39 @@
+
+
+
+
+.user-index-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #2C2F33;
+}
+
+.user-index {
+  display: flex;
+  flex-direction: column
+}
+
+.user-index-item {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 16px 5px 30px;
+  cursor: pointer;
+}
+
+.user-index-item:hover {
+  background-color: rgba(30, 33, 36, .50) 
+}
+
+.user-avatar-wrapper {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.index-username {
+  width: 140px;
+  color: #99AAB5;
+  font-size: 17px;
+  font-weight: bold;
+
+}
