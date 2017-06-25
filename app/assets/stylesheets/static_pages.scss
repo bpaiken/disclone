@@ -10,7 +10,12 @@ body {
   background: none;
 }
 
-.tooltips {
-  position: relative;
+.tooltip {
+  position: absolute;
   white-space: nowrap;
+  background-color: #7289da;
+  border-radius: 3px;
+  color: white;
+  padding: 3px 4px;
+  font-size: 12px;
 }

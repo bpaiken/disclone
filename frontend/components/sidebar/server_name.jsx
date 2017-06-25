@@ -20,12 +20,15 @@ class ServerIndexItem extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='server-index-item-wrapper'>
         <Link to={`/app/channels/${this.props.server.id}/${this.props.server.defaultId}`}>
           <img className='server-avatar' src={this.props.server.avatarUrl}
-          onMouseEnter={this.show} onMouseLeave={this.hide}/>
+          onMouseEnter={this.show} onMouseLeave={this.hide}>
+          </img>
         </Link>
-        <div className={this.state.status} >{this.props.server.name}</div>
+        <div className="tooltip server-name-tooltip" id={this.state.status} >
+          {this.props.server.name}
+        </div>
       </div>
     );
   }

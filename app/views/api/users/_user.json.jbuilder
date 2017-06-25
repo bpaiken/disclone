@@ -8,6 +8,7 @@ json.servers do
       json.defaultId server.default_id
       json.users server.users.map(&:id)
       json.channels server.channels.map(&:id)
+      json.avatarUrl server.avatar.url
     end
   end
 end

@@ -24,15 +24,9 @@ class Sidebar extends React.Component {
 
           <ul className="index-item-wrapper">
             {Object.keys(servers).map((key)=>
-              <li className='server-index-item' key={key}>
-              
-                <ServerIndexItem server={servers[key]}/>
-
-                {/*<Link id="temp-link" to={`/app/channels/${key}/${servers[key].defaultId}`}>
-                <img className='server-avatar' src={servers[key].avatarUrl} alt=""/>
-                </Link>*/}
-
-             </li> )}
+              <ServerIndexItem className='server-index-item'
+               key={key} server={servers[key]}/>
+            )}
           </ul>
 
           <div className="add-server-button">
