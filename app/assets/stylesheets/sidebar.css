@@ -27,6 +27,14 @@
   /*text-align: center;*/
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 
 /*#temp-link {
   color: white;

@@ -1,14 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import ServerIndexItem from './server_name'
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
   }
 
+
+//currently mapping over each server vice the users subscribed servers
   render() {
     let servers = this.props.servers;
       return (
@@ -18,15 +20,18 @@ class Sidebar extends React.Component {
             direct message placeholder
           </div>
 
-          <div className='sidebar-control'>
-
-          </div>
+          <div className='sidebar-control'></div>
 
           <ul className="index-item-wrapper">
             {Object.keys(servers).map((key)=>
               <li className='server-index-item' key={key}>
-                <Link id="temp-link" to={`/app/channels/${key}/${servers[key].defaultId}`}>
-                <img src={servers[key].avatarUrl} alt=""/></Link>
+              
+                <ServerIndexItem server={servers[key]}/>
+
+                {/*<Link id="temp-link" to={`/app/channels/${key}/${servers[key].defaultId}`}>
+                <img className='server-avatar' src={servers[key].avatarUrl} alt=""/>
+                </Link>*/}
+
              </li> )}
           </ul>
 
@@ -39,9 +44,10 @@ class Sidebar extends React.Component {
   }
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // container // 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     servers: state.servers,
   };
