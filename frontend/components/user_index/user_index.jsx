@@ -19,8 +19,12 @@ class UserIndex extends React.Component {
           {userArray.map(key => {
             return (
             <li className='user-index-item'>
-              <div className='user-avatar-wrapper circle-base'>img placeholder</div>
-              <div className='index-username'>{users[key].username}</div>
+              <div className='user-avatar-wrapper circle-base'>
+                <img src={users[key].avatarUrl} alt=""/>
+              </div>
+              <div className="index-username-control">
+                <span className='index-username'>{users[key].username}</span>
+              </div>
             </li>
             )}
           )}

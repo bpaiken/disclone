@@ -1,5 +1,7 @@
 json.extract! user, :id, :username
 
+json.avatarUrl asset_path(user.avatar.url)
+
 json.servers do
   user.servers.each do |server|
     json.set! server.id do

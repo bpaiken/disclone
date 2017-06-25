@@ -24,16 +24,17 @@
   background-color: rgba(30, 33, 36, .50) 
 }
 
-.user-avatar-wrapper {
+.user-avatar-wrapper > img {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
-.index-username {
+.index-username-control {
   width: 140px;
   color: #99AAB5;
   font-size: 17px;
   font-weight: bold;
-
+  display: flex;
+  align-items: center;
 }
