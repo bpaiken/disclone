@@ -1,0 +1,29 @@
+.header {
+  background-color: #36393e;
+  display: flex;
+  height: 6%;
+  border-bottom: 1px solid #1e2124;
+  vertical-align: center;
+  align-items: center;
+}
+
+.header-name{
+  margin-left: 20px;
+  margin-right: 5px;
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.header-topic {
+  padding-left: 12px;
+  margin-left: 8px;
+  border-left: 1px solid #72767d;
+  color: #72767d;
+}
+
+.member-toggle {
+  margin-left: auto;
+  margin-right: 235px;
+}

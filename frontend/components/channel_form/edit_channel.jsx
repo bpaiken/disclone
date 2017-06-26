@@ -1,7 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-
-class CreateChannel extends React.Component {
+class EditChannel extends React.Component {
   constructor(props){
     super(props);
     
@@ -51,7 +50,7 @@ class CreateChannel extends React.Component {
     };
   }
  
-  render() {
+ render() {
 
     return (
       <div>
@@ -67,7 +66,7 @@ class CreateChannel extends React.Component {
             <form className='create-channel-form'>
               
               <div className='create-channel-header-wrapper'>
-              <h3 className="create-channel-header">create text channel</h3>
+              <h3 className="create-channel-header">edit text channel</h3>
               </div>
               
               <label className="create-channel-label">channel name</label>
@@ -79,7 +78,7 @@ class CreateChannel extends React.Component {
                 onChange={this.update('topic')}/>
               <div className="footer">
                 <span className='cancel-modal' onClick={this.closeModal}>Cancel</span >
-                <button className='create-channel-button' onClick={this.handleSubmit} >Create Channel</button>
+                <button className='create-channel-button' onClick={this.handleSubmit} >Submit</button>
               </div>
             </form>
           </div>  
@@ -87,6 +86,7 @@ class CreateChannel extends React.Component {
     )
   }
 }
+
 //////////////  CONTAINER ///////////////////
 import { connect } from 'react-redux'
 import { createChannel } from '../../actions/channel_actions.js'

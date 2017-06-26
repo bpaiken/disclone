@@ -48,7 +48,7 @@ class MessageIndex extends React.Component {
       
       return (
       <div className='message-index-wrapper'>
-        <ul>
+        <ul className="scroll-y">
             {messageArray.map((key) => {
               if (messageArray[messageArray.length-1] !== key &&
                 (!messageBlock[0] || messageBlock[0].userId === messages[key].userId )) {

@@ -18,7 +18,6 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // let context = this;
     this.props.clearErrors();
     this.setState({usernameError: "", passwordError: ""});
 
@@ -39,10 +38,10 @@ class SessionForm extends React.Component {
   update(field) {
     return (e) => {
       this.setState({
-      [field]: e.currentTarget.value
-    });
-  };
-}
+        [field]: e.currentTarget.value
+      });
+    };
+  }
 
   render() {
     

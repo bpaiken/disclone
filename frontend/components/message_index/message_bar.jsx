@@ -10,28 +10,36 @@ class MessageBar extends React.Component {
     this.state = {body: ""}
 
     this.onMessage = this.onMessage.bind(this);
+    this.update = this.update.bind(this);
   }
 
   onMessage(e) {
-    if (e.nativeEvent.keyCode != 13) return;
-
-    let body = e.target.value
-    if (body === "") return;
+    e.preventDefault();
+    if (this.state.body === "") return;
     let message = {
-      body: body,
+      body: this.state.body,
       userId: this.props.currentUser.id,
       channelId: this.props.match.params.channelId
     }
-    this.props.postMessage(message);
-
+    this.props.postMessage(message)
+    this.setState({ body: "" })
   }
+
+  update(e) {
+    debugger
+      this.setState({ body: e.currentTarget.value });
+    }
+  
 
   render() {
     return (
-      <div className="message-bar-container">
-        <input onKeyPress={this.onMessage} 
+      <div className="">
+        <form className="message-bar-container" onSubmit={this.onMessage}>
+        <input onChange={this.update}
+          value={this.state.body}
           placeholder={`Message #${this.props.channel.name}`}
           className="message-bar-input"/>
+        </form>
       </div>
     );
   }
@@ -57,4 +65,4 @@ const mapDispatchToProps = (dispatch) => {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessageBar));
+)(MessageBar));pablo

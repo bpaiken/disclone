@@ -43,6 +43,8 @@ class ChannelIndex extends React.Component {
                 <span id='hashtag'>#</span>  
                 <Link to={`/app/channels/${serverId}/${key}`} className='channel-name'>
                 {this.props.channels[key].name}</Link>
+                <i className="fa fa-cog" aria-hidden="true"></i>
+                {/*<EditChannelContainer />*/}
               </div>
             </li>
             ))}

@@ -1,3 +1,20 @@
 .core-wrapper {
   display: flex;
+  height: 100vh;
 }
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+}
+
+.flex-control {
+  display: flex;
+  height: 94%;
+}
+
+
+/*.main-app {
+  height: 100vh;
+}*/

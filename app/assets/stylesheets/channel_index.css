@@ -3,7 +3,6 @@
   flex-direction: column;
   background-color: #2C2F33;
   width: 240px;
-  height: 100vh;
 }
 
 .server-header {
@@ -59,6 +58,7 @@
   color: #72767d;
   font-size: 20px;
   margin-right: 4px;
+  align-self: center;
 }
 
 .channel-name-highlight {
@@ -66,6 +66,7 @@
   padding: 0 8px;
   background-color: #2C2F33;
   cursor: pointer;
+  display: flex;
 }
 
 .channel-name-highlight:hover {
@@ -84,4 +85,10 @@
   text-decoration: none;
   line-height: 32px;
   text-transform: lowercase;
+}
+
+.fa-cog {
+  margin-left: auto;
+  align-self: center;
+  color: #72767d;
 }

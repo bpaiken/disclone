@@ -7,6 +7,7 @@ import ChannelIndexContainer from '../channel_index/channel_index';
 import MessageIndexContainer  from '../message_index/message_index';
 import { Route } from 'react-router-dom';
 import UserIndexContainer from '../user_index/user_index';
+import Header from '../header/header.jsx';
 
 class Core extends React.Component {
   constructor(props) {
@@ -14,12 +15,6 @@ class Core extends React.Component {
 
     this.state = {};
   }
-
-  componentDidMount() {
-  
-  }
-
-  component
 
   render() {
     return (
@@ -29,8 +24,14 @@ class Core extends React.Component {
       {/*<ServerForm />
       <CreateServer />*/}
       <Route path="/app/channels/:serverId/" component={ChannelIndexContainer} />
-      <Route path="/app/channels/:serverId/:channelId" component={MessageIndexContainer} />
-      <Route path="/app/channels/:serverId/:channelId" component={UserIndexContainer} />
+      <div className="header-content">
+        <Route path="/app/channels/:serverId/:channelId" component={Header} />
+        {/*<Route path="/app/channels/:serverId/:channelId" component={Header} />*/}
+        <div className='flex-control'>
+        <Route path="/app/channels/:serverId/:channelId" component={MessageIndexContainer} />
+        <Route path="/app/channels/:serverId/:channelId" component={UserIndexContainer} />
+        </div>
+      </div>
     </div>
     );
   } 
