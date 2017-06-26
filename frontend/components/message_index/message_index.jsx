@@ -40,29 +40,30 @@ class MessageIndex extends React.Component {
 
   render() {
     let channelId = this.props.match.params.channelId
+    let serverId = this.props.match.params.serverId
     if (this.props.channels[channelId]) {
       let messageArray = this.props.channels[channelId].messages
       let messageBlock = [];
       let messages = this.props.messages;
+      
       return (
       <div className='message-index-wrapper'>
-
         <ul>
-
             {messageArray.map((key) => {
-              if ( messageArray[messageArray.length-1] !== key &&
+              if (messageArray[messageArray.length-1] !== key &&
                 (!messageBlock[0] || messageBlock[0].userId === messages[key].userId )) {
                   messageBlock.push(messages[key]);
               } else {
+                if (messageArray[messageArray.length-1] === key) {
+                  messageBlock.push(messages[key]);
+                }
                 let messageProps = messageBlock.slice(0)
                 messageBlock = []
-                return <MessageBlockContainer messages={messageProps} />
+                return <MessageBlockContainer key={key} serverId={serverId}
+                channelId={channelId} messages={messageProps} />
                 }
-            })
-            }
-        
+            })}
         </ul>
-
         <MessageBarContainer />
       </div>
       );

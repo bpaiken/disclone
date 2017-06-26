@@ -18,7 +18,7 @@ class UserIndex extends React.Component {
         <ul className='user-index'>
           {userArray.map(key => {
             return (
-            <li className='user-index-item'>
+            <li key={key} className='user-index-item'>
               <div className='user-avatar-wrapper circle-base'>
                 <img src={users[key].avatarUrl} alt=""/>
               </div>

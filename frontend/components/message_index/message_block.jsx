@@ -5,21 +5,30 @@ class MessageBlock extends React.Component {
     super(props);
   }
 
+  // componentDidMount() {
+  //   this.props.fetchServer(this.props.serverId)
+  // }
+
   render() {
-    let messages = this.props.messages;
-    let user = this.props.users[messages[0].userId]
-    return (
-      <div className="message-block">
-        <img src={user.avatarUrl} className='message-avatar circle-base'/>
-        <div className='body'>
-          <header>
-            <div className="user-name">{user.username}</div>
-            <div className="timestamp">{messages[0].createdAt}</div>
-          </header>
-          {messages.map(message => <div className="message-body">{message.body}</div>)}
+    if (this.props.messages.length) {
+      let messages = this.props.messages;
+      let userId = messages[0].userId
+      let user = this.props.users[userId]
+      return (
+        <div className="message-block">
+          <img src={user.avatarUrl} className='message-avatar circle-base'/>
+          <div className='body'>
+            <header>
+              <div className="user-name">{user.username}</div>
+              <div className="timestamp">{messages[0].createdAt}</div>
+            </header>
+            {messages.map(message => <div key={message.id} className="message-body">{message.body}</div>)}
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 
