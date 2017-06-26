@@ -18,3 +18,8 @@ export const createChannel = channel => dispatch => {
 //   return APIUtil.fetchChannels(serverId)
 //   .then((response) => dispatch(receiveChannels(response)));
 // };
+
+export const fetchDirects = () => dispatch => {
+  return APIUtil.fetchDirects() 
+  .then((channels) => dispatch(receiveChannels(channels)))
+}

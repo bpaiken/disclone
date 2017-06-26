@@ -7,7 +7,6 @@ class MessageBlock extends React.Component {
 
   render() {
     let messages = this.props.messages;
-    debugger
     let user = this.props.users[messages[0].userId]
     return (
       <div className="message-block">
@@ -26,16 +25,10 @@ class MessageBlock extends React.Component {
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({users}) => {
+const mapStateToProps = ({ users }) => {
   return {
     users,
   }
 }
-
-// mapDispatchToProps = (dispatch) => {
-//   return {
-
-//   }
-// }
 
 export default connect(mapStateToProps)(MessageBlock);

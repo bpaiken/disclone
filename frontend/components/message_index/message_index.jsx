@@ -29,12 +29,11 @@ class MessageIndex extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
-    this.props.fetchMessages(nextProps.match.params.channelId)
-
-    this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
-    let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
-    channel.bind('post_message', (data) => {
-     this.props.fetchMessages(this.props.match.params.channelId)
+      this.props.fetchMessages(nextProps.match.params.channelId)
+      this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
+      let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
+      channel.bind('post_message', (data) => {
+      this.props.fetchMessages(this.props.match.params.channelId)
    })
     }
   }
@@ -49,8 +48,6 @@ class MessageIndex extends React.Component {
       <div className='message-index-wrapper'>
 
         <ul>
-
-          
 
             {messageArray.map((key) => {
               if ( messageArray[messageArray.length-1] !== key &&
