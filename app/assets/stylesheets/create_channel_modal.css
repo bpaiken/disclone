@@ -66,6 +66,7 @@
   padding: 0 4px;
   color: white;
   font-size: 15px;
+  box-sizing: border-box;
 }
 
 .create-channel-input:hover {

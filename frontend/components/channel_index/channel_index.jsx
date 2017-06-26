@@ -4,6 +4,7 @@ import { fetchServer } from '../../actions/server_actions.js';
 import {fetchMessages} from '../../actions/message_actions.js';
 import { Link } from 'react-router-dom';
 import CreateChannelContainer from '../channel_form/create_channel.jsx';
+import EditChannelContainer from '../channel_form/edit_channel.jsx';
 
 class ChannelIndex extends React.Component {
   constructor(props) {
@@ -43,9 +44,8 @@ class ChannelIndex extends React.Component {
                 <span id='hashtag'>#</span>  
                 <Link to={`/app/channels/${serverId}/${key}`} className='channel-name'>
                 {this.props.channels[key].name}</Link>
-                <i className="fa fa-cog" aria-hidden="true"></i>
-                {/*<EditChannelContainer />*/}
               </div>
+                <EditChannelContainer channel={this.props.channels[key]}/>
             </li>
             ))}
           </ul>

@@ -8,13 +8,12 @@ class Header extends React.Component {
 
   render() {
     if (Object.keys(this.props.channels).length) {
-      debugger
     let channelId = this.props.match.params.channelId;
     let channel = this.props.channels[channelId]
     return (
       <div className="header">
         <div className="header-name">{channel.name}</div>
-        <div className="header-topic">channel topic</div>
+        <div className="header-topic">{channel.topic}</div>
         <div className='member-toggle'>
           <i className="fa fa-users fa-lg" aria-hidden="true"></i>
         </div>

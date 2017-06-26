@@ -12,7 +12,12 @@ export const receiveChannels = ({ channels }) => {
 export const createChannel = channel => dispatch => {
   return APIUtil.createChannel(channel)
   .then((channel) => dispatch(receiveChannels(channel)))
-}
+};
+
+export const patchChannel = channel => dispatch => {
+  return APIUtil.patchChannel(channel)
+  .then((channel) => dispatch(receiveChannels(channel)))
+};
 
 // export const fetchChannels = serverId => dispatch => {
 //   return APIUtil.fetchChannels(serverId)

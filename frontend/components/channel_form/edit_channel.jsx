@@ -5,9 +5,9 @@ class EditChannel extends React.Component {
     super(props);
     
     this.state = { 
-        name: "",
-        topic: "",
-        serverId: this.props.match.params.serverId,
+        name: this.props.channel.name,
+        topic: this.props.channel.topic,
+        id: this.props.channel.id,
         nameErrors: "",
         modal: {
           modalId: "closed",
@@ -35,10 +35,10 @@ class EditChannel extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-
+    debugger
     //handle errors here
   
-    this.props.createChannel(this.state);
+    this.props.patchChannel(this.state);
     this.closeModal();
   }
 
@@ -53,11 +53,8 @@ class EditChannel extends React.Component {
  render() {
 
     return (
-      <div>
-          <div className='channel-header-wrapper' onClick={this.openModal}>
-            <h3 className='channels-header'>text channels</h3>
-            <i className="fa fa-plus add-channel-button" aria-hidden="true"></i>
-          </div>
+      <div className='edit-channel-container'>
+         <i className="fa fa-cog" onClick={this.openModal} aria-hidden="true"></i>
 
         <div id={this.state.modal.overlayId} onClick={this.closeModal}>
           </div>
@@ -66,16 +63,16 @@ class EditChannel extends React.Component {
             <form className='create-channel-form'>
               
               <div className='create-channel-header-wrapper'>
-              <h3 className="create-channel-header">edit text channel</h3>
+              <h3 className="create-channel-header">time for a change?</h3>
               </div>
               
               <label className="create-channel-label">channel name</label>
               <input className="create-channel-input" type="text"
-                onChange={this.update('name')}/>
+                value={this.state.name} onChange={this.update('name')}/>
 
               <label className="create-channel-label">channel topic</label>
               <input className="create-channel-input" type="text"
-                onChange={this.update('topic')}/>
+                value={this.state.topic} onChange={this.update('topic')}/>
               <div className="footer">
                 <span className='cancel-modal' onClick={this.closeModal}>Cancel</span >
                 <button className='create-channel-button' onClick={this.handleSubmit} >Submit</button>
@@ -89,7 +86,7 @@ class EditChannel extends React.Component {
 
 //////////////  CONTAINER ///////////////////
 import { connect } from 'react-redux'
-import { createChannel } from '../../actions/channel_actions.js'
+import { patchChannel } from '../../actions/channel_actions.js'
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ({ servers }, ownProps) => {
@@ -101,11 +98,11 @@ const mapStateToProps = ({ servers }, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createChannel: (channel) => dispatch(createChannel(channel))
+    patchChannel: (channel) => dispatch(patchChannel(channel))
   };
 };
 
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateChannel));
+)(EditChannel));

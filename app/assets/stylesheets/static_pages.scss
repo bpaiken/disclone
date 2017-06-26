@@ -28,3 +28,22 @@ body {
 .scroll-y {
   overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+ 
+::-webkit-scrollbar-track-piece {
+  background-color: #2f3136;
+    border-radius: 7px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #1e2124;
+  border-radius: 7px;
+    border: 3px solid #2C2F33;
+}
+
+::-webkit-scrollbar-corner {
+      background-color: black;
+} 

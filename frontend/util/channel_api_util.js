@@ -7,3 +7,13 @@ export const createChannel = (channel) => {
     }
   });
 }
+
+export const patchChannel = channel => {
+  debugger
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/channels/${channel.id}`,
+    data: { channel }
+  }
+  )
+}
