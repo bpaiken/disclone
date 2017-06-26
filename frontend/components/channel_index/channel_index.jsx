@@ -17,7 +17,13 @@ class ChannelIndex extends React.Component {
   //   this.props.fetchServer(this.props.match.params.serverId);
   // }
 
-   
+  componentWillReceiveProps(nextProps) {
+    if(this.props.match.params.serverId !== nextProps.match.params.serverId || 
+    Object.keys(this.props.channels) < Object.keys(nextProps.channels)) {
+    this.props.fetchServer(nextProps.match.params.serverId)
+    //todo fetch channel action
+    }
+  }
 
   render() {
     let serverId = this.props.match.params.serverId;
@@ -25,9 +31,10 @@ class ChannelIndex extends React.Component {
       let channelArray = this.props.servers[serverId].channels
       return (
         <div className='channel-index'>
-          <div className='server-header' >
-            options placeholder
-          </div>
+          <header className='server-header' >
+            <span>{this.props.servers[serverId].name}</span>
+            <i className="fa fa-angle-down" aria-hidden="true"></i>
+          </header>
 
             <CreateChannelContainer />
 

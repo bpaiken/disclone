@@ -8,13 +8,41 @@
   /*overflow: hidden;*/
 }
 
-.message-group {
+.message-block {
   margin-left: 20px;
   margin-right: 6px;
   padding: 20px 0px;
   border-bottom: solid #383838 ;
   border-width: 1px;
   flex-grow: 1;
+  display: flex;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  margin-top: -2px;
+}
+
+.body > header {
+  display: flex;
+}
+
+.timestamp {
+  margin-left: 6px;
+}
+
+.user-name{
+  font-size: 16px;
+  color: white;
+  font-weight: bold
+}
+
+.message-body {
+  font-size: 15px;
+  color: #9b9b9b;
+  margin-top: 6px;
 }
 
 .message-bar-container {

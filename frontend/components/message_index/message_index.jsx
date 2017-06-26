@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchMessages } from '../../actions/message_actions.js';
 import MessageBarContainer from './message_bar';
-import { fetchServer } from '../../actions/server_actions.js'
+import { fetchServer } from '../../actions/server_actions.js';
+import MessageBlockContainer from './message_block';
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -42,16 +43,29 @@ class MessageIndex extends React.Component {
     let channelId = this.props.match.params.channelId
     if (this.props.channels[channelId]) {
       let messageArray = this.props.channels[channelId].messages
+      let messageBlock = [];
+      let messages = this.props.messages;
       return (
       <div className='message-index-wrapper'>
 
         <ul>
-            {messageArray.map((key) => (
-          <div className='message-group'>
-            <li>{this.props.messages[key].body}</li>
-          </div>
-            ))}
+
+          
+
+            {messageArray.map((key) => {
+              if ( messageArray[messageArray.length-1] !== key &&
+                (!messageBlock[0] || messageBlock[0].userId === messages[key].userId )) {
+                  messageBlock.push(messages[key]);
+              } else {
+                let messageProps = messageBlock.slice(0)
+                messageBlock = []
+                return <MessageBlockContainer messages={messageProps} />
+                }
+            })
+            }
+        
         </ul>
+
         <MessageBarContainer />
       </div>
       );

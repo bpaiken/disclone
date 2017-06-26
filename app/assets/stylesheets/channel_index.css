@@ -13,6 +13,10 @@
   background-color: #2C2F33;
   border-bottom: solid #1e2124;
   border-width: 1px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
 }
 
 .channel-header-wrapper {
