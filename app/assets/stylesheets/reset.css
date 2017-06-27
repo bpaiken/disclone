@@ -49,6 +49,12 @@ input:focus {
 	border: none;
 }
 
+a {
+	text-decoration: none;
+}
 
+a:visted {
+	text-decoration: none;
+}
 	
 	

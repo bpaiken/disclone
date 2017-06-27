@@ -28,7 +28,7 @@ gem 'paperclip'
 gem 'pusher'
 gem 'figaro'
 gem 'aws-sdk', '~> 2.3.0'
-
+gem 'font-awesome-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -7,16 +7,50 @@
   background-color: #1e2124
 }
 
+.direct-message-link {
+  width: 52px;
+  height: 52px;
+}
+
 .direct-message-button {
   height: 50px;
   width: 50px;
+  background-color: #7289da;
+  display: flex;
+  align-items: center;
+  -webkit-box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);
+-moz-box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);
+box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);;
+}
+
+.direct-message-button:hover {
+  filter: brightness(130%);
+}
+
+
+.fa-user-o {
   color: white;
+  border: none;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.sidebar-text {
+  color: #b9bbbe;
+  font-size: 12px;
+  text-align: center;
+  position: relative;
+  right: 6px;
+  margin: 4px 0;
+  font-weight: 500;
 }
 
 .sidebar-control {
   width: 50px;
-  margin: 10px 0px;
-  height: 13px;
+  height: 6px;
+  margin-top: 6px;
+  border-top: 1px solid #b9bbbe;
+
 }
 
 .server-index-item {
