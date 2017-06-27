@@ -31,6 +31,7 @@
 
 .create-channel-header-wrapper {
   padding-bottom: 25px;
+  text-align: center;
 }
 
 .create-channel-header {
@@ -39,6 +40,7 @@
   font-size: 16px;
   font-weight: 600;
   color: #f6f6f7;
+  margin: 0 auto;
 }
 
 .create-channel-label {

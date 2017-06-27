@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class CreateChannel extends React.Component {
   constructor(props){
     super(props);
@@ -61,7 +60,7 @@ class CreateChannel extends React.Component {
           </div>
 
         <div id={this.state.modal.overlayId} onClick={this.closeModal}>
-          </div>
+        </div>
           
           <div id={this.state.modal.modalId}>
             <form className='create-channel-form'>

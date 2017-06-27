@@ -5,6 +5,7 @@ import {fetchMessages} from '../../actions/message_actions.js';
 import { Link } from 'react-router-dom';
 import CreateChannelContainer from '../channel_form/create_channel.jsx';
 import EditChannelContainer from '../channel_form/edit_channel.jsx';
+import CurrentUserContainer from '../current_user/current_user';
 
 class ChannelIndex extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class ChannelIndex extends React.Component {
             </li>
             ))}
           </ul>
+          <CurrentUserContainer />
         </div>
       );
     }

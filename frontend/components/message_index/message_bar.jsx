@@ -33,7 +33,7 @@ class MessageBar extends React.Component {
 
   render() {
     return (
-      <div className="">
+      <div className="message-bar-control">
         <form className="message-bar-container" onSubmit={this.onMessage}>
         <input onChange={this.update}
           value={this.state.body}

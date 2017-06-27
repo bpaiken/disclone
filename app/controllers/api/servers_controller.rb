@@ -25,10 +25,6 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  # def edit
-    
-  # end
-
   def update
     @server = server.find(params[:id])
     @server.update(server_params)

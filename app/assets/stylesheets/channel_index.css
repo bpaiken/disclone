@@ -100,3 +100,25 @@
   align-self: center;
   color: #72767d;
 }
+
+.current-user-container {
+  display: flex;
+  margin-top: auto;
+  background: rgba(32,34,37,.3);
+  align-items: center;
+  height: 52px;
+}
+
+.current-user-name {
+  color: white
+}
+
+.current-user-avatar {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.current-user-cog {
+  margin-right: 20px;
+}

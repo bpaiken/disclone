@@ -71,3 +71,7 @@
 .message-bar-input:focus {
   border: 2px solid #686a6e;
 }
+
+.message-bar-control {
+  margin-top: auto;
+}
