@@ -19,3 +19,13 @@ json.channels do
     json.serverId @channel.server_id
   end
 end
+
+json.users do
+  @channel.users.each do |user|
+    json.set! user.id do 
+      json.id user.id
+      json.username user.username
+      json.avatarUrl asset_path(user.avatar.url)
+    end
+  end
+end

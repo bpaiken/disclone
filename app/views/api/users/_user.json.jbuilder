@@ -12,6 +12,16 @@ json.channels do
       json.messages channel.messages.map(&:id)
     end
   end
+  user.servers.each do |server|
+    server.channels.each do |channel|
+      json.set! channel.id do
+        json.users channel.users
+        json.direct channel.direct
+        json.id channel.id
+        json.messages channel.messages.map(&:id)
+      end
+    end 
+  end
 end
 
 json.servers do

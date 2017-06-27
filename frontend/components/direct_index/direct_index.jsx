@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrentUserContainer from '../current_user/current_user';
+import {Link} from 'react-router-dom';
 
 class DirectIndex extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class DirectIndex extends React.Component {
 
   render() {
     let directs = this.props.currentUser.directs
+    let channels = this.props.channels
     return (
      <div className='channel-index'>
           <header className='server-header' >
@@ -20,7 +22,14 @@ class DirectIndex extends React.Component {
           </header>
 
           <ul>
-
+          {directs.map(key => (
+            <li className='channel-name-wrapper'>
+            <Link to={`/app/directs/${key}`} className='channel-name'>
+            <img src="" alt=""/>
+            <div>channel name</div>
+            </Link>
+            </li>
+          ))}
 
             {/*{channelArray.map((key) => (
             <li key={key} className='channel-name-wrapper'>
@@ -46,9 +55,10 @@ class DirectIndex extends React.Component {
 import {connect} from 'react-redux';
 
 // might need alot of state since this is initial component
-const mapStateToProps = ({currentUser}) => {
+const mapStateToProps = ({currentUser, channels}) => {
   return {
-    currentUser
+    currentUser,
+    channels,
   };
 };
 

@@ -6,7 +6,12 @@ class UserIndex extends React.Component {
   }
 
    componentDidMount() {
-    this.props.fetchServer(this.props.match.params.serverId);
+    if (this.props.match.params.serverId) {
+      this.props.fetchServer(this.props.match.params.serverId);
+    }
+    // } else {
+    //   // need to get users that belong to channel
+    // }
   }
 
   render () {

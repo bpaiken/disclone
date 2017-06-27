@@ -10,7 +10,9 @@ class MessageBlock extends React.Component {
   // }
 
   render() {
-    if (this.props.messages.length) {
+    debugger
+    if (this.props.messages.length && Object.keys(this.props.users).length && 
+        this.props.messages[0] !== undefined) {
       let messages = this.props.messages;
       let userId = messages[0].userId
       let user = this.props.users[userId]

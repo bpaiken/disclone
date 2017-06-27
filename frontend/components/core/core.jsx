@@ -9,6 +9,8 @@ import { Route } from 'react-router-dom';
 import UserIndexContainer from '../user_index/user_index';
 import Header from '../header/header.jsx';
 import DirectIndexContainer from '../direct_index/direct_index';
+import DefaultMessagePage from '../default/default_message_page'
+
 
 class Core extends React.Component {
   constructor(props) {
@@ -29,13 +31,16 @@ class Core extends React.Component {
       
       <div className="header-content">
         <Route path="/app/channels/:serverId/:channelId" component={Header} />
+        <Route exact path="/app/directs" component={Header} />
         <Route path="/app/directs/:channelId" component={Header} />
       
         <div className='flex-control'>
         <Route path="/app/channels/:serverId/:channelId" component={MessageIndexContainer} />
+        <Route exact path ="/app/directs" render={DefaultMessagePage} />
         <Route path="/app/directs/:channelId" component={MessageIndexContainer} />
         
         <Route path="/app/channels/:serverId/:channelId" component={UserIndexContainer} />
+        {/*<Route path="/app/directs/:channelId" component={UserIndexContainer} />*/}
         </div>
       </div>
     </div>

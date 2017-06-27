@@ -24,7 +24,7 @@ export const patchChannel = channel => dispatch => {
 //   .then((response) => dispatch(receiveChannels(response)));
 // };
 
-export const fetchDirects = () => dispatch => {
+export const fetchDirectChannel = () => dispatch => {
   return APIUtil.fetchDirects() 
   .then((channels) => dispatch(receiveChannels(channels)))
 }

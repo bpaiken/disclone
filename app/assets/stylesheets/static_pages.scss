@@ -47,3 +47,11 @@ body {
 ::-webkit-scrollbar-corner {
       background-color: black;
 } 
+
+.default-message-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #2C2F33;
+  -webkit-filter: brightness(125%);
+  width: 100%;
+}

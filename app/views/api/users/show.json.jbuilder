@@ -12,4 +12,3 @@ json.servers do
     json.channels server.channels.map(&:id)
   end
 
-

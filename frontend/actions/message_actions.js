@@ -3,11 +3,12 @@ import * as APIUtil from '../util/message_api_util';
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 
-export const receiveMessages = ({messages,channels}) => {
+export const receiveMessages = ({messages,channels,users}) => {
   return {
     type: RECEIVE_MESSAGES,
     messages,
     channels,
+    users,
   }
 }
 
