@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
     const preloadedState = { currentUser: window.currentUser,
-      servers: window.currentUser.servers
+      servers: window.currentUser.servers,
+      channels: window.currentUser.channels,
    };
     store = configureStore(preloadedState);
     delete window.currentUser;

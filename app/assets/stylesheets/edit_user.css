@@ -89,6 +89,16 @@
   outline: 0 none;
 }
 
+.file-input {
+  width: 128px;
+  height: 148px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: 35;
+  cursor: pointer
+}
+
 .avatar-uploader {
   width: 200px;
   height: 160px;
@@ -98,18 +108,27 @@
   flex-direction: column;
 }
 
-.file-input {
+.file-input-image {
   margin-bottom: 10px;
   width: 128px;
   height: 128px;
   margin: 0 auto;
-  background: whitesmoke
+  background: transparent;
+}
+
+.file-input:hover ~.file-input-image {
+  filter: brightness(80%)
+}
+
+.file-input:hover ~ .file-input-text {
+  border-bottom: 1px solid #99aab5;
 }
 
 .file-input-text {
   margin-top: 5px;
   color: #99aab5;
   font-size: 12px;
+  padding-bottom: 2px;
 }
 
 .edit-user-footer {

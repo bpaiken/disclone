@@ -46,12 +46,12 @@ class EditUser extends React.Component {
   }
 
   onSubmit(e) {
+    e.prevenDefault();
+    
+    let formData = new FormData();
+    formData.append('user[username]',this.state.username)
+    formData.append('user[avatar]', this.state.avatarFile)
 
-  
-    // let file = this.state.avatarFile;
-
-    // let formData = new FormData();
-    // formData.append('user[avatar]')
 
     // //patch user
 
@@ -102,8 +102,10 @@ class EditUser extends React.Component {
             </div>
  
             <div className='avatar-uploader'>
-              <img src="" className='file-input'
-              onClick={this.readFile}/>
+
+              <input type="file" className='file-input' onClick={this.readFile} />
+                <img src={this.state.avatarUrl} className='file-input-image'/>
+             
               <div className='file-input-text'>Change Avatar</div>
             </div>
           </div>
@@ -126,5 +128,9 @@ const mapStateToProps = ({currentUser}) => {
     currentUser
   }
 }
+
+// mapDispatchToProps = dispatch => {
+
+// }
 
 export default connect(mapStateToProps)(EditUser);

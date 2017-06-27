@@ -8,6 +8,7 @@ import MessageIndexContainer  from '../message_index/message_index';
 import { Route } from 'react-router-dom';
 import UserIndexContainer from '../user_index/user_index';
 import Header from '../header/header.jsx';
+import DirectIndexContainer from '../direct_index/direct_index';
 
 class Core extends React.Component {
   constructor(props) {
@@ -21,14 +22,19 @@ class Core extends React.Component {
       
     <div className="core-wrapper">
       <SidebarContainer />
-      {/*<ServerForm />
-      <CreateServer />*/}
+    
       <Route path="/app/channels/:serverId/" component={ChannelIndexContainer} />
+
+      <Route path="/app/directs" component={DirectIndexContainer} />
+      
       <div className="header-content">
         <Route path="/app/channels/:serverId/:channelId" component={Header} />
-        {/*<Route path="/app/channels/:serverId/:channelId" component={Header} />*/}
+        <Route path="/app/directs/:channelId" component={Header} />
+      
         <div className='flex-control'>
         <Route path="/app/channels/:serverId/:channelId" component={MessageIndexContainer} />
+        <Route path="/app/directs/:channelId" component={MessageIndexContainer} />
+        
         <Route path="/app/channels/:serverId/:channelId" component={UserIndexContainer} />
         </div>
       </div>

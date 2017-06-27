@@ -22,3 +22,4 @@ class Channel < ActiveRecord::Base
   has_many :directs
   has_many :users, through: :directs
 end
+

@@ -16,9 +16,11 @@ class Sidebar extends React.Component {
       return (
         <div className='sidebar-wrapper'>
 
+            <Link to="/app/directs">
           <div className='direct-message-button'>
-            direct message placeholder
+
           </div>
+            </Link>
 
           <div className='sidebar-control'></div>
 

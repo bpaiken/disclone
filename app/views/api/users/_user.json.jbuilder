@@ -1,6 +1,18 @@
 json.extract! user, :id, :username
-
 json.avatarUrl asset_path(user.avatar.url)
+json.directs user.channels.map(&:id)
+
+
+json.channels do
+  user.channels.each do |channel|
+    json.set! channel.id do
+      json.users channel.users
+      json.direct channel.direct
+      json.id channel.id
+      json.messages channel.messages.map(&:id)
+    end
+  end
+end
 
 json.servers do
   user.servers.each do |server|

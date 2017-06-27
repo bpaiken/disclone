@@ -26,7 +26,6 @@ class MessageBar extends React.Component {
   }
 
   update(e) {
-    debugger
       this.setState({ body: e.currentTarget.value });
     }
   

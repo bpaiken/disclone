@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import { RECEIVE_SERVER } from '../actions/server_actions';
 import { RECEIVE_MESSAGES } from '../actions/message_actions';
 import { RECEIVE_CHANNELS } from '../actions/channel_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/user_actions';
 
 export default (state = {}, action) => {
   Object.freeze(state);
@@ -17,7 +18,10 @@ export default (state = {}, action) => {
     case RECEIVE_CHANNELS: 
       return merge(newState, action.channels);
 
+    case RECEIVE_CURRENT_USER:
+      return merge(newState, action.currentUser.channels)
+
     default:
       return state;
   }
-};
+}
