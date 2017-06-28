@@ -17,7 +17,7 @@ class Sidebar extends React.Component {
         <div className='sidebar-wrapper'>
         
             <Link to="/app/directs" className='direct-message-link circle-base'>
-          <div className='direct-message-button circle-base'>
+          <div className='direct-message-button'>
           <i className="fa fa-user-o fa-2x" aria-hidden="true"></i>
           </div>
             </Link>

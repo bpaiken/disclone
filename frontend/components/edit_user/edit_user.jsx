@@ -52,9 +52,7 @@ class EditUser extends React.Component {
     formData.append('user[username]',this.state.username)
     formData.append('user[avatar]', this.state.avatarFile)
 
-
-    // //patch user
-
+    this.props.patchUser(formData);
   }
 
   update(e) {
@@ -112,7 +110,7 @@ class EditUser extends React.Component {
 
           <footer className='edit-user-footer'>
             <div onClick={this.closeModal} className='edit-user-cancel'>Cancel</div>
-            <button className='edit-user-button'>Submit</button>
+            <button onClick={this.handleSubmit} onClick={this.closeModal} className='edit-user-button'>Submit</button>
           </footer>
         </div>
       </div>
@@ -122,6 +120,7 @@ class EditUser extends React.Component {
 
 ///////////// CONTAINER ///////////////
 import { connect } from 'react-redux';
+import { receiveUsers } from '../../actions/user_actions.js'
 
 const mapStateToProps = ({currentUser}) => {
   return {
@@ -129,8 +128,10 @@ const mapStateToProps = ({currentUser}) => {
   }
 }
 
-// mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
+  return{
+    patchUser: user => dispatch(receiveUsers(user)),
+  }
+}
 
-// }
-
-export default connect(mapStateToProps)(EditUser);
+export default connect(mapStateToProps, mapDispatchToProps)(EditUser);

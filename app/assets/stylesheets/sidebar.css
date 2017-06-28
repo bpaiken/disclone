@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
   /*align-items: center;*/
-  width: 94px;
+  /*width: 94px !important;*/
   padding: 18px 0px 18px 10px;
-  background-color: #1e2124
+  background-color: #1e2124;
+  /*max-width: 94px;*/
+  min-width: 60px;
+  max-width: 60px;
 }
 
 .direct-message-link {
@@ -18,6 +21,7 @@
   background-color: #7289da;
   display: flex;
   align-items: center;
+  border-radius: 16px;
   -webkit-box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);
 -moz-box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);
 box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);;

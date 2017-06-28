@@ -18,7 +18,6 @@ class MessageIndex extends React.Component {
 }
 
   componentDidMount() {
-    debugger
     this.props.fetchMessages(this.props.match.params.channelId);
     Pusher.logToConsole = true;
  
@@ -46,7 +45,7 @@ class MessageIndex extends React.Component {
       let messageArray = this.props.channels[channelId].messages
       let messageBlock = [];
       let messages = this.props.messages;
-      debugger
+      
       return (
       <div className='message-index-wrapper'>
         <ul className="scroll-y">

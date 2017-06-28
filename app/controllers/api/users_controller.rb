@@ -1,4 +1,10 @@
 class Api::UsersController < ApplicationController
+  
+  def index 
+    @users = User.all
+    render "api/users/index"
+  end
+  
   def show
   end
 

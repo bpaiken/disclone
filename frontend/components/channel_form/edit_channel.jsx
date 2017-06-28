@@ -35,7 +35,6 @@ class EditChannel extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     //handle errors here
   
     this.props.patchChannel(this.state);

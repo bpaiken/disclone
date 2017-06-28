@@ -10,7 +10,11 @@ export const receiveUsers = ({ users }) => {
 
 export const patchUser = (user) => dispatch => {
   return APIUtil.patchUser(user)
-  .then((user) => dispatch(receiveUsers(user)))
-}
+  .then((user) => dispatch(receiveUsers(user)));
+};
 
+export const fetchAllUsers = () => dispatch => {
+  return APIUtil.fetchAllUsers()
+  .then(users => dispatch(receiveUsers(users)));
+};
 

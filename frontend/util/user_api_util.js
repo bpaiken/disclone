@@ -8,3 +8,7 @@ export const patchUser = (formData) => {
     data: formData,
   })
 }
+
+export const fetchAllUsers = () => {
+  return $.get('/api/users');
+};
