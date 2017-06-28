@@ -41,7 +41,8 @@ class MessageIndex extends React.Component {
   render() {
     let channelId = this.props.match.params.channelId
     let serverId = this.props.match.params.serverId
-    if (Object.keys(this.props.messages).length) {
+    if (this.props.channels[channelId].messages.length) {
+    // if (Object.keys(this.props.messages).length) {
       let messageArray = this.props.channels[channelId].messages
       let messageBlock = [];
       let messages = this.props.messages;
@@ -68,7 +69,12 @@ class MessageIndex extends React.Component {
       </div>
       );
     }
-    return null;
+    return (
+      <div className='no-messages'>
+        <div className='no-messages-text'>no messages...yet</div>
+        <MessageBarContainer />
+      </div>
+    )
   }
 }
 

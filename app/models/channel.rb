@@ -13,7 +13,7 @@
 
 class Channel < ActiveRecord::Base
   validates :name, presence: true
-  validates :name, uniqueness: { scope: :server_id }
+  # validates :name, uniqueness: { scope: :server_id }
   #add contraint for only one server to be named general
 
   belongs_to :server

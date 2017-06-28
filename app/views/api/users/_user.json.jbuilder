@@ -6,7 +6,7 @@ json.directs user.channels.map(&:id)
 json.channels do
   user.channels.each do |channel|
     json.set! channel.id do
-      json.users channel.users
+      json.users channel.users.map(&:id)
       json.direct channel.direct
       json.id channel.id
       json.messages channel.messages.map(&:id)
@@ -15,7 +15,7 @@ json.channels do
   user.servers.each do |server|
     server.channels.each do |channel|
       json.set! channel.id do
-        json.users channel.users
+        json.users channel.users.map(&:id)
         json.direct channel.direct
         json.id channel.id
         json.messages channel.messages.map(&:id)

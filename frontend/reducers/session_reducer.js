@@ -1,5 +1,6 @@
 import {RECEIVE_CURRENT_USER, RECEIVE_ERRORS} from '../actions/session_actions';
 import merge from 'lodash/merge';
+import {RECEIVE_CHANNELS} from '../actions/channel_actions';
 
 const initialState = {
     id: null,
@@ -15,6 +16,9 @@ const sessionReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER:
       // currentState = action.currentUser;
       // return currentState;
+      return merge(currentState, action.currentUser)
+
+    case RECEIVE_CHANNELS:
       return merge(currentState, action.currentUser)
     
     // case RECEIVE_ERRORS:

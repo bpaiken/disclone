@@ -75,3 +75,22 @@
 .message-bar-control {
   margin-top: auto;
 }
+
+.no-messages {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background-color: #2C2F33;
+  -webkit-filter: brightness(125%);
+  width: 100%;
+}
+
+.no-messages-text {
+  top: 755px;
+  left: 21px;
+  position: relative;
+  width: 20em;
+  height: auto;
+  color: #686a6e;
+  font-size: 24px;
+}

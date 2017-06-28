@@ -10,13 +10,26 @@ class Api::ChannelsController < ApplicationController
   end
 
   def create
-    @channel = Channel.new(channel_params)
+    if(params[:users])
+      @channel = Channel.new(channel_params)
+      if @channel.save!
+        channel_id = @channel.id
+        params[:users].keys.map(&:to_i).each do |id|
+          Direct.create(user_id: id, channel_id: channel_id)  
+        end
+        render '/api/channels/show'
+      else
+        render json: @channel.errors.full_messages
+      end   
+    else   
+      @channel = Channel.new(channel_params)
 
-    if @channel.save
-      render '/api/channels/show'
-    else
-      render json: @channel.errors.full_messages
-    end
+      if @channel.save
+        render '/api/channels/show'
+      else
+        render json: @channel.errors.full_messages
+      end
+    end  
   end
 
   def update

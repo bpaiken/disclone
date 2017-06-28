@@ -30,7 +30,6 @@ class Api::ServersController < ApplicationController
     @server.update(server_params)
   end
 
-
   def destroy
     @server = Server.find(params[:id])
     @server.destroy

@@ -118,10 +118,19 @@
   margin-right: 10px;
 }
 
+.logout {
+  color: #72767d; 
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
 .current-user-cog {
   margin-right: 20px;
 }
 
 /*///////////// direct index ///////////////*/
+
 
 

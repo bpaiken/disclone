@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
   }
   
     this.props.submitForm(this.state).then(() => {
-      this.props.history.push('/')
+      this.props.history.push('/app/directs')
     })
   }
 

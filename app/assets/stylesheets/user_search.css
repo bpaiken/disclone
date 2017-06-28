@@ -106,6 +106,7 @@
   border-left: 1px solid #1e2124; 
   margin-left: 0px;
   padding-left: 20px;
+  overflow-y: scroll;
 }
 
 .search-item {

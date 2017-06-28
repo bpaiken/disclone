@@ -8,6 +8,8 @@ class UserSearch extends React.Component {
     this.state = {
       selected: {},
       search: {},
+      topic: "",
+      name: "",
       modal: {
         modalId: 'closed',
         overlayId: 'closed'
@@ -19,7 +21,6 @@ class UserSearch extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.selectUser = this.selectUser.bind(this);
-    this.clearSelected = this.clearSelected.bind(this);
   }
 
   componentDidMount() {
@@ -59,13 +60,20 @@ class UserSearch extends React.Component {
       if (users[key].username.includes(input)) {
         let user = { [key]: users[key] }
         search = merge(search, user)
-      }
-    });
-  this.setState({search: search})
+        }
+      });
+     this.setState({search: search})
   }
 
   handleSubmit(e) {
+    let channel = {
+      users: this.state.selected,
+      name: "lora rocks",
+      direct: true,
+    }
 
+    this.props.createDirect(channel)
+    this.closeModal();
   }
 
   selectUser(user) {
@@ -84,11 +92,6 @@ class UserSearch extends React.Component {
       delete selected[user.id]
       this.setState({selected: selected})
     }
-  }
-
-  clearSelected() {
-    debugger
-    this.setState({ selected: {} })
   }
 
   render() {
@@ -121,7 +124,7 @@ class UserSearch extends React.Component {
               <span>Select Users to Create a Channel</span>
               {Object.keys(search).map(key => {
                 return (
-                  <div className='search-item' onClick={this.selectUser(users[key])}>
+                  <div key={key} className='search-item' onClick={this.selectUser(users[key])}>
                     <img className='circle-base' src={users[key].avatarUrl}/>
                     <div>{users[key].username}</div>
                     <i className="fa fa-plus" aria-hidden="true"></i>
@@ -134,7 +137,7 @@ class UserSearch extends React.Component {
               <span>Selected Users</span>
               {Object.keys(selected).map(key => {
                 return (
-                  <div className='search-item' onClick={this.rejectUser(users[key])}>
+                  <div key={key} className='search-item' onClick={this.rejectUser(users[key])}>
                     <img className='circle-base' src={users[key].avatarUrl}/>
                     <div>{users[key].username}</div>
                     <i className="fa fa-times" aria-hidden="true"></i>
@@ -145,7 +148,7 @@ class UserSearch extends React.Component {
           </div>
 
           <footer className='user-search-footer'>
-            <button>Create Channel</button>
+            <button onClick={this.handleSubmit}>Create Channel</button>
           </footer>
         </div>
         
@@ -157,7 +160,7 @@ class UserSearch extends React.Component {
 //////////////  CONTAINER /////////////////
 import { connect } from 'react-redux';
 import { fetchAllUsers } from '../../actions/user_actions.js';
-import { createChannel } from '../../actions/channel_actions.js';
+import { createDirect } from '../../actions/channel_actions.js';
 
 const mapStateToProps = ({ users }) => {
   return {
@@ -168,7 +171,7 @@ const mapStateToProps = ({ users }) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAllUsers: () => dispatch(fetchAllUsers()),
-    createChannel: (channel) => dispatch(createChannel(channel))
+    createDirect: (channel) => dispatch(createDirect(channel))
   };
 };
 

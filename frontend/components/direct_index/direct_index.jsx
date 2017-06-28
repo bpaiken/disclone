@@ -2,6 +2,7 @@ import React from 'react';
 import CurrentUserContainer from '../current_user/current_user';
 import {Link} from 'react-router-dom';
 import UserSearch from '../user_search/user_search'
+import DirectIndexItem from './direct_index_item'
 
 class DirectIndex extends React.Component {
   constructor(props) {
@@ -20,26 +21,16 @@ class DirectIndex extends React.Component {
      <div className='channel-index'>
       
           <UserSearch /> 
+          
           <ul>
           {directs.map(key => (
-            <li className='channel-name-wrapper'>
-            <Link key={key} to={`/app/directs/${key}`} className='channel-name'>
-            <img src="" alt=""/>
-            <div>channel name</div>
+            <li key={key} className='channel-name-wrapper'>
+            <Link to={`/app/directs/${key}`} className='channel-name'>
+              <DirectIndexItem channel={channels[key]} currentUserId={this.props.currentUser.id} /> 
             </Link>
             </li>
           ))}
 
-            {/*{channelArray.map((key) => (
-            <li key={key} className='channel-name-wrapper'>
-              <div className='channel-name-highlight'>
-                <span id='hashtag'>#</span>  
-                <Link to={`/app/channels/${serverId}/${key}`} className='channel-name'>
-                {this.props.channels[key].name}</Link>
-              </div>
-                <EditChannelContainer channel={this.props.channels[key]}/>
-            </li>
-            ))}*/}
           </ul>
           <CurrentUserContainer />
         </div>

@@ -17,8 +17,14 @@ json.channels do
     json.topic @channel.topic
     json.direct @channel.direct
     json.serverId @channel.server_id
+    json.users @channel.users.map(&:id)
   end
 end
+
+json.currentUser do
+  json.directs current_user.channels.map(&:id)
+end
+
 
 json.users do
   @channel.users.each do |user|
