@@ -8,7 +8,6 @@ import { RECEIVE_CHANNELS } from '../actions/channel_actions';
 export default (state = {}, action) => {
   Object.freeze(state);
   let newState = merge({}, state)
-  debugger
   switch (action.type) {
     case RECEIVE_SERVER:
       return merge(newState, action.response.users)

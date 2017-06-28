@@ -15,6 +15,8 @@ class DirectIndex extends React.Component {
   }
 
   render() {
+
+    debugger
     let directs = this.props.currentUser.directs
     let channels = this.props.channels
     return (

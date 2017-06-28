@@ -26,3 +26,18 @@
   margin-left: auto;
   margin-right: 235px;
 }
+
+.welcome {
+  color: #72767d;
+  font-size: 18px; 
+  font-weight: normal;
+}
+
+.welcome-username{
+  color: white;
+  font-size: 20px;
+  position: relative;
+  bottom: 1px;
+  margin-left: 3px;
+  font-weight: bold;
+}

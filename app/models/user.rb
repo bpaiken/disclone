@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :username, uniqueness: true
   after_initialize :ensure_session_token
-
+  after_create :auto_assign
+  
   attr_accessor :password
 
   has_many :subscriptions
@@ -61,4 +62,9 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= User.generate_session_token
   end
+
+  def auto_assign
+    user_id = self.id
+    1.upto(4) { |server_id| Subscription.create(server_id: server_id, user_id: user_id)}
+  end 
 end

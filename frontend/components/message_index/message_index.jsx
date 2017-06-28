@@ -27,6 +27,10 @@ class MessageIndex extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    this.refs.scroll.scrollIntoView();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
       this.props.fetchMessages(nextProps.match.params.channelId)
@@ -64,6 +68,7 @@ class MessageIndex extends React.Component {
                 channelId={channelId} messages={messageProps} />
                 }
             })}
+            <div ref='scroll'></div>
         </ul>
         <MessageBarContainer />
       </div>

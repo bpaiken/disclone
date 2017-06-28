@@ -7,7 +7,9 @@ class Header extends React.Component {
   }
 
   render() {
-    if (Object.keys(this.props.channels).length) {
+    if (Object.keys(this.props.channels).length &&
+      Object.keys(this.props.match.params).length) {
+      
     let channelId = this.props.match.params.channelId;
     let channel = this.props.channels[channelId]
     let channelName = channel ? channel.name : "????";
@@ -22,7 +24,15 @@ class Header extends React.Component {
       </div>
     );
     } else {
-      return null;
+      return (
+        <div className="header">
+          <div className="header-name welcome">Welcome Back</div>
+            <div className='welcome-username'>{this.props.username}</div>
+            <div className="header-topic">Let's Get Started</div>
+          <div className="header-topic"></div>
+          
+        </div>
+      )
     }
   }
 }
@@ -33,9 +43,10 @@ class Header extends React.Component {
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-const mapStateToProps= ({channels}) => {
+const mapStateToProps= ({channels, currentUser}) => {
   return {
     channels,
+    username: currentUser.username
   }
 }
 

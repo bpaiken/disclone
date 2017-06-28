@@ -8,7 +8,6 @@ class DirectIndexItem extends React.Component {
   }
 
   render() {
-      debugger
     if (Object.keys(this.props.users).length) {
 
       let users = this.props.users;
@@ -19,7 +18,6 @@ class DirectIndexItem extends React.Component {
         Img = () => (<i className="fa fa-users fa-lg" aria-hidden="true"></i>)
       } else {
         let friendId = channelUsers.filter(id => id !== this.props.currentUserId)[0]
-        debugger
         Img = () => (<img src={users[friendId].avatarUrl} alt=""/>)
       }
 

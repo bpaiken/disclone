@@ -37,8 +37,10 @@ class CreateChannel extends React.Component {
     e.preventDefault();
 
     //handle errors here
-  
-    this.props.createChannel(this.state);
+    debugger
+    let state = this.state;
+    state.serverId = this.props.match.params.serverId
+    this.props.createChannel(state);
     this.closeModal();
   }
 
