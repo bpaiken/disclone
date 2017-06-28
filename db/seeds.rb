@@ -78,7 +78,7 @@
   Subscription.create(user_id: user_eight.id, server_id: server_three.id)
   Subscription.create(user_id: user_eight.id, server_id: server_four.id)
 
-:
+
   Subscription.create(user_id: user_nine.id, server_id: server_one.id)
   Subscription.create(user_id: user_nine.id, server_id: server_two.id)
   Subscription.create(user_id: user_nine.id, server_id: server_three.id)
