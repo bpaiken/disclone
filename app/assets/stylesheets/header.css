@@ -13,6 +13,7 @@
   color: white;
   background-color: transparent;
   font-weight: bold;
+  letter-spacing: 1.2px;
 }
 
 .header-topic {
@@ -31,6 +32,7 @@
   color: #72767d;
   font-size: 18px; 
   font-weight: normal;
+  letter-spacing: normal;
 }
 
 .welcome-username{
@@ -40,4 +42,5 @@
   bottom: 1px;
   margin-left: 3px;
   font-weight: bold;
+  
 }

@@ -163,8 +163,8 @@
 }
 
 .index-item-control > img {
-  width: 35px;
-  height: 35px;
+  width: 38px;
+  height: 38px;
 }
 
 .direct-link-wrapper {
@@ -193,3 +193,16 @@
   align-items: center;
 }
 
+.group-message-icon {
+  color: white;
+  margin-top: 11px;
+}
+
+.group-message-control {
+  background: #7289DA;
+  width: 38px;
+  height: 38px;
+  color: white;
+  display: inline-table;
+  text-align: center;
+}

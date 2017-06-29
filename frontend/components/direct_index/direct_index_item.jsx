@@ -5,6 +5,20 @@ class DirectIndexItem extends React.Component {
   constructor(props) {
     super(props)
   
+    this.channelUserNames = this.channelUserNames.bind(this);
+  }
+
+  channelUserNames() {
+    let channel = this.props.channel;
+    let channelUserArray = this.props.channel.users;
+    let users = this.props.users;
+
+    let usernames = channelUserArray.map(id => {
+      return users[id].username
+    })
+
+    let text = usernames.join(', ').slice(0,37)
+    return usernames.join(', ').length < 38 ? text : text + '...'
   }
 
   render() {
@@ -17,8 +31,11 @@ class DirectIndexItem extends React.Component {
       if (channelUsers.length > 2) {
        Item = () => (
          <div className='index-item-control'>
-          <i className="fa fa-users fa-2x" aria-hidden="true"></i>
-          <div></div>
+          <div className='group-message-control circle-base'>
+          <i className="fa fa-users fa-lg circle-base group-message-icon" aria-hidden="true"></i>
+
+          </div>
+          <div className='direct-index-name'>{this.channelUserNames()}</div>
          </div>
        )
       } else {

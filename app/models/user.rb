@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
-  has_attached_file :avatar, default_url: "default_server.png"
+  has_attached_file :avatar, default_url: "default_icon.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def password=(pw)
