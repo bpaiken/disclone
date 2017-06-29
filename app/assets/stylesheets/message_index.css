@@ -65,6 +65,7 @@
   width: 100%;
   background-color: hsla(0,0%,100%,.06);
   border-radius: 3px;
+  box-sizing: content-box;
 }
 
 .message-bar-input:focus {

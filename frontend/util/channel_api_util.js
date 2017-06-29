@@ -18,7 +18,6 @@ export const patchChannel = channel => {
 }
 
 export const createDirect = (channel) => {
-  debugger
   return $.post('/api/channels', {
     channel : {
       name: channel.name,
