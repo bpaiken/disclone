@@ -37,8 +37,8 @@ class ChannelIndex extends React.Component {
       return (
         <div className='channel-index'>
           <header className='server-header' >
-            <span>{this.props.servers[serverId].name}</span>
-            <i className="fa fa-angle-down" aria-hidden="true"></i>
+            <span className='server-header-text'>{this.props.servers[serverId].name}</span>
+            {/*<i className="fa fa-angle-down" aria-hidden="true"></i>*/}
           </header>
 
             <CreateChannelContainer />

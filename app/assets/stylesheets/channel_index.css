@@ -6,7 +6,7 @@
 }
 
 .server-header {
-  width: 220px;
+  width: 100%;
   height: 6%;
   background-color: #2C2F33;
   border-bottom: solid #1e2124;
@@ -15,6 +15,13 @@
   align-items: center;
   color: white;
   font-weight: bold;
+  justify-content: center;
+}
+
+.server-header-text {
+  display: inline-block;
+  font-size: 16px;
+  color:white;
 }
 
 .channel-header-wrapper {
