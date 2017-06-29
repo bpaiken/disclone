@@ -16,7 +16,6 @@ class DirectIndex extends React.Component {
 
   render() {
 
-    debugger
     let directs = this.props.currentUser.directs
     let channels = this.props.channels
     return (
@@ -26,11 +25,12 @@ class DirectIndex extends React.Component {
           
           <ul>
           {directs.map(key => (
-            <li key={key} className='channel-name-wrapper'>
-            <Link to={`/app/directs/${key}`} className='channel-name'>
-              <DirectIndexItem channel={channels[key]} currentUserId={this.props.currentUser.id} /> 
-            </Link>
+            <Link to={`/app/directs/${key}`}>
+            <li key={key} className='direct-link-wrapper'>
+              <DirectIndexItem channel={channels[key]} className='direct-name'
+              currentUserId={this.props.currentUser.id} /> 
             </li>
+            </Link>
           ))}
 
           </ul>

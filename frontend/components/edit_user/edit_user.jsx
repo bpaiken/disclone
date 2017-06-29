@@ -18,7 +18,7 @@ class EditUser extends React.Component {
     this.hide = this.hide.bind(this);
     this.show = this.show.bind(this);
     this.update = this.update.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.readFile = this.readFile.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -37,22 +37,27 @@ class EditUser extends React.Component {
     let file = e.currentTarget.files[0];
     reader.onloadend = () => {
       this.setState({ avatarUrl: reader.result, avatarFile: file})
-    }
+    } 
+    
     if (file) {
       reader.readAsDataURL(file);
-    } else {
-      this.setState({ imageUrl: "", imageFile: null })
     }
+    // } else {
+    //   this.setState({ imageUrl: "", imageFile: null })
+    // }
   }
 
-  onSubmit(e) {
-    e.prevenDefault();
-    
+  handleSubmit(e) {
+    e.preventDefault();
     let formData = new FormData();
     formData.append('user[username]',this.state.username)
     formData.append('user[avatar]', this.state.avatarFile)
+    
+    let id = this.props.currentUser.id
+    
 
-    this.props.patchUser(formData);
+    this.props.patchUser(formData, id);
+    this.closeModal();
   }
 
   update(e) {
@@ -101,7 +106,7 @@ class EditUser extends React.Component {
  
             <div className='avatar-uploader'>
 
-              <input type="file" className='file-input' onClick={this.readFile} />
+              <input type="file" className='file-input' onChange={this.readFile} />
                 <img src={this.state.avatarUrl} className='file-input-image'/>
              
               <div className='file-input-text'>Change Avatar</div>
@@ -110,7 +115,7 @@ class EditUser extends React.Component {
 
           <footer className='edit-user-footer'>
             <div onClick={this.closeModal} className='edit-user-cancel'>Cancel</div>
-            <button onClick={this.handleSubmit} onClick={this.closeModal} className='edit-user-button'>Submit</button>
+            <button onClick={this.handleSubmit} className='edit-user-button'>Submit</button>
           </footer>
         </div>
       </div>
@@ -120,7 +125,7 @@ class EditUser extends React.Component {
 
 ///////////// CONTAINER ///////////////
 import { connect } from 'react-redux';
-import { receiveUsers } from '../../actions/user_actions.js'
+import { patchUser } from '../../actions/user_actions.js'
 
 const mapStateToProps = ({currentUser}) => {
   return {
@@ -130,7 +135,7 @@ const mapStateToProps = ({currentUser}) => {
 
 const mapDispatchToProps = dispatch => {
   return{
-    patchUser: user => dispatch(receiveUsers(user)),
+    patchUser: (user, id) => dispatch(patchUser(user,id)),
   }
 }
 

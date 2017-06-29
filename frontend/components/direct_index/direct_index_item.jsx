@@ -11,21 +11,31 @@ class DirectIndexItem extends React.Component {
     if (Object.keys(this.props.users).length) {
 
       let users = this.props.users;
-      let Img;
+      let Item;
       let channel = this.props.channel;
       let channelUsers = this.props.channel.users;
       if (channelUsers.length > 2) {
-        Img = () => (<i className="fa fa-users fa-lg" aria-hidden="true"></i>)
+       Item = () => (
+         <div className='index-item-control'>
+          <i className="fa fa-users fa-2x" aria-hidden="true"></i>
+          <div></div>
+         </div>
+       )
       } else {
         let friendId = channelUsers.filter(id => id !== this.props.currentUserId)[0]
-        Img = () => (<img src={users[friendId].avatarUrl} alt=""/>)
+       Item = () => (
+          <div className='index-item-control'>
+            <img src={users[friendId].avatarUrl} alt=""/>
+            <div className='direct-index-name'>{users[friendId].username}</div>
+          </div>
+          )
       }
 
 
 
     return (
-      <div>
-          <Img />
+      <div className='direct-index-item-wrapper'>
+           <Item />
       </div>
     );
     } else {

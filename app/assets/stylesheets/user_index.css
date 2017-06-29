@@ -10,7 +10,18 @@
 
 .user-index {
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.user-index-text {
+  color: #99AAB5;
+  font-size: 13px;
+  margin: 5px 0;
+  position: relative;
+  left: 26px;
+  letter-spacing: .8px;
 }
 
 .user-index-item {
@@ -34,7 +45,6 @@
   width: 140px;
   color: #99AAB5;
   font-size: 17px;
-  font-weight: bold;
   display: flex;
   align-items: center;
 }

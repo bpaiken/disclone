@@ -1,4 +1,5 @@
-export const patchUser = (formData) => {
+export const patchUser = (formData, id) => {
+  debugger
   return $.ajax({
     url: `/api/users/${id}`,
     type: 'PATCH',

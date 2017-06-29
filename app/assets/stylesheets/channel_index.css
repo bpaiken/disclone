@@ -20,12 +20,23 @@
 .channel-header-wrapper {
   display: flex;
   width: 206px;
-  padding: 28px 8px 0 18px;
+  padding: 28px 8px 3px 18px;
+  margin-bottom: 8px;
+  /*border-bottom: 1px solid lightslategray;*/
 }
 
 .channel-header-wrapper:hover h3, i {
   color: #b9bbbe;
   cursor: pointer;
+}
+
+.channel-header-wrapper > fa-plus {
+  margin-right: 3px;
+}
+
+.fa-plus:before {
+    content: "\f067";
+    margin-right: 12px;
 }
 
 .channels-header {
@@ -113,9 +124,10 @@
 }
 
 .current-user-avatar {
-  width: 40px;
-  height: auto;
+  width: 36px;
+  height: 36px;
   margin-right: 10px;
+  margin-left: 4px;
 }
 
 .logout {
@@ -132,5 +144,45 @@
 
 /*///////////// direct index ///////////////*/
 
+.direct-name-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 20px 5px 30px;
+  cursor: pointer;
+}
 
+.direct-index-item-wrapper {
+
+}
+
+.index-item-control > img {
+  width: 35px;
+  height: 35px;
+}
+
+.direct-link-wrapper {
+  /*height: 34px;*/
+  display: flex;
+  margin: 10px 0px;
+  padding: 2px 15px;
+  cursor: pointer;
+}
+
+.direct-link-wrapper:hover {
+  background-color: rgba(30, 33, 36, .50)
+}
+
+.direct-index-item-wrapper > i {
+  padding: 5px 0;
+}
+
+.direct-index-name {
+  color: #72767d;
+  margin-left: 10px;
+}
+
+.index-item-control {
+  display: flex;
+  align-items: center;
+}
 

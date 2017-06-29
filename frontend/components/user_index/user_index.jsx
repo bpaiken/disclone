@@ -21,11 +21,12 @@ class UserIndex extends React.Component {
     return (
       <div className='user-index-container'>
         <ul className='user-index'>
+          <div className='user-index-text'>MEMBERS - {Object.keys(users).length}</div>
           {userArray.map(key => {
             return (
             <li key={key} className='user-index-item'>
               <div className='user-avatar-wrapper circle-base'>
-                <img src={users[key].avatarUrl} alt=""/>
+                <img className="circle-base" src={users[key].avatarUrl} alt=""/>
               </div>
               <div className="index-username-control">
                 <span className='index-username'>{users[key].username}</span>
