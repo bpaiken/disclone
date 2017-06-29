@@ -54,20 +54,10 @@ class MessageIndex extends React.Component {
       let messageBlock = []
       let messages = this.props.messages;
       
-
-
+      //TODO: refactor that disgusting Messageblock logic... use internal state so not mapping over entire message array ever time 
       return (
       <div className='message-index-wrapper'>
         <ul className="scroll-y">
-
-            {/*{messageBlocks.map((block, i) => {
-              return (
-                
-                <MessageBlockContainer key={i} serverId={serverId} 
-                channelId={channelId} messages={block} />
-              )
-            })}*/}
-
 
             {messageArray.map((key, i) => {
               if (messageArray[messageArray.length-1] !== key // if not last key 
@@ -75,6 +65,15 @@ class MessageIndex extends React.Component {
                 (!messageBlock[0] // message block is empty
                 || messageBlock[0].userId === messages[key].userId )) {
                   messageBlock.push(messages[key]);
+
+                  if (i === messageArray.length - 2 &&
+                  messageBlock[0].userId !== messages[messageArray[messageArray.length-1]].userId) { // last message user id not = to current block user id
+                    let messageProps = messageBlock.slice(0)
+                messageBlock = []
+                return <MessageBlockContainer key={key} serverId={serverId}
+                channelId={channelId} messages={messageProps} />
+              }
+
               } else {
                   if (messageArray.length - 1 === i) { // if last key
                     messageBlock.push(messages[key]);

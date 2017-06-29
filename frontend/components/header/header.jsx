@@ -47,7 +47,7 @@ class Header extends React.Component {
         <div className="header-name">{this.headerName()}</div>
         <div className="header-topic">{this.headerTopic()}</div>
         <div className='member-toggle'>
-          <i className="fa fa-users fa-lg" aria-hidden="true"></i>
+          {/*<i className="fa fa-users fa-lg" aria-hidden="true"></i>*/}
         </div>
       </div>
     );
