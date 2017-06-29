@@ -16,10 +16,20 @@
   channel_three = Channel.create(name: 'general', topic: "general", server_id: 3)
   channel_four = Channel.create(name: 'general', topic: "general", server_id: 4)
 
-  server_one = Server.create(name: 'Slash Gaming', default_id: channel_one.id)
-  server_two = Server.create(name: 'Overwatch', default_id: channel_two.id)
-  server_three = Server.create(name: 'LoL Masters', default_id: channel_three.id)
-  server_four = Server.create(name: 'Call of Duty', default_id: channel_four.id)
+  server_one = Server.create(name: 'Minecraft Masters', default_id: channel_one.id)
+  server_two = Server.create(name: 'Overwatch Heroes', default_id: channel_two.id)
+  server_three = Server.create(name: 'League Legends', default_id: channel_three.id)
+  server_four = Server.create(name: 'The Call of Duty', default_id: channel_four.id)
+
+  server_one.avatar = File.open('app/assets/images/minecraft.png')
+  server_two.avatar = File.open('app/assets/images/overwatch.png')
+  server_three.avatar = File.open('app/assets/images/league.png')
+  server_four.avatar = File.open('app/assets/images/cod.png')
+
+  server_one.save
+  server_two.save
+  server_three.save
+  server_four.save
 
   Channel.all[0].update(server_id: server_one.id)
   Channel.all[1].update(server_id: server_two.id)
@@ -36,6 +46,7 @@
   user_eight = User.create(username: 'yoda', password: 'starwars')
   user_nine = User.create(username: 'r2d2', password: 'starwars')
   user_ten = User.create(username: 'c3p0', password: 'starwars')
+  user_eleven = User.create(username: 'greedo', password: 'starwars')
   guest = User.create(username: 'guest', password: 'password')
 
   Subscription.create(user_id: user_one.id, server_id: server_one.id)
