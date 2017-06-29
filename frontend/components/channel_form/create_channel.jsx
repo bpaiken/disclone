@@ -36,8 +36,8 @@ class CreateChannel extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    //handle errors here
-    debugger
+    //TODO: handle errors here
+  
     let state = this.state;
     state.serverId = this.props.match.params.serverId
     this.props.createChannel(state);

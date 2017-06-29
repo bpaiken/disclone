@@ -17,7 +17,6 @@ class MessageBlock extends React.Component {
       let userId = messages[0].userId
       let user = this.props.users[userId]
       let timestamp = moment(messages[0].createdAt).fromNow()
-      debugger
       return (
         <div className="message-block">
           <img src={user.avatarUrl} className='message-avatar circle-base'/>

@@ -21,6 +21,8 @@ json.channels do
   end
 end
 
+json.channelId @channel.id
+
 json.currentUser do
   json.directs current_user.channels.map(&:id)
 end

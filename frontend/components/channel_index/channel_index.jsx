@@ -31,7 +31,7 @@ class ChannelIndex extends React.Component {
   }
 
   render() {
-    // debugger
+    
     let serverId = this.props.match.params.serverId;
     if (Object.keys(this.props.channels).length !== 0) {
       let channelArray = this.props.servers[serverId].channels

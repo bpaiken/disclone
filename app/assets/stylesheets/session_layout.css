@@ -2,7 +2,7 @@
 .session-wrapper {
   display: flex;
   justify-content: center;
-  background: url(http://i.imgur.com/IKphdgB.jpg) 50% no-repeat;
+  background: url(https://www.themeraider.com/wp-content/uploads/2016/02/star-citizen.jpg) 50% no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -31,9 +31,7 @@ margin-bottom: 30px;
 }
 
 #session-logo {
-  width: 1px;
-  height: 24px;
-  margin: 30px;
+  width: 100%
 }
 
 form.session-form {
