@@ -13,7 +13,7 @@
 }
 
 .user-index-text {
-  color: #99AAB5;
+  color: #9b9b9b;;
   font-size: 13px;
   margin: 5px 0;
   position: relative;
@@ -40,7 +40,7 @@
 
 .index-username-control {
   width: 140px;
-  color: #99AAB5;
+  color: #9b9b9b;;
   font-size: 17px;
   display: flex;
   align-items: center;

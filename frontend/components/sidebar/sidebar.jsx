@@ -6,7 +6,7 @@ import ServerIndexItem from './server_name'
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
-
+  
   }
 
 

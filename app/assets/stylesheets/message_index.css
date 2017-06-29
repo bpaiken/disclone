@@ -10,7 +10,7 @@
   margin-left: 20px;
   margin-right: 6px;
   padding: 20px 0px;
-  border-bottom: solid #383838 ;
+  border-bottom: solid rgba(155, 155, 155, 0.2);
   border-width: 1px;
   flex-grow: 1;
   display: flex;
@@ -29,6 +29,11 @@
 
 .timestamp {
   margin-left: 6px;
+  color: #9b9b9b;
+  font-size: 12px;
+  letter-spacing: .5px;
+  position: relative;
+  top: 4px;
 }
 
 .user-name{

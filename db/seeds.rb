@@ -26,10 +26,10 @@
   # server_three.avatar = File.open('app/assets/images/league.png')
   # server_four.avatar = File.open('app/assets/images/cod.png')
 
-  server_one.save
-  server_two.save
-  server_three.save
-  server_four.save
+  # server_one.save
+  # server_two.save
+  # server_three.save
+  # server_four.save
 
   Channel.all[0].update(server_id: server_one.id)
   Channel.all[1].update(server_id: server_two.id)
