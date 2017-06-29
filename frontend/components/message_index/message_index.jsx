@@ -45,7 +45,9 @@ class MessageIndex extends React.Component {
   render() {
     let channelId = this.props.match.params.channelId
     let serverId = this.props.match.params.serverId
-    if (this.props.channels[channelId].messages.length && Object.keys(this.props.messages).length) {
+    if (Object.keys(this.props.channels).length &&
+        this.props.channels[channelId].messages.length && 
+        Object.keys(this.props.messages).length) {
     // if (Object.keys(this.props.messages).length) {
       let messageArray = this.props.channels[channelId].messages
       // let messageBlocks = [];

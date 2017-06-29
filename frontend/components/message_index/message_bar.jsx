@@ -31,16 +31,21 @@ class MessageBar extends React.Component {
   
 
   render() {
-    return (
-      <div className="message-bar-control">
-        <form className="message-bar-container" onSubmit={this.onMessage}>
-        <input onChange={this.update}
-          value={this.state.body}
-          placeholder={`Message #${this.props.channel.name}`}
-          className="message-bar-input"/>
-        </form>
-      </div>
-    );
+    if (this.props.channel) {
+
+      return (
+        <div className="message-bar-control">
+          <form className="message-bar-container" onSubmit={this.onMessage}>
+          <input onChange={this.update}
+            value={this.state.body}
+            placeholder={`Message #${this.props.channel.name}`}
+            className="message-bar-input"/>
+          </form>
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
