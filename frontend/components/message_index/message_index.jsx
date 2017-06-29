@@ -66,7 +66,7 @@ class MessageIndex extends React.Component {
                 || messageBlock[0].userId === messages[key].userId )) {
                   messageBlock.push(messages[key]);
 
-                  if (i === messageArray.length - 2 &&
+                  if (!messageBlock[0] && i === messageArray.length - 2 &&
                   messageBlock[0].userId !== messages[messageArray[messageArray.length-1]].userId) { // last message user id not = to current block user id
                     let messageProps = messageBlock.slice(0)
                 messageBlock = []
