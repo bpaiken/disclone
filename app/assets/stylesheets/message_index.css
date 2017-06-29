@@ -2,8 +2,7 @@
   /*position: relative;*/
   display: flex;
   flex-direction: column;
-  background-color: #2C2F33;
-  -webkit-filter: brightness(125%);
+  background-color: #373b40;
   width: 100%;
 }
 

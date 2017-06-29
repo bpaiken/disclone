@@ -5,6 +5,8 @@ class UserSearch extends React.Component {
   constructor(props) {
     super(props)
 
+    
+
     this.state = {
       selected: {},
       search: {},
@@ -26,8 +28,11 @@ class UserSearch extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers()
     .then((res) => {
-      let search = res.users
-      this.setState({search: search})
+      let users = res.users
+      this.setState({
+        search: users,
+        selected: { [this.props.currentUser.id]: users[this.props.currentUser.id] }
+      })
     })
   }
 
@@ -42,7 +47,7 @@ class UserSearch extends React.Component {
     
   closeModal(e) {
     this.setState({
-       selected: {},
+       selected: { [this.props.currentUser.id]: this.props.users[this.props.currentUser.id] },
        modal: { 
          modalId: 'closed', 
          overlayId: 'closed'
@@ -54,7 +59,6 @@ class UserSearch extends React.Component {
     let input = e.currentTarget.value
     let search = {};
     let users = this.props.users
-
 
     Object.keys(users).forEach(key => {
       if (users[key].username.includes(input)) {
@@ -90,6 +94,11 @@ class UserSearch extends React.Component {
     return(e) => {
       let selected = this.state.selected
       delete selected[user.id]
+      
+      //doesn't allow current user to be removed from selected column
+      //TODO: add constraint to back end
+      selected[this.props.currentUser.id] = this.props.users[this.props.currentUser.id]
+      
       this.setState({selected: selected})
     }
   }
@@ -162,9 +171,10 @@ import { connect } from 'react-redux';
 import { fetchAllUsers } from '../../actions/user_actions.js';
 import { createDirect } from '../../actions/channel_actions.js';
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, currentUser }) => {
   return {
     users,
+    currentUser,
   };
 };
 

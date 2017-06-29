@@ -30,18 +30,18 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 14px;
+    width: 7px;
 }
  
 ::-webkit-scrollbar-track-piece {
-  background-color: #2f3136;
+  background-color: inherit;
     border-radius: 7px;
 }
  
 ::-webkit-scrollbar-thumb {
   background-color: #1e2124;
   border-radius: 7px;
-    border: 3px solid #2C2F33;
+  border: 3px solid inherit;
 }
 
 ::-webkit-scrollbar-corner {

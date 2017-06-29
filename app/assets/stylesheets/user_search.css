@@ -91,6 +91,7 @@
   margin: 0px 10px;
   height: 200px;
   overflow-y: scroll;
+  padding: 0 10px;
 }
 
 .user-search-list > span {
