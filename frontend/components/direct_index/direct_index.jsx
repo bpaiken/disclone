@@ -16,8 +16,12 @@ class DirectIndex extends React.Component {
 
   render() {
 
+    if (this.props.channels) {
+
     let directs = this.props.currentUser.directs
     let channels = this.props.channels
+    
+
     return (
      <div className='channel-index'>
       
@@ -37,6 +41,9 @@ class DirectIndex extends React.Component {
           <CurrentUserContainer />
         </div>
     );
+    } else {
+      return null;
+    }
   }
 
 }

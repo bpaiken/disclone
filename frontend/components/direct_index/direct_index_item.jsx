@@ -38,6 +38,9 @@ class DirectIndexItem extends React.Component {
           <div className='direct-index-name'>{this.channelUserNames()}</div>
          </div>
        )
+      } else if (channelUsers.length === 1) {
+          return null;
+          //TODO: take a look at/refactor...possible validation needed.
       } else {
         let friendId = channelUsers.filter(id => id !== this.props.currentUserId)[0]
        Item = () => (

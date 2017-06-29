@@ -70,16 +70,17 @@ class MessageIndex extends React.Component {
 
 
             {messageArray.map((key, i) => {
-              if (messageArray[messageArray.length-1] !== key &&
-                (!messageBlock[0] || messageBlock[0].userId === messages[key].userId )) {
+              if (messageArray[messageArray.length-1] !== key // if not last key 
+               &&
+                (!messageBlock[0] // message block is empty
+                || messageBlock[0].userId === messages[key].userId )) {
                   messageBlock.push(messages[key]);
-                 
               } else {
-                if (messageArray.length - 1 === i) {
-                  messageBlock.push(messages[key]);
-                   return <MessageBlockContainer key={key} serverId={serverId}
-                channelId={channelId} messages={messageBlock} />
-                }
+                  if (messageArray.length - 1 === i) { // if last key
+                    messageBlock.push(messages[key]);
+                    return <MessageBlockContainer key={key} serverId={serverId}
+                  channelId={channelId} messages={messageBlock} />
+                  } 
                 let messageProps = messageBlock.slice(0)
                 messageBlock = []
                 messageBlock.push(messages[key]);
