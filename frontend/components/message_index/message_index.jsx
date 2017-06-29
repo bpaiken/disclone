@@ -63,8 +63,16 @@ class MessageIndex extends React.Component {
               if (messageArray[messageArray.length-1] !== key // if not last key 
                &&
                 (!messageBlock[0] // message block is empty
-                || messageBlock[0].userId === messages[key].userId )) {
-                  messageBlock.push(messages[key]);
+                || messageBlock[0].userId === messages[key].userId )) { //first message in message block user id  = to message user id
+
+                messageBlock.push(messages[key])
+                
+                if (messages[key].userId !== messages[messageArray[i+1]].userId) {
+                   let messageProps = messageBlock.slice(0)
+                messageBlock = []
+                return <MessageBlockContainer key={key} serverId={serverId}
+                channelId={channelId} messages={messageProps} />
+                }
 
                   if (messageBlock[0] && i === messageArray.length - 2 &&
                   messageBlock[0].userId !== messages[messageArray[messageArray.length-1]].userId) { // last message user id not = to current block user id
@@ -73,8 +81,17 @@ class MessageIndex extends React.Component {
                 return <MessageBlockContainer key={key} serverId={serverId}
                 channelId={channelId} messages={messageProps} />
               }
-
               } else {
+                  if (i === messageArray.length - 2 &&
+                  messages[key].userId !== messages[messageArray[messageArray.length-1]].userId) { // last message user id not = to current block user id
+                messageBlock.push(messages[key])
+                
+                let messageProps = messageBlock.slice(0)
+                messageBlock = []
+                return <MessageBlockContainer key={key} serverId={serverId}
+                channelId={channelId} messages={messageProps} />
+              }
+                  
                   if (messageArray.length - 1 === i) { // if last key
                     messageBlock.push(messages[key]);
                     return <MessageBlockContainer key={key} serverId={serverId}
