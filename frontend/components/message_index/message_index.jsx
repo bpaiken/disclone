@@ -32,9 +32,9 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      
     if (this.props.match.params.channelId !== nextProps.match.params.channelId){
       this.props.fetchMessages(nextProps.match.params.channelId)
+      
       this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
       let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
       channel.bind('post_message', (data) => {
@@ -70,7 +70,7 @@ class MessageIndex extends React.Component {
 
                 messageBlock.push(messages[key])
                
-                if (messages[key].userId !== messages[messageArray[i+1]].userId) {
+                if ( messages[messageArray[i+1]] && messages[key] && messages[key].userId !== messages[messageArray[i+1]].userId) {
                    let messageProps = messageBlock.slice(0)
                 messageBlock = []
                 return <MessageBlockContainer key={key} serverId={serverId}

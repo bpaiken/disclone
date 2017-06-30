@@ -10,8 +10,19 @@ class DirectIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchDirects()
+    this.props.fetchDirects().then(({currentUser}) => {
+      Object.keys(currentUser.channels).each(channel => {
+        this.props.fetchMessages(channel.id);
+      })
+    });
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.channelId !== nextProps.match.params.channelId){
+      this.props.fetchDirects()
+    }
+  }
+  
 
   render() {
     if (this.props.currentUser) {
@@ -46,7 +57,8 @@ class DirectIndex extends React.Component {
 
 ///////////  CONTAINER /////////////
 import {connect} from 'react-redux';
-
+import {fetchDirectChannels} from '../../actions/channel_actions.js'
+import {fetchMessages} from '../../actions/message_actions.js'
 // might need alot of state since this is initial component
 const mapStateToProps = ({currentUser}) => {
   return {
@@ -54,12 +66,14 @@ const mapStateToProps = ({currentUser}) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchDirects: 
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchDirects: () => dispatch(fetchDirectChannels()),
+    fetchMessages: (id) => dispatch(fetchMessages(id)), 
+  };
+};
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DirectIndex);

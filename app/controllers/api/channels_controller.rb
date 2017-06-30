@@ -1,8 +1,8 @@
 class Api::ChannelsController < ApplicationController
 
   def index
-    @user = User.find(params[:id])
-    @channels = @user.channels
+    @user = current_user
+    render '/api/channels/index'
   end
 
   def show

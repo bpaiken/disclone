@@ -28,4 +28,8 @@ export const createDirect = (channel) => {
   })
 }
 
+export const fetchDirects = () => {
+  return $.get('/api/channels')
+}
+
 
