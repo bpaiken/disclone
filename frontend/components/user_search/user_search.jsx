@@ -72,7 +72,7 @@ class UserSearch extends React.Component {
   handleSubmit(e) {
     let channel = {
       users: this.state.selected,
-      name: "lora rocks",
+      name: "direct",
       direct: true,
     }
 

@@ -7,7 +7,6 @@ import DirectIndexItem from './direct_index_item'
 class DirectIndex extends React.Component {
   constructor(props) {
     super(props)
-
   }
 
   componentDidMount() {
@@ -15,12 +14,10 @@ class DirectIndex extends React.Component {
   }
 
   render() {
-
-    if (this.props.channels) {
-
+    if (this.props.currentUser) {
+    //TODO: currentUser slice of state holds channels...refactor this
     let directs = this.props.currentUser.directs
-    let channels = this.props.channels
-    
+    let channels = this.props.currentUser.channels
 
     return (
      <div className='channel-index'>
@@ -45,25 +42,21 @@ class DirectIndex extends React.Component {
       return null;
     }
   }
-
 }
 
-
 ///////////  CONTAINER /////////////
-
 import {connect} from 'react-redux';
 
 // might need alot of state since this is initial component
-const mapStateToProps = ({currentUser, channels}) => {
+const mapStateToProps = ({currentUser}) => {
   return {
     currentUser,
-    channels,
   };
 };
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
-
+//     fetchDirects: 
 //   };
 // };
 

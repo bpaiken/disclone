@@ -22,7 +22,10 @@ class DirectIndexItem extends React.Component {
   }
 
   render() {
-    if (Object.keys(this.props.users).length) {
+      debugger
+    if (Object.keys(this.props.users).length &&
+        this.props.channel &&
+        Object.keys(this.props.channel).length) {
 
       let users = this.props.users;
       let Item;

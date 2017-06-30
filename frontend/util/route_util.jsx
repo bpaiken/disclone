@@ -33,7 +33,6 @@ const LoggedAuth = ({component: Component, path, redirect, loggedIn}) => (
   )}/>
 );
 
-
 const mapStateToProps = state => {
   return {loggedIn: Boolean(state.currentUser.id)};
 };
