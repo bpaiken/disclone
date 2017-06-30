@@ -90,9 +90,9 @@ class SessionForm extends React.Component {
               {/*<input className="session-button" type="submit" value={this.props.buttonText}/>*/}
 
               <footer className="session-footer">
-                {this.props.footerText}
+                <div className='session-footer-text'>{this.props.footerText}</div>
                 <Link to={this.props.linkPath} className="session-link">{this.props.linkText}</Link>
-                <div className='guest-text'>Or Feel Free to Login as</div>
+                <div className='guest-text'>Or login as</div>
                 <div className='guest-link' onClick={this.loginGuest}>Guest</div>
               </footer>
           </form>

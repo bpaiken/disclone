@@ -127,7 +127,7 @@ form.session-form {
 
 .session-link {
   color: #fff;
-  font-size: 12px;
+  font-size: 16px;
   text-decoration: none;
 }
 
@@ -138,13 +138,16 @@ form.session-form {
 .session-footer {
   margin-top: 12px;
   color: #99AAB5;
-  font-size: 12px;
+  font-size: 16px;
   display: flex;
 }
 
 .guest-text {
-  margin-left: 72px;
+  margin-left: 6px;
+}
 
+.session-footer-text {
+  margin-left: 1px;
 }
 
 .guest-link {
