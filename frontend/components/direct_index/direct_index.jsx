@@ -25,9 +25,9 @@ class DirectIndex extends React.Component {
           <UserSearch /> 
           
           <ul>
-          {directs.map(key => (
-            <Link to={`/app/directs/${key}`}>
-            <li key={key} className='direct-link-wrapper'>
+          {directs.map((key) => (
+            <Link key={key} to={`/app/directs/${key}`}>
+            <li className='direct-link-wrapper'>
               <DirectIndexItem channel={channels[key]} className='direct-name'
               currentUserId={this.props.currentUser.id} /> 
             </li>
