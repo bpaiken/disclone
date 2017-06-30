@@ -22,7 +22,7 @@ json.channels do
 end
 
 json.channelId @channel.id
-
+#TODO: fix below....this is here for direct index...which is currently taking channels from current user...it should be taking channels from channels
 json.currentUser do
   json.directs current_user.channels.map(&:id)
   json.channels do
