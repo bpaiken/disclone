@@ -32,7 +32,8 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
+      
+    if (this.props.match.params.channelId !== nextProps.match.params.channelId){
       this.props.fetchMessages(nextProps.match.params.channelId)
       this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
       let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
@@ -45,7 +46,8 @@ class MessageIndex extends React.Component {
   render() {
     let channelId = this.props.match.params.channelId
     let serverId = this.props.match.params.serverId
-    if (Object.keys(this.props.channels).length &&
+    if (this.props.channels[channelId] && 
+        Object.keys(this.props.channels).length &&
         this.props.channels[channelId].messages.length && 
         Object.keys(this.props.messages).length) {
     // if (Object.keys(this.props.messages).length) {
@@ -55,18 +57,19 @@ class MessageIndex extends React.Component {
       let messages = this.props.messages;
       
       //TODO: refactor that disgusting Messageblock logic... use internal state so not mapping over entire message array ever time 
+     
       return (
       <div className='message-index-wrapper'>
         <ul className="scroll-y">
 
             {messageArray.map((key, i) => {
-              if (messageArray[messageArray.length-1] !== key // if not last key 
+              if (i !== messageArray.length - 1 // if not last key 
                &&
                 (!messageBlock[0] // message block is empty
                 || messageBlock[0].userId === messages[key].userId )) { //first message in message block user id  = to message user id
 
                 messageBlock.push(messages[key])
-                
+               
                 if (messages[key].userId !== messages[messageArray[i+1]].userId) {
                    let messageProps = messageBlock.slice(0)
                 messageBlock = []

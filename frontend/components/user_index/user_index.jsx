@@ -16,7 +16,7 @@ class UserIndex extends React.Component {
 
   render () {
     let users = this.props.users;
-    let userArray = this.props.server.users
+    let userArray = [...new Set(this.props.server.users)]
     if (Object.keys(users).length > 0) { 
     return (
       <div className='user-index-container'>

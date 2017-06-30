@@ -33,7 +33,10 @@ class ChannelIndex extends React.Component {
   render() {
     
     let serverId = this.props.match.params.serverId;
-    if (Object.keys(this.props.channels).length !== 0) {
+    let servers = this.props.servers
+    
+    if (Object.keys(this.props.channels).length !== 0 && 
+    this.props.channels[servers[serverId].channels[0]]) { //check if the channels in state is the right group of channels
       let channelArray = this.props.servers[serverId].channels
       return (
         <div className='channel-index'>

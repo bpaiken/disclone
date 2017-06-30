@@ -9,6 +9,10 @@ class Sidebar extends React.Component {
   
   }
 
+  componentDidMount() {
+    
+  }
+
 
 //currently mapping over each server vice the users subscribed servers
   render() {

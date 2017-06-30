@@ -11,13 +11,13 @@ class Header extends React.Component {
   headerName() {
     let channelId = this.props.match.params.channelId;
     let channel = this.props.channels[channelId]
-    if (channel.direct) {
+    if (channel && channel.name === 'direct') {
       let channelUserArray = channel.users
       let users = this.props.users
       let usernames = channelUserArray.map(id => users[id].username)
       let text = usernames.join(', ').slice(0,80)
       return usernames.join(', ').length < 81 ? text : text + '...'
-    } else {
+    } else if (channel) {
       return channel.name
     }
   }
@@ -25,10 +25,10 @@ class Header extends React.Component {
   headerTopic() {
     let channelId = this.props.match.params.channelId;
     let channel = this.props.channels[channelId]
-    if (channel.direct) {
+    if (channel && channel.name === 'direct') {
       return ""
-    }
-    return channel.topic
+    } else if (channel)
+      return channel.topic
   }
 
 
