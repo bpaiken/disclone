@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.loginGuest = this.loginGuest.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +42,13 @@ class SessionForm extends React.Component {
         [field]: e.currentTarget.value
       });
     };
+  }
+
+  loginGuest() {
+    this.props.submitForm({password: 'password', username: 'guest'})
+    .then(() => {
+       this.props.history.push('/app/directs');
+    })
   }
 
   render() {
@@ -84,6 +92,8 @@ class SessionForm extends React.Component {
               <footer className="session-footer">
                 {this.props.footerText}
                 <Link to={this.props.linkPath} className="session-link">{this.props.linkText}</Link>
+                <div className='guest-text'>Or Feel Free to Login as</div>
+                <div className='guest-link' onClick={this.loginGuest}>Guest</div>
               </footer>
           </form>
       </div>

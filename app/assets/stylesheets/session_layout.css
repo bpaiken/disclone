@@ -139,4 +139,20 @@ form.session-form {
   margin-top: 12px;
   color: #99AAB5;
   font-size: 12px;
+  display: flex;
+}
+
+.guest-text {
+  margin-left: 72px;
+
+}
+
+.guest-link {
+  cursor: pointer;
+  color: white;
+  /*margin-left: 2px*/
+}
+
+.guest-link:hover {
+  text-decoration: underline;
 }
