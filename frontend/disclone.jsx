@@ -6,14 +6,6 @@ import {register, login, logout} from './actions/session_actions.js';
 import { fetchServer } from './actions/server_actions.js';
 import { fetchMessages } from './actions/message_actions.js';
 
-
-window.fetchMessages = fetchMessages;
-window.fetchServer = fetchServer;
-window.login = login;
-window.logout = logout;
-window.register = register;
-
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
@@ -26,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-
-  window.store = store;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

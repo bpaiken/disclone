@@ -116,6 +116,7 @@ class MessageIndex extends React.Component {
     return (
       <div className='no-messages'>
         <div className='no-messages-text'>no messages...yet</div>
+        <div ref='scroll'></div>
         <MessageBarContainer />
       </div>
     )
