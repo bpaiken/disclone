@@ -13,7 +13,7 @@ const nullUser = {
 export const login = (user) => (dispatch) => {
     return APIUtil.login(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)),
     (error) => dispatch(receiveErrors(error)));
-  };
+};
 
 export const logout = () => (dispatch) => {
   return APIUtil.logout().then(() => dispatch(receiveCurrentUser(nullUser)));
@@ -22,12 +22,16 @@ export const logout = () => (dispatch) => {
 export const register = (user) => dispatch => {
   return APIUtil.register(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)),
   (error) => dispatch(receiveErrors(error)));
-  };
+};
 
-export const receiveCurrentUser = (currentUser) => {
+export const receiveCurrentUser = ({currentUser, messages, channels, servers, users}) => {
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser,
+    messages,
+    channels,
+    servers,
+    users,
   };
 };
 

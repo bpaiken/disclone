@@ -11,7 +11,7 @@ export default (state = {}, action) => {
       return merge(newState, action.response.server)
 
     case RECEIVE_CURRENT_USER:
-      return merge(newState, action.currentUser.servers)
+      return merge(newState, action.servers)
       
     default:
       return state;
