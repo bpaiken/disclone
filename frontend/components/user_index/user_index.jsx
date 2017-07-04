@@ -5,6 +5,7 @@ class UserIndex extends React.Component {
     super(props);
   }
 
+  //TODO: update to fetchUsers (should be users index action)
    componentDidMount() {
     if (this.props.match.params.serverId) {
       this.props.fetchServer(this.props.match.params.serverId);
@@ -45,11 +46,8 @@ class UserIndex extends React.Component {
 //////////////  CONTAINER ///////////
 import { connect } from 'react-redux';
 import { fetchServer } from '../../actions/server_actions.js'
-// import { withRouter } from 'react-router-dom';
-
 
 const mapStateToProps = ({ servers, users }, ownProps) => {
-  
   return {
     server: servers[ownProps.match.params.serverId],
     users,
@@ -62,5 +60,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserIndex);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(UserIndex);

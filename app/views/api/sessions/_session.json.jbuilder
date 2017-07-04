@@ -1,7 +1,6 @@
 # partial for bootstrap current user to window on refresh...see root.html.erb
-
-
 #TODO: dont use partial in root.html.erb
+
 # currentUser
 json.currentUser do
   json.extract! user, :id, :username
@@ -69,6 +68,7 @@ json.messages do
   user.channels.each do |channel|
     channel.messages.each do |message|
       json.set! message.id do
+        json.id message.id
         json.body message.body
         json.channelId message.channel_id
         json.userId message.user_id
@@ -80,6 +80,7 @@ json.messages do
     server.channels.each do |channel|
       channel.messages.each do |message|
         json.set! message.id do
+          json.id message.id
           json.body message.body
           json.channelId message.channel_id
           json.userId message.user_id

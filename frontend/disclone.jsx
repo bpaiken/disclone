@@ -9,7 +9,6 @@ import { fetchMessages } from './actions/message_actions.js';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.session) {
-    debugger
     const preloadedState = { 
       currentUser: window.session.currentUser,
       servers: window.session.servers,
