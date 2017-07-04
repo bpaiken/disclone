@@ -20,4 +20,8 @@ if @channel.direct
       json.partial! 'api/users/tempuser', user: user
     end
   end
+
+  json.currentUser do
+    json.directs current_user.channels.pluck(:id)
+  end
 end
