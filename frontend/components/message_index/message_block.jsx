@@ -6,17 +6,18 @@ class MessageBlock extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchServer(this.props.serverId)
-  // }
-
+ 
   render() {
-    if (this.props.messages.length && Object.keys(this.props.users).length && 
-        this.props.messages[0] !== undefined) {
+    if (    
+        Object.keys(this.props.users).length && // check for empty users object
+        this.props.messages[0] !== undefined    // check message block is not empty
+        ) {
+
       let messages = this.props.messages;
       let userId = messages[0].userId
       let user = this.props.users[userId]
       let timestamp = moment(messages[0].createdAt).fromNow()
+
       return (
         <div className="message-block">
           <img src={user.avatarUrl} className='message-avatar circle-base'/>

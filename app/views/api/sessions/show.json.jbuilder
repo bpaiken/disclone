@@ -9,7 +9,7 @@ json.channels do
     json.partial! 'api/channels/channel', channel: channel
   end
   @user.servers.each do |server|
-    server.channels do |channel|
+    server.channels.each do |channel|
       json.partial! 'api/channels/channel', channel: channel
     end
   end
