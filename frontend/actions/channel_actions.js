@@ -2,12 +2,14 @@ import * as APIUtil from '../util/channel_api_util';
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS'
 
 
-export const receiveChannels = ({ channels, currentUser, messages }) => {
+export const receiveChannels = ({ channels, currentUser, messages, servers, users }) => {
   return {
     type: RECEIVE_CHANNELS,
     channels,
     currentUser,
     messages,
+    servers,
+    users,
   }
 }
 
