@@ -6,7 +6,6 @@ class MessageBlock extends React.Component {
     super(props);
   }
 
- 
   render() {
     if (    
         Object.keys(this.props.users).length && // check for empty users object
@@ -36,6 +35,7 @@ class MessageBlock extends React.Component {
   }
 }
 
+/////////////////  CONTAINER  ///////////////////
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ users }) => {

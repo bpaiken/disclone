@@ -19,22 +19,21 @@ class MessageIndex extends React.Component {
     })
 
     this.buildMessageBlocks = this.buildMessageBlocks.bind(this);
+    this.updateMessageBlocks = this.updateMessageBlocks.bind(this);
   }
 
+  // needed for initial render
   componentDidMount() {
     this.props.fetchMessages(this.props.match.params.channelId);
 
-    this.buildMessageBlocks()
+    this.buildMessageBlocks();
 
     Pusher.logToConsole = true;
     let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('message', (message) => {
-      this.props.dispatchMessage(message);
+      this.props.dispatchMessage(message); // update global state
+      this.updateMessageBlocks(message); // update internal state
     });
-  }
-
-  componentDidUpdate() {
-    this.refs.scroll.scrollIntoView();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,10 +45,29 @@ class MessageIndex extends React.Component {
       this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
       let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
       channel.bind('message', (message) => {
-      
-      this.props.dispatchMessage(message);
+      this.props.dispatchMessage(message); // update global state
+      this.updateMessageBlocks(message); // update internal state
       })
     }
+  }
+
+  componentDidUpdate() {
+    this.refs.scroll.scrollIntoView();
+  }
+
+  updateMessageBlocks({ messages }) {
+    let messageBlocks = this.state.messageBlocks;
+    let message = messages[Object.keys(messages)[0]];
+    let lastBlock = messageBlocks[messageBlocks.length - 1];
+    let lastMessage = lastBlock[lastBlock.length - 1];
+    
+    if (message.userId === lastMessage.userId) {
+      lastBlock.push(message);
+    } else {
+      messageBlocks.push([message]);
+    }
+    
+    this.setState({ messageBlocks: messageBlocks});
   }
 
   buildMessageBlocks(nextProps) {
@@ -59,14 +77,14 @@ class MessageIndex extends React.Component {
     const messageBlocks = []
     let block = []
 
-    for (var i = 0; i < messageArray.length; i++) {
-      if (i === 0) {
-        block.push(messages[messageArray[i]]) // first message
-      }
-
+    for (let i = 0; i < messageArray.length; i++) {
       let prevMessage = messages[messageArray[i - 1]]
       let message = messages[messageArray[i]]
       let nextMessage = messages[messageArray[i + 1]]
+      
+      if (i === 0) {
+        block.push(messages[messageArray[i]]) // first message
+      }
 
       if (i !== 0 && prevMessage.userId === message.userId) {  // not first message AND message userId matches previous message userId
         block.push(message)
@@ -78,7 +96,7 @@ class MessageIndex extends React.Component {
         block.push(message)  
       }
 
-      if(i === messageArray.length - 1) { // check if message is last message
+      if(i === messageArray.length - 1) { // last message
         messageBlocks.push(block)
         block = []  
       }

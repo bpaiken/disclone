@@ -12,14 +12,6 @@ export const receiveMessages = ({messages,channels,users}) => {
   }
 }
 
-//DONT THINK I NEED THIS
-// export const createMessage = (message) => {
-//   return { 
-//     type: CREATE_MESSAGE,
-//     message
-//   }
-// } 
-
 export const postMessage = (message) => dispatch => {
   return APIUtil.postMessage(message)
   .then((message) => dispatch(receiveMessages(message)))

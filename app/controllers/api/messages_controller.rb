@@ -13,8 +13,8 @@ class Api::MessagesController < ApplicationController
           { @message.id => {
             id: @message.id,
             body: @message.body,
-            created_at: @message.created_at,
-            user_id: @message.user_id
+            createdAt: @message.created_at,
+            userId: @message.user_id
           }}
       })
       render 'api/messages/show'
