@@ -10,7 +10,6 @@ class ServerIndexItem extends React.Component {
     this.show = this.show.bind(this);
   }
 
-
   hide() {
     this.setState({status: "hide"})
   }

@@ -55,21 +55,6 @@ class MessageIndex extends React.Component {
     this.refs.scroll.scrollIntoView();
   }
 
-  updateMessageBlocks({ messages }) {
-    let messageBlocks = this.state.messageBlocks;
-    let message = messages[Object.keys(messages)[0]];
-    let lastBlock = messageBlocks[messageBlocks.length - 1];
-    let lastMessage = lastBlock[lastBlock.length - 1];
-    
-    if (message.userId === lastMessage.userId) {
-      lastBlock.push(message);
-    } else {
-      messageBlocks.push([message]);
-    }
-    
-    this.setState({ messageBlocks: messageBlocks});
-  }
-
   buildMessageBlocks(nextProps) {
     let channelId = nextProps ? nextProps.match.params.channelId : this.props.match.params.channelId
     let messages = this.props.messages
@@ -107,6 +92,26 @@ class MessageIndex extends React.Component {
     })
   }
 
+  updateMessageBlocks({ messages }) {
+    let messageBlocks = this.state.messageBlocks;
+    let message = messages[Object.keys(messages)[0]];
+
+    if (messageBlocks.length) {
+      var lastBlock = messageBlocks[messageBlocks.length - 1];
+      var lastMessage = lastBlock[lastBlock.length - 1];
+    
+      if (message.userId === lastMessage.userId) {
+        lastBlock.push(message);
+      } else {
+        messageBlocks.push([message]);
+      }
+    } else {
+       messageBlocks.push([message]); // need if channel has no messages
+    }
+      
+    this.setState({ messageBlocks: messageBlocks});
+  }
+
   render() {
     let channelId = this.props.match.params.channelId
     let serverId = this.props.match.params.serverId
@@ -130,7 +135,6 @@ class MessageIndex extends React.Component {
 
             <div ref='scroll'></div>
           </ul>
-
           <MessageBarContainer />
         </div>
       );
@@ -146,7 +150,7 @@ class MessageIndex extends React.Component {
   }
 }
 
-///////////////////////  CONTAINER  /////////////////////////////////
+///////////////////////  CONTAINER  //////////////////////////////
 import { receiveMessages } from '../../actions/message_actions.js'
 
 const mapStateToProps = ({ messages, channels },{ match })  => {

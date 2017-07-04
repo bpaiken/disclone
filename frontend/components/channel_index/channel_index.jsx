@@ -14,22 +14,16 @@ class ChannelIndex extends React.Component {
   this.state = {}
 }
 
-  // don't think this is needed...user index seems to mount befor for channel index...so called in user index
-  // comp
-
- 
-
   componentWillReceiveProps(nextProps) {
-    if(this.props.match.params.serverId !== nextProps.match.params.serverId || 
-    Object.keys(this.props.channels) < Object.keys(nextProps.channels)) {
+    // if(this.props.match.params.serverId !== nextProps.match.params.serverId || 
+    // Object.keys(this.props.channels) < Object.keys(nextProps.channels)) {  //TODO: wont need this with live update
 
-    this.props.fetchServer(nextProps.match.params.serverId)
-    //todo fetch channel action
-    }
+    // this.props.fetchServer(nextProps.match.params.serverId)
+    // //todo fetch channel action
+    // }
   }
 
   render() {
-    
     let serverId = this.props.match.params.serverId;
     let servers = this.props.servers
 
@@ -65,7 +59,7 @@ class ChannelIndex extends React.Component {
   } 
 }
 
-///////////////////////  CONTAINER  /////////////////////////////////
+///////////////////////  CONTAINER  /////////////////////////////
 const mapStateToProps = ({ servers, channels }, { match })  => {
   return {
     servers,
