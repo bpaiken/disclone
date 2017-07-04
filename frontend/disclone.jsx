@@ -8,13 +8,17 @@ import { fetchMessages } from './actions/message_actions.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-  if (window.currentUser) {
-    const preloadedState = { currentUser: window.currentUser,
-      servers: window.currentUser.servers,
-      channels: window.currentUser.channels,
+  if (window.session) {
+    debugger
+    const preloadedState = { 
+      currentUser: window.session.currentUser,
+      servers: window.session.servers,
+      channels: window.session.channels,
+      messages: window.session.messages,
+      users: window.session.users,
    };
     store = configureStore(preloadedState);
-    delete window.currentUser;
+    delete window.session;
   } else {
     store = configureStore();
   }
