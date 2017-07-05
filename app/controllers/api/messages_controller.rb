@@ -7,7 +7,6 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     
     if @message.save
-
       Pusher.trigger(@message.channel_id.to_s, 'message', {
         messages: 
           { @message.id => {
@@ -19,7 +18,6 @@ class Api::MessagesController < ApplicationController
       })
       render 'api/messages/show'
     end
-    #add pusher
   end
   
   private
