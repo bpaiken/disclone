@@ -28,9 +28,9 @@
   /*cursor: pointer*/
 }
 
-.user-index-item:hover {
+/*.user-index-item:hover {
   background-color: rgba(30, 33, 36, .50) 
-}
+}*/
 
 .user-avatar-wrapper > img {
   width: 30px;
