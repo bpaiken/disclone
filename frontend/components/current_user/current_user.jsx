@@ -28,6 +28,7 @@ class CurrentUser extends React.Component {
 ///////////// CONTAINER ///////////////
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions.js';
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = ({currentUser}) => {
   return {
@@ -41,4 +42,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrentUser);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps)
+(CurrentUser);

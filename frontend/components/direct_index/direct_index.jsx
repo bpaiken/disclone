@@ -9,13 +9,13 @@ class DirectIndex extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.fetchDirects().then(({currentUser}) => {
-      Object.keys(currentUser.channels).each(channel => {
-        this.props.fetchMessages(channel.id);
-      })
-    });
-  }
+  // componentDidMount() {
+  //   this.props.fetchDirects().then(({currentUser}) => {
+  //     Object.keys(currentUser.channels).each(channel => {
+  //       this.props.fetchMessages(channel.id);
+  //     })
+  //   });
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId){
@@ -25,11 +25,9 @@ class DirectIndex extends React.Component {
   
 
   render() {
-    if (this.props.currentUser) {
-    //TODO: currentUser slice of state holds channels...refactor this
+    if (this.props.channels && this.props.currentUser) {
     let directs = this.props.currentUser.directs
-    let channels = this.props.currentUser.channels
-
+    let channels = this.props.channels
     return (
      <div className='channel-index'>
       
@@ -55,14 +53,16 @@ class DirectIndex extends React.Component {
   }
 }
 
-///////////  CONTAINER /////////////
+/////////////////////  CONTAINER ///////////////////////
 import {connect} from 'react-redux';
 import {fetchDirectChannels} from '../../actions/channel_actions.js'
 import {fetchMessages} from '../../actions/message_actions.js'
-// might need alot of state since this is initial component
-const mapStateToProps = ({currentUser}) => {
+
+
+const mapStateToProps = ({currentUser, channels}) => {
   return {
     currentUser,
+    channels,
   };
 };
 

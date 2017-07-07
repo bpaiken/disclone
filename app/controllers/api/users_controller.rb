@@ -6,7 +6,11 @@ class Api::UsersController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:id])
+  
+    render 'api/sessions/show'
   end
+
 
   def create
     @user = User.new(user_params)

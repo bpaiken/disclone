@@ -15,20 +15,13 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     
     case RECEIVE_CURRENT_USER:
-      // currentState = action.currentUser;
-      // return currentState;
       return merge(currentState, action.currentUser)
 
     case EDIT_USER: 
       return merge(currentState, action.currentUser)
-    
 
     case RECEIVE_CHANNELS:
       return merge(currentState, action.currentUser)
-    
-    // case RECEIVE_ERRORS:
-    //   currentState.errors = action.errors;
-    //   return currentState;
     
     default:
       return state;

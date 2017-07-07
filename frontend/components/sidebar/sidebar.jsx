@@ -6,15 +6,8 @@ import ServerIndexItem from './server_name'
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
-  
   }
 
-  componentDidMount() {
-    
-  }
-
-
-//currently mapping over each server vice the users subscribed servers
   render() {
     let servers = this.props.servers;
       return (
@@ -46,20 +39,12 @@ class Sidebar extends React.Component {
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////
-// container // 
+////////////////// CONTAINER /////////////////////////
 const mapStateToProps = (state) => {
   return {
     servers: state.servers,
   };
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-   
-//   }
-// }
 
 export default connect(
   mapStateToProps

@@ -13,106 +13,133 @@ class MessageIndex extends React.Component {
       cluster: 'us2',
       encrypted: true
     });
-   
-  this.state = {}
-}
 
-  componentDidMount() {
-    this.props.fetchMessages(this.props.match.params.channelId);
-    Pusher.logToConsole = true;
- 
-    let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
-    channel.bind('post_message', (data) => {
-      this.props.fetchMessages(this.props.match.params.channelId)
-    });
+    this.state = ({
+      messageBlocks: []
+    })
+
+    this.buildMessageBlocks = this.buildMessageBlocks.bind(this);
+    this.updateMessageBlocks = this.updateMessageBlocks.bind(this);
   }
 
-  componentDidUpdate() {
-    this.refs.scroll.scrollIntoView();
+  // needed for initial render
+  componentDidMount() {
+    this.props.fetchMessages(this.props.match.params.channelId);
+
+    this.buildMessageBlocks();
+
+    Pusher.logToConsole = true;
+    let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
+    channel.bind('message', (message) => {
+      this.props.dispatchMessage(message); // update global state
+      this.updateMessageBlocks(message); // update internal state
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId){
       this.props.fetchMessages(nextProps.match.params.channelId)
       
+      this.buildMessageBlocks(nextProps)
+      
       this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
       let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
-      channel.bind('post_message', (data) => {
-      this.props.fetchMessages(this.props.match.params.channelId)
-   })
+      channel.bind('message', (message) => {
+      this.props.dispatchMessage(message); // update global state
+      this.updateMessageBlocks(message); // update internal state
+      })
     }
+  }
+
+  componentDidUpdate() {
+    this.refs.scroll.scrollIntoView();
+  }
+
+  buildMessageBlocks(nextProps) {
+    let channelId = nextProps ? nextProps.match.params.channelId : this.props.match.params.channelId
+    let messages = this.props.messages
+    let messageArray = this.props.channels[channelId].messages
+    const messageBlocks = []
+    let block = []
+
+    for (let i = 0; i < messageArray.length; i++) {
+      let prevMessage = messages[messageArray[i - 1]]
+      let message = messages[messageArray[i]]
+      let nextMessage = messages[messageArray[i + 1]]
+      
+      if (i === 0) {
+        block.push(messages[messageArray[i]]) // first message
+      }
+
+      if (i !== 0 && prevMessage.userId === message.userId) {  // not first message AND message userId matches previous message userId
+        block.push(message)
+      }
+
+      if (i !== 0 && prevMessage.userId !== message.userId) {  // not first message AND previous message userId does not match message userId
+        messageBlocks.push(block)
+        block = []
+        block.push(message)  
+      }
+
+      if(i === messageArray.length - 1) { // last message
+        messageBlocks.push(block)
+        block = []  
+      }
+    }
+
+    this.setState({
+      messageBlocks: messageBlocks
+    })
+  }
+
+  updateMessageBlocks({ messages }) {
+    let messageBlocks = this.state.messageBlocks;
+    let message = messages[Object.keys(messages)[0]];
+
+    if (messageBlocks.length) {
+      var lastBlock = messageBlocks[messageBlocks.length - 1];
+      var lastMessage = lastBlock[lastBlock.length - 1];
+    
+      if (message.userId === lastMessage.userId) {
+        lastBlock.push(message);
+      } else {
+        messageBlocks.push([message]);
+      }
+    } else {
+       messageBlocks.push([message]); // need if channel has no messages
+    }
+      
+    this.setState({ messageBlocks: messageBlocks});
   }
 
   render() {
     let channelId = this.props.match.params.channelId
     let serverId = this.props.match.params.serverId
-    if (this.props.channels[channelId] && 
-        Object.keys(this.props.channels).length &&
-        this.props.channels[channelId].messages.length && 
+
+    if (this.props.channels[channelId] &&                   //check for current channel
+        // Object.keys(this.props.channels).length &&       // check for channels
+        this.props.channels[channelId].messages.length &&   
         Object.keys(this.props.messages).length) {
-    // if (Object.keys(this.props.messages).length) {
+
       let messageArray = this.props.channels[channelId].messages
-      // let messageBlocks = [];
       let messageBlock = []
       let messages = this.props.messages;
       
-      //TODO: refactor that disgusting Messageblock logic... use internal state so not mapping over entire message array ever time 
-     
       return (
-      <div className='message-index-wrapper'>
-        <ul className="scroll-y">
-
-            {messageArray.map((key, i) => {
-              if (i !== messageArray.length - 1 // if not last key 
-               &&
-                (!messageBlock[0] // message block is empty
-                || messageBlock[0].userId === messages[key].userId )) { //first message in message block user id  = to message user id
-
-                messageBlock.push(messages[key])
-               
-                if ( messages[messageArray[i+1]] && messages[key] && messages[key].userId !== messages[messageArray[i+1]].userId) {
-                   let messageProps = messageBlock.slice(0)
-                messageBlock = []
-                return <MessageBlockContainer key={key} serverId={serverId}
-                channelId={channelId} messages={messageProps} />
-                }
-
-                  if (messageBlock[0] && i === messageArray.length - 2 &&
-                  messageBlock[0].userId !== messages[messageArray[messageArray.length-1]].userId) { // last message user id not = to current block user id
-                    let messageProps = messageBlock.slice(0)
-                messageBlock = []
-                return <MessageBlockContainer key={key} serverId={serverId}
-                channelId={channelId} messages={messageProps} />
-              }
-              } else {
-                  if (i === messageArray.length - 2 &&
-                  messages[key].userId !== messages[messageArray[messageArray.length-1]].userId) { // last message user id not = to current block user id
-                messageBlock.push(messages[key])
-                
-                let messageProps = messageBlock.slice(0)
-                messageBlock = []
-                return <MessageBlockContainer key={key} serverId={serverId}
-                channelId={channelId} messages={messageProps} />
-              }
-                  
-                  if (messageArray.length - 1 === i) { // if last key
-                    messageBlock.push(messages[key]);
-                    return <MessageBlockContainer key={key} serverId={serverId}
-                  channelId={channelId} messages={messageBlock} />
-                  } 
-                let messageProps = messageBlock.slice(0)
-                messageBlock = []
-                messageBlock.push(messages[key]);
-                return <MessageBlockContainer key={key} serverId={serverId}
-                channelId={channelId} messages={messageProps} />
-                }
+        <div className='message-index-wrapper'>
+          <ul className="scroll-y">
+            {this.state.messageBlocks.map((block,i) => {
+              return <MessageBlockContainer key={i} serverId={serverId}
+                      channelId={channelId} messages={block} />
             })}
+
             <div ref='scroll'></div>
-        </ul>
-        <MessageBarContainer />
-      </div>
+          </ul>
+          <MessageBarContainer />
+        </div>
       );
     }
+
     return (
       <div className='no-messages'>
         <div className='no-messages-text'>no messages...yet</div>
@@ -123,7 +150,8 @@ class MessageIndex extends React.Component {
   }
 }
 
-///////////////////////  CONTAINER  /////////////////////////////////
+///////////////////////  CONTAINER  //////////////////////////////
+import { receiveMessages } from '../../actions/message_actions.js'
 
 const mapStateToProps = ({ messages, channels },{ match })  => {
   return {
@@ -137,6 +165,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
   fetchMessages: (channelId) => dispatch(fetchMessages(channelId)),
   fetchServer: (serverId) => dispatch(fetchServer(serverId)),
+  dispatchMessage: (message) => dispatch(receiveMessages(message)),
   }
 }
 

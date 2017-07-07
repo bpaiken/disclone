@@ -68,6 +68,12 @@ placeholder picture
 
 ### Edit User Avatar
 
+User avatars are displayed with the users username in several locations throughout the application.  Users have the option to edit their avatar by uploading files from their own device.  The is accomplished through the `EditUser` component, a modal that is opened by clicking the cog button in the `CurrentUser` component.  Users are able to preview an uploaded image prior to saving the change.  
+
+picture placeholder
+
+Upon uploading and saving an avatar image, the image is sent to the database via an ajax post.  Rather than save the image in the local database, the Ruby gem Paperclip is used to post the image to an Amazon Simple Storage Service (S3) bucket.  The image url is than saved as a property on the user model.
+
 ## Future of the Project
 
 ### Message Search
