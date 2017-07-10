@@ -55,22 +55,30 @@ def create
   end
 ```
 
+### Message Blocks
+
 ### Create Server Channels 
 
 Server channels belong to servers, and have many messages.  Server channels can be accessed by any users that subscribe to the server that holds the channel. All servers are created with a channel named 'general', but users have the ability to create new channels for each server.  Users also have the ability to edit those channels' names and topics.  This is done through the create & edit channel modals.
 
-placeholder picture
+![alt text][create_edit_channel]
+
+[create_edit_channel]: ./docs/gifs/create_edit_channel.gif
 
 ### Start Direct/Group Channels
 Unlike server channels (which are accessible by all users subscribed to the server), direct and group messages are only accessible by the users selected during channel creation.  Any user can create a direct channel through the UserSearch component, which is accessed by through the direct channel index and 'Start a Conversation' feature.  The UserSearch component allows users to search for and select other users to be included in a direct/group channel.
 
-placeholder picture
+![alt text][direct_message]
+
+[direct_message]: ./docs/gifs/direct_message.gif
 
 ### Edit User Avatar
 
 User avatars are displayed with the users username in several locations throughout the application.  Users have the option to edit their avatar by uploading files from their own device.  The is accomplished through the `EditUser` component, a modal that is opened by clicking the cog button in the `CurrentUser` component.  Users are able to preview an uploaded image prior to saving the change.  
 
-picture placeholder
+![alt text][edit_user]
+
+[edit_user]: ./docs/gifs/edit_user.gif
 
 Upon uploading and saving an avatar image, the image is sent to the database via an ajax post.  Rather than save the image in the local database, the Ruby gem Paperclip is used to post the image to an Amazon Simple Storage Service (S3) bucket.  The image url is than saved as a property on the user model.
 
