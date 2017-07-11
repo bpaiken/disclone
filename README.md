@@ -57,6 +57,78 @@ def create
 
 ### Message Blocks
 
+Messages are displayed and managed by the `MessageIndex` component.  Rather than display each message individually, messages are organized into blocks.  Message blocks are used to display one or more consecutive messages by an individual user, as well as that user's avatar, username, and a message timestamp.  
+
+![alt text][message_block]
+
+[message_block]: ./docs/images/message_block.png
+
+When switching channels, the messages belonging to that channel are sorted in the `buildMessageBlocks` function.  This method sorts users' consecutive messages into arrays, and sets the `MessageIndex` internal state `messageBlocks` to an array holding all of the message arrays.  
+
+```javascript
+buildMessageBlocks() {
+  ...
+  const messageBlocks = []
+  let block = []
+
+  for (let i = 0; i < messageArray.length; i++) {
+    let prevMessage = messages[messageArray[i - 1]]
+    let message = messages[messageArray[i]]
+    let nextMessage = messages[messageArray[i + 1]]
+    
+    // first message
+    if (i === 0) {
+      block.push(messages[messageArray[i]]) 
+    }
+
+      // not first message AND message userId matches previous message userId
+    if (i !== 0 && prevMessage.userId === message.userId) { 
+      block.push(message)
+    }
+
+    // not first message AND previous message userId does not match message userId
+    if (i !== 0 && prevMessage.userId !== message.userId) {  
+      messageBlocks.push(block)
+      block = []
+      block.push(message)  
+    }
+
+    // last message
+    if(i === messageArray.length - 1) {
+      messageBlocks.push(block)
+      block = []  
+    }
+  }
+
+  this.setState({
+    messageBlocks: messageBlocks
+  })
+}
+```
+
+When the `MessageIndex` component renders, each array of messages is passed to a `MessageBlock` component.  The `MessageBlock` component does the work of actually building each individual block based on the array of messages it receives.
+
+```javascript
+render() {
+   ...
+      return (
+        <div className='message-index-wrapper'>
+          <ul className="scroll-y">
+            {this.state.messageBlocks.map((block,i) => {
+              return <MessageBlockContainer key={i} serverId={serverId}
+                      channelId={channelId} messages={block} />
+            })}
+
+            <div ref='scroll'></div>
+          </ul>
+          <MessageBarContainer />
+        </div>
+      );
+    }
+```
+
+When a new message is received, the `messageBlocks` slice of internal state is updated.  The new message's `userId` is compared to the previous message's `userId` to determine whether it warrants or its own message block or should be pushed into the previous message block.
+
 ### Create Server Channels 
 
 Server channels belong to servers, and have many messages.  Server channels can be accessed by any users that subscribe to the server that holds the channel. All servers are created with a channel named 'general', but users have the ability to create new channels for each server.  Users also have the ability to edit those channels' names and topics.  This is done through the create & edit channel modals.
@@ -85,5 +157,10 @@ Upon uploading and saving an avatar image, the image is sent to the database via
 ## Future of the Project
 
 ### Message Search
+  Search through the message history of all messages pertaining to the current user (i.e., belonging to channels or direct channels that user has access too).
+
+### Notifications
+  Add notifications for various events such as a new user joining a server, new messages on a direct channel, and another user creating a direct channel that the current user is included on.
 
 ### Live Voice Chat
+  Implement voice channels via Pusher and webRTC.  Users can join into a voice channel and communicate with other users who are currently dialed into that voice channel.
