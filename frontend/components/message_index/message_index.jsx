@@ -67,21 +67,25 @@ class MessageIndex extends React.Component {
       let message = messages[messageArray[i]]
       let nextMessage = messages[messageArray[i + 1]]
       
+      // first message
       if (i === 0) {
-        block.push(messages[messageArray[i]]) // first message
+        block.push(messages[messageArray[i]]) 
       }
 
-      if (i !== 0 && prevMessage.userId === message.userId) {  // not first message AND message userId matches previous message userId
+       // not first message AND message userId matches previous message userId
+      if (i !== 0 && prevMessage.userId === message.userId) { 
         block.push(message)
       }
 
-      if (i !== 0 && prevMessage.userId !== message.userId) {  // not first message AND previous message userId does not match message userId
+      // not first message AND previous message userId does not match message userId
+      if (i !== 0 && prevMessage.userId !== message.userId) {  
         messageBlocks.push(block)
         block = []
         block.push(message)  
       }
 
-      if(i === messageArray.length - 1) { // last message
+      // last message
+      if(i === messageArray.length - 1) {
         messageBlocks.push(block)
         block = []  
       }
@@ -116,8 +120,7 @@ class MessageIndex extends React.Component {
     let channelId = this.props.match.params.channelId
     let serverId = this.props.match.params.serverId
 
-    if (this.props.channels[channelId] &&                   //check for current channel
-        // Object.keys(this.props.channels).length &&       // check for channels
+    if (this.props.channels[channelId] &&                   
         this.props.channels[channelId].messages.length &&   
         Object.keys(this.props.messages).length) {
 
