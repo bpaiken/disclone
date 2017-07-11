@@ -15,11 +15,7 @@ class CreateServer extends React.Component {
 
 
   handleSubmit() {
-
     this.props.createServer(this.state)
-    // .then(() => this.props.history.push('/')) // for testing
-    //.then(()) => this.props.history.push(/newserverdefaultchannelid)
-    // get the new default channel idea from the response! mod jbuilder if you need too
 }
 
   update(field) {
@@ -50,7 +46,6 @@ class CreateServer extends React.Component {
   } 
 }
 
-// export default CreateServer;
 
 const mapStateToProps = (state, ownProps) => {
   return {
