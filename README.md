@@ -78,7 +78,7 @@ User avatars are displayed with the users username in several locations througho
 
 ![alt text][edit_user]
 
-[edit_user]: ./docs/gifs/edit_user.gif
+[edit_user]: ./docs/gifs/edit_avatar.gif
 
 Upon uploading and saving an avatar image, the image is sent to the database via an ajax post.  Rather than save the image in the local database, the Ruby gem Paperclip is used to post the image to an Amazon Simple Storage Service (S3) bucket.  The image url is than saved as a property on the user model.
 
