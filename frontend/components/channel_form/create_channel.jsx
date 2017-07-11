@@ -30,7 +30,12 @@ class CreateChannel extends React.Component {
   }
     
   closeModal(e) {
-    this.setState({ modal: { modalId: 'closed', overlayId: 'closed'} })
+    this.setState(
+      { 
+        name: "",
+        topic: "",
+        modal: { modalId: 'closed', overlayId: 'closed'} 
+      })
   }
   
   handleSubmit(e) {
@@ -72,11 +77,11 @@ class CreateChannel extends React.Component {
               </div>
               
               <label className="create-channel-label">channel name</label>
-              <input className="create-channel-input" type="text"
+              <input className="create-channel-input" type="text" value={this.state.name}
                 onChange={this.update('name')}/>
 
               <label className="create-channel-label">channel topic</label>
-              <input className="create-channel-input" type="text"
+              <input className="create-channel-input" type="text" value={this.state.topic}
                 onChange={this.update('topic')}/>
               <div className="footer">
                 <span className='cancel-modal' onClick={this.closeModal}>Cancel</span >
