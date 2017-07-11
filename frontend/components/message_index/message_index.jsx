@@ -28,7 +28,7 @@ class MessageIndex extends React.Component {
 
     this.buildMessageBlocks();
 
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
     let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('message', (message) => {
       this.props.dispatchMessage(message); // update global state
