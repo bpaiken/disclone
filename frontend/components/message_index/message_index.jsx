@@ -22,13 +22,11 @@ class MessageIndex extends React.Component {
     this.updateMessageBlocks = this.updateMessageBlocks.bind(this);
   }
 
-  // needed for initial render
   componentDidMount() {
     this.props.fetchMessages(this.props.match.params.channelId);
 
     this.buildMessageBlocks();
 
-    Pusher.logToConsole = true;
     let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('message', (message) => {
       this.props.dispatchMessage(message); // update global state
