@@ -20,25 +20,7 @@ class Api::ChannelsController < ApplicationController
           Direct.create(user_id: id, channel_id: channel_id) 
         end
 
-          user_ids.each do |id|
-          next if current_user.id == id
-          Pusher.trigger('user' + id.to_s, 'newChannel', {
-            channels: {
-              @channel.id => {
-                messages: @channel.messages.map(&:id),
-                name: @channel.name,
-                id: @channel.id,
-                topic: @channel.topic,
-                direct: @channel.direct,
-                serverId: @channel.server_id,
-                users: @channel.users.map(&:id),
-              }
-            },
-            currentUser: {
-              directs: User.find(id).channels.pluck(:id)
-            }
-          })
-          end
+        push_direct_channel(@channel, user_ids)
         render '/api/channels/show'
       else
         render json: @channel.errors.full_messages
@@ -55,7 +37,6 @@ class Api::ChannelsController < ApplicationController
         render json: @channel.errors.full_messages
       end
     end 
-     
   end
 
   def update
@@ -73,6 +54,28 @@ class Api::ChannelsController < ApplicationController
   private
   def channel_params
     params.require(:channel).permit(:topic, :name, :direct, :server_id)
+  end
+
+  def push_direct_channel(channel, user_ids)
+    user_ids.each do |id|
+    next if current_user.id == id
+    Pusher.trigger('user' + id.to_s, 'newChannel', {
+      channels: {
+        channel.id => {
+          messages: @channel.messages.map(&:id),
+          name: channel.name,
+          id: channel.id,
+          topic: channel.topic,
+          direct: channel.direct,
+          serverId: channel.server_id,
+          users: channel.users.map(&:id),
+        }
+      },
+      currentUser: {
+        directs: User.find(id).channels.pluck(:id)
+      }
+    })
+    end  
   end
 
   def push_server_channel(channel)

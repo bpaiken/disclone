@@ -6,7 +6,7 @@ class MessageBlock extends React.Component {
     super(props);
   }
 
-  componentwill
+
 
   render() {
     if (    

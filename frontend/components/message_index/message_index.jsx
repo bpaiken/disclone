@@ -25,8 +25,8 @@ class MessageIndex extends React.Component {
 
     let channel = pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('message', (message) => {
-      this.props.dispatchMessage(message); // update global state
-      this.updateMessageBlocks(message); // update internal state
+      this.buildMessageBlocks()
+      this.props.dispatchMessage(message)
     })
   }
 
@@ -38,9 +38,11 @@ class MessageIndex extends React.Component {
       
       pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
       let channel =  pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
+      let dispatchMessage = this.props.dispatchMessage
+
       channel.bind('message', (message) => {
-      this.props.dispatchMessage(message); // update global state
-      this.updateMessageBlocks(message); // update internal state
+        this.updateMessageBlocks(message) //update internal state
+        this.props.dispatchMessage(message) //update global state
       })
     }
   }
@@ -84,19 +86,19 @@ class MessageIndex extends React.Component {
         block = []  
       }
     }
-    debugger
+    
     this.setState({
       messageBlocks: messageBlocks
     })
-    debugger
+    
   }
 
   updateMessageBlocks({ messages }) {
     let messageBlocks = this.state.messageBlocks;
     let message = messages[Object.keys(messages)[0]];
-    debugger
+    
     if (messageBlocks.length) {
-      var lastBlock = messageBlocks[messageBlocks.length - 1].slice(0)
+      var lastBlock = messageBlocks[messageBlocks.length - 1]
       var lastMessage = lastBlock[lastBlock.length - 1]
     
       if (message.userId === lastMessage.userId) {
@@ -107,7 +109,7 @@ class MessageIndex extends React.Component {
     } else {
        messageBlocks.push([message]); // need if channel has no messages
     }
-    debugger   
+       
     this.setState({ messageBlocks: messageBlocks});
   }
 
@@ -121,7 +123,7 @@ class MessageIndex extends React.Component {
 
       let messageArray = this.props.channels[channelId].messages
       let messages = this.props.messages;
-      debugger
+      
       return (
         <div className='message-index-wrapper'>
           <ul className="scroll-y">
@@ -170,3 +172,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(MessageIndex)
+
+
+
