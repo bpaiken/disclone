@@ -1,19 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchMessages } from '../../actions/message_actions.js';
-import MessageBarContainer from './message_bar';
-import { fetchServer } from '../../actions/server_actions.js';
-import MessageBlockContainer from './message_block';
+import React from 'react'
+import { connect } from 'react-redux'
+import { fetchMessages } from '../../actions/message_actions.js'
+import MessageBarContainer from './message_bar'
+import { fetchServer } from '../../actions/server_actions.js'
+import MessageBlockContainer from './message_block'
+import { pusher } from '../../util/pusher.js'
 
 class MessageIndex extends React.Component {
   constructor(props) {
-    super(props);
-    
-    this.pusher = new Pusher('05f19b135aba7470dff0', {
-      cluster: 'us2',
-      encrypted: true
-    });
-
+    super(props)
+   
     this.state = ({
       messageBlocks: []
     })
@@ -25,14 +21,13 @@ class MessageIndex extends React.Component {
   componentDidMount() {
     this.props.fetchMessages(this.props.match.params.channelId);
 
-    this.buildMessageBlocks();
+    this.buildMessageBlocks()
 
-    // Pusher.logToConsole = true;
-    let channel = this.pusher.subscribe(this.props.match.params.channelId.toString());
+    let channel = pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('message', (message) => {
       this.props.dispatchMessage(message); // update global state
       this.updateMessageBlocks(message); // update internal state
-    });
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,8 +36,8 @@ class MessageIndex extends React.Component {
       
       this.buildMessageBlocks(nextProps)
       
-      this.pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
-      let channel =  this.pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
+      pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
+      let channel =  pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
       channel.bind('message', (message) => {
       this.props.dispatchMessage(message); // update global state
       this.updateMessageBlocks(message); // update internal state
@@ -89,19 +84,20 @@ class MessageIndex extends React.Component {
         block = []  
       }
     }
-
+    debugger
     this.setState({
       messageBlocks: messageBlocks
     })
+    debugger
   }
 
   updateMessageBlocks({ messages }) {
     let messageBlocks = this.state.messageBlocks;
     let message = messages[Object.keys(messages)[0]];
-
+    debugger
     if (messageBlocks.length) {
-      var lastBlock = messageBlocks[messageBlocks.length - 1];
-      var lastMessage = lastBlock[lastBlock.length - 1];
+      var lastBlock = messageBlocks[messageBlocks.length - 1].slice(0)
+      var lastMessage = lastBlock[lastBlock.length - 1]
     
       if (message.userId === lastMessage.userId) {
         lastBlock.push(message);
@@ -111,7 +107,7 @@ class MessageIndex extends React.Component {
     } else {
        messageBlocks.push([message]); // need if channel has no messages
     }
-      
+    debugger   
     this.setState({ messageBlocks: messageBlocks});
   }
 
@@ -124,9 +120,8 @@ class MessageIndex extends React.Component {
         Object.keys(this.props.messages).length) {
 
       let messageArray = this.props.channels[channelId].messages
-      let messageBlock = []
       let messages = this.props.messages;
-      
+      debugger
       return (
         <div className='message-index-wrapper'>
           <ul className="scroll-y">

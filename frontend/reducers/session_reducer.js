@@ -7,6 +7,7 @@ const initialState = {
     id: null,
     username: "",
     servers: [],
+    directs: [],
   };
 
 const sessionReducer = (state = initialState, action) => {
@@ -15,6 +16,7 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     
     case RECEIVE_CURRENT_USER:
+      currentState.directs = [] // needed to clear out previous users directs on logout
       return merge(currentState, action.currentUser)
 
     case EDIT_USER: 

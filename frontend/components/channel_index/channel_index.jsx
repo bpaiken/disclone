@@ -1,17 +1,23 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchServer } from '../../actions/server_actions.js';
-import {fetchMessages} from '../../actions/message_actions.js';
-import { Link } from 'react-router-dom';
-import CreateChannelContainer from '../channel_form/create_channel.jsx';
-import EditChannelContainer from '../channel_form/edit_channel.jsx';
-import CurrentUserContainer from '../current_user/current_user';
+import React from 'react'
+import { pusher } from '../../util/pusher.js'
+import { Link } from 'react-router-dom'
+import CreateChannelContainer from '../channel_form/create_channel.jsx'
+import EditChannelContainer from '../channel_form/edit_channel.jsx'
+import CurrentUserContainer from '../current_user/current_user'
 
 class ChannelIndex extends React.Component {
   constructor(props) {
     super(props);
    
     this.state = {}
+  }
+
+  componentDidMount() {
+
+    let channel = pusher.subscribe('server'+ this.props.match.params.serverId);
+    channel.bind('newChannel', (channel) => {
+      this.props.dispatchChannel(channel)  
+    })
   }
 
   render() {
@@ -49,19 +55,26 @@ class ChannelIndex extends React.Component {
 }
 
 ///////////////////////  CONTAINER  /////////////////////////////
-const mapStateToProps = ({ servers, channels }, { match })  => {
+import { connect } from 'react-redux'
+import { fetchServer } from '../../actions/server_actions.js'
+import { fetchMessages } from '../../actions/message_actions.js'
+import { receiveChannels } from '../../actions/channel_actions.js'
+
+const mapStateToProps = ({ servers, channels, currentUser }, { match })  => {
   return {
     servers,
     channels,
+    currentUser,
     match, 
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchServer: (serverId) => dispatch(fetchServer(serverId)), 
-  };
-};
+    fetchServer: (serverId) => dispatch(fetchServer(serverId)),
+    dispatchChannel: (channel) => dispatch(receiveChannels(channel))
+  }
+}
 
 export default connect(
   mapStateToProps,

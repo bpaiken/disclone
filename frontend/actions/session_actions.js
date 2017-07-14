@@ -9,7 +9,8 @@ const nullUser = {
     id: null,
     username: "",
     servers: [],
-    avatar_url: ""
+    avatar_url: "",
+    directs: [],
   } 
 }
 
