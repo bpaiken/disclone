@@ -29,7 +29,6 @@ class MessageBar extends React.Component {
       this.setState({ body: e.currentTarget.value });
     }
   
-
   render() {
     if (this.props.channel) {
 
@@ -49,9 +48,7 @@ class MessageBar extends React.Component {
   }
 }
 
-
 /////////////CONTAINER/////////////////
-
 const mapStateToProps = ({ currentUser, channels }, ownProps) => {
   return {
     currentUser,

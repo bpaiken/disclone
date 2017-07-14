@@ -42,9 +42,6 @@ class EditUser extends React.Component {
     if (file) {
       reader.readAsDataURL(file);
     }
-    // } else {
-    //   this.setState({ imageUrl: "", imageFile: null })
-    // }
   }
 
   handleSubmit(e) {
@@ -54,8 +51,6 @@ class EditUser extends React.Component {
     formData.append('user[avatar]', this.state.avatarFile)
     
     let id = this.props.currentUser.id
-    
-
     this.props.patchUser(formData, id);
     this.closeModal();
   }
@@ -76,7 +71,6 @@ class EditUser extends React.Component {
   closeModal(e) {
     this.setState({ modal: { modalId: 'closed', overlayId: 'closed'} })
   }
-
 
   render() {
     let currentUser = this.props.currentUser;
@@ -134,7 +128,7 @@ const mapStateToProps = ({currentUser}) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return{
+  return {
     patchUser: (user, id) => dispatch(patchUser(user,id)),
   }
 }

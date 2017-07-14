@@ -18,13 +18,12 @@ class ChannelIndex extends React.Component {
     let serverId = this.props.match.params.serverId
     let servers = this.props.servers
     if (Object.keys(this.props.channels).length !== 0 && 
-    this.props.channels[servers[serverId].channels[0]]) { //check if the channels in state is the right group of channels
+    this.props.channels[servers[serverId].channels[0]]) {
       let channelArray = this.props.servers[serverId].channels
       return (
         <div className='channel-index'>
           <header className='server-header' >
             <span className='server-header-text'>{this.props.servers[serverId].name}</span>
-            {/*<i className="fa fa-angle-down" aria-hidden="true"></i>*/}
           </header>
 
             <CreateChannelContainer />
