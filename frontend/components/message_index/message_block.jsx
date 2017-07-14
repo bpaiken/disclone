@@ -5,9 +5,7 @@ class MessageBlock extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
-
+  
   render() {
     if (    
         Object.keys(this.props.users).length && // check for empty users object
