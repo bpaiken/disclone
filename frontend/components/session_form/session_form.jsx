@@ -45,9 +45,6 @@ class SessionForm extends React.Component {
 
   loginGuest() {
     this.props.submitForm({password: 'password', username: 'guest'})
-    .then(() => {
-       this.props.history.push('/app/directs');
-    })
   }
 
   render() {

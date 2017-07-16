@@ -40,7 +40,6 @@ class Core extends React.Component {
         <Route path="/app/directs/:channelId" component={MessageIndexContainer} />
         
         <Route path="/app/channels/:serverId/:channelId" component={UserIndexContainer} />
-        {/*<Route path="/app/directs/:channelId" component={UserIndexContainer} />*/}
         </div>
       </div>
     </div>
