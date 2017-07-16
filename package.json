@@ -44,7 +44,6 @@
     "react-router-dom": "^4.1.1",
     "react-skylight": "^0.4.2",
     "redux": "^3.7.0",
-    
     "redux-thunk": "^2.2.0",
     "uglify-js": "^3.0.25",
     "uglifyjs": "^2.4.11",
