@@ -44,8 +44,14 @@
     "react-router-dom": "^4.1.1",
     "react-skylight": "^0.4.2",
     "redux": "^3.7.0",
-    "redux-logger": "^3.0.6",
+    
     "redux-thunk": "^2.2.0",
+    "uglify-js": "^3.0.25",
+    "uglifyjs": "^2.4.11",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.0.0"
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6",
   }
 }

@@ -25,7 +25,7 @@ class MessageIndex extends React.Component {
 
     let channel = pusher.subscribe(this.props.match.params.channelId.toString());
     channel.bind('message', (message) => {
-      this.buildMessageBlocks()
+      this.updateMessageBlocks(message)
       this.props.dispatchMessage(message)
     })
   }
