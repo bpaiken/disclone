@@ -16,7 +16,6 @@ class Sidebar extends React.Component {
     })
   }
   
-
   render() {
     let servers = this.props.servers;
       return (
