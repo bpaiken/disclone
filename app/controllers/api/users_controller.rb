@@ -17,6 +17,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
+      push_user(@user)
       render "api/sessions/show"
     else
       render json: @user.errors.full_messages, status: 422
@@ -33,4 +34,17 @@ class Api::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password, :avatar)
   end
+
+  def push_user(user)
+    Pusher.trigger('users', 'newUser', {
+      users: {
+        user.id => {
+          id: user.id,
+          username: user.username,
+          avatarUrl: ActionController::Base.helpers.asset_path(user.avatar.url)
+        }
+      }
+    })
+  end
+
 end

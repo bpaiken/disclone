@@ -2,11 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ServerIndexItem from './server_name'
+import { pusher } from '../../util/pusher.js'
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
   }
+
+  componentDidMount() {
+    let channel = pusher.subscribe('users')
+    channel.bind('newUser', (user) => {
+      this.props.receiveUser(user)
+    })
+  }
+  
 
   render() {
     let servers = this.props.servers;
@@ -40,12 +49,21 @@ class Sidebar extends React.Component {
 }
 
 ////////////////// CONTAINER /////////////////////////
+import { receiveUsers } from '../../actions/user_actions.js'
+
 const mapStateToProps = (state) => {
   return {
     servers: state.servers,
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    receiveUser: (user) => dispatch(receiveUsers(user)), 
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Sidebar)

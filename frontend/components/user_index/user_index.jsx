@@ -6,13 +6,10 @@ class UserIndex extends React.Component {
   }
 
   //TODO: update to fetchUsers (should be users index action)
-   componentDidMount() {
+  componentDidMount() {
     if (this.props.match.params.serverId) {
       this.props.fetchServer(this.props.match.params.serverId);
     }
-    // } else {
-    //   // need to get users that belong to channel
-    // }
   }
 
   render () {
@@ -44,8 +41,9 @@ class UserIndex extends React.Component {
 
 
 //////////////  CONTAINER ///////////
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { fetchServer } from '../../actions/server_actions.js'
+
 
 const mapStateToProps = ({ servers, users }, ownProps) => {
   return {
@@ -56,11 +54,11 @@ const mapStateToProps = ({ servers, users }, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchServer: (serverId) => dispatch(fetchServer(serverId)), 
-  };
-};
+    fetchServer: (serverId) => dispatch(fetchServer(serverId)),
+  }
+}
 
 export default connect(
   mapStateToProps, 
   mapDispatchToProps
-)(UserIndex);
+)(UserIndex)
