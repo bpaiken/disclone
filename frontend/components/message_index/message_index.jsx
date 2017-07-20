@@ -20,8 +20,6 @@ class MessageIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchMessages(this.props.match.params.channelId);
-    console.log(this.props.match)
-    
     this.buildMessageBlocks()
 
     let channel = pusher.subscribe(this.props.match.params.channelId.toString());
@@ -34,7 +32,6 @@ class MessageIndex extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.buildMessageBlocks(nextProps)
     if (this.props.match.params.channelId !== nextProps.match.params.channelId){
-      console.log(this.props.match)
       this.props.fetchMessages(nextProps.match.params.channelId)
       // .then(this.buildMessageBlocks(nextProps))
       
