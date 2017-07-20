@@ -21,6 +21,10 @@
   letter-spacing: .8px;
 }
 
+li.user-index-item {
+  margin: 15px 0;
+}
+
 .user-index-item {
   display: flex;
   justify-content: flex-start;
@@ -36,6 +40,8 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
+  position: relative;
+  bottom: 15px;
 }
 
 .index-username-control {

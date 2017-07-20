@@ -20,7 +20,8 @@ class MessageIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchMessages(this.props.match.params.channelId);
-
+    console.log(this.props.match)
+    
     this.buildMessageBlocks()
 
     let channel = pusher.subscribe(this.props.match.params.channelId.toString());
@@ -31,10 +32,11 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.buildMessageBlocks(nextProps)
     if (this.props.match.params.channelId !== nextProps.match.params.channelId){
+      console.log(this.props.match)
       this.props.fetchMessages(nextProps.match.params.channelId)
-      
-      this.buildMessageBlocks(nextProps)
+      // .then(this.buildMessageBlocks(nextProps))
       
       pusher.unsubscribe(this.props.match.params.channelId.toString()) // unsubscribe from previous channel
       let channel =  pusher.subscribe(nextProps.match.params.channelId.toString()); //subscribe to new channel
@@ -53,8 +55,8 @@ class MessageIndex extends React.Component {
 
   buildMessageBlocks(nextProps) {
     let channelId = nextProps ? nextProps.match.params.channelId : this.props.match.params.channelId
-    let messages = this.props.messages
-    let messageArray = this.props.channels[channelId].messages
+    let messages = nextProps ? nextProps.messages : this.props.messages
+    let messageArray = nextProps ? nextProps.channels[channelId].messages : this.props.channels[channelId].messages
     const messageBlocks = []
     let block = []
 
