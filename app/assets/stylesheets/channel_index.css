@@ -181,6 +181,7 @@
   cursor: pointer;
 }
 
+
 .direct-link-wrapper:hover {
   background-color: rgba(30, 33, 36, .50)
 }
@@ -192,7 +193,13 @@
 .direct-index-name {
   color: #72767d;
   margin-left: 10px;
+  background: transparent
 }
+
+#selected-direct {
+  background-color: rgba(79,84,92,.6);
+}
+
 
 .index-item-control {
   display: flex;
@@ -211,4 +218,8 @@
   color: white;
   display: inline-table;
   text-align: center;
+}
+
+#selected-name {
+  color: white;
 }

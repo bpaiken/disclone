@@ -30,16 +30,18 @@ class DirectIndexItem extends React.Component {
       let Item;
       let channel = this.props.channel;
       let channelUsers = this.props.channel.users;
+      let selected = this.props.selected === '' ? '' : 'selected-name'
+      
       if (channelUsers.length > 2) {
        Item = () => (
          <div className='index-item-control'>
           <div className='group-message-control circle-base'>
-          <i className="fa fa-users fa-lg circle-base group-message-icon" aria-hidden="true"></i>
-
+            <i className="fa fa-users fa-lg circle-base group-message-icon" aria-hidden="true"></i>
           </div>
-          <div className='direct-index-name'>{this.channelUserNames()}</div>
+          <div className='direct-index-name' id={selected}>{this.channelUserNames()}</div>
          </div>
        )
+
       } else if (channelUsers.length === 1) {
           return null;
           //TODO: take a look at/refactor...possible validation needed.
@@ -48,12 +50,10 @@ class DirectIndexItem extends React.Component {
        Item = () => (
           <div className='index-item-control'>
             <img src={users[friendId].avatarUrl} alt=""/>
-            <div className='direct-index-name'>{users[friendId].username}</div>
+            <div className='direct-index-name' id={selected}>{users[friendId].username}</div>
           </div>
           )
       }
-
-
 
     return (
       <div className='direct-index-item-wrapper'>

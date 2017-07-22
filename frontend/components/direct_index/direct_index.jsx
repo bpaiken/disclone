@@ -28,20 +28,24 @@ class DirectIndex extends React.Component {
     if (this.props.channels && this.props.currentUser) {
     let directs = this.props.currentUser.directs
     let channels = this.props.channels
+    let currentChannel = Number(this.props.location.pathname.split('/app/directs/')[1])
     return (
      <div className='channel-index'>
       
           <UserSearch /> 
           
           <ul>
-          {directs.map((key) => (
+          {directs.map((key) => {
+            let selected = key === currentChannel ? 'selected-direct' : ''
+            return (
             <Link key={key} to={`/app/directs/${key}`}>
-            <li className='direct-link-wrapper'>
-              <DirectIndexItem channel={channels[key]} className='direct-name'
-              currentUserId={this.props.currentUser.id} /> 
-            </li>
+              <li className='direct-link-wrapper' id={selected}>
+                <DirectIndexItem channel={channels[key]} className='direct-name'
+                currentUserId={this.props.currentUser.id} selected={selected} /> 
+              </li>
             </Link>
-          ))}
+            )
+          })}
 
           </ul>
           <CurrentUserContainer />

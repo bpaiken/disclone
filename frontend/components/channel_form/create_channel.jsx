@@ -1,4 +1,5 @@
 import React from 'react';
+import { pusher } from '../../util/pusher.js'
 
 class CreateChannel extends React.Component {
   constructor(props){
@@ -40,7 +41,7 @@ class CreateChannel extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-
+    pusher.unsubscribe(this.props.match.params.channelId.toString())
     let state = this.state;
     state.serverId = this.props.match.params.serverId
     this.props.createChannel(state)

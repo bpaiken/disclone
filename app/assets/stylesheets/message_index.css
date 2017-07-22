@@ -92,11 +92,10 @@
 }
 
 .no-messages-text {
-  top: 30px;
-  left: 21px;
-  position: relative;
-  width: 20em;
+  margin-top: 10px;
+  margin-left: 5px;
   height: auto;
   color: #686a6e;
   font-size: 24px;
+  
 }
