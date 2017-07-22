@@ -43,7 +43,11 @@ class CreateChannel extends React.Component {
 
     let state = this.state;
     state.serverId = this.props.match.params.serverId
-    this.props.createChannel(state);
+    this.props.createChannel(state)
+    .then(res => {
+      let channelId = Object.keys(res.channels)[0]
+      this.props.history.push(`/app/channels/${state.serverId}/${channelId}`)
+    })
     this.closeModal();
   }
 
