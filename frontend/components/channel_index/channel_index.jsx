@@ -35,7 +35,7 @@ class ChannelIndex extends React.Component {
 
             <CreateChannelContainer />
 
-          <ul>
+          <ul className='channel-list'>
             {channelArray.map((key) => {
               let selected = key === currentChannel ? 'selected-channel' : '' 
               return (

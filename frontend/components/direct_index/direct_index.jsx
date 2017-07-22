@@ -34,7 +34,7 @@ class DirectIndex extends React.Component {
       
           <UserSearch /> 
           
-          <ul>
+          <ul className='channel-list'>
           {directs.map((key) => {
             let selected = key === currentChannel ? 'selected-direct' : ''
             return (

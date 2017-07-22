@@ -5,6 +5,11 @@
   width: 240px;
 }
 
+.channel-list {
+  overflow-y: scroll;
+  height: 88%;
+}
+
 .server-header {
   width: 232px;
   height: 6%;
