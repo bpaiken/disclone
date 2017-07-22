@@ -1,8 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
 
-//TODO Fix searching then creating channel.  search locks up - not cleared out
-
 class UserSearch extends React.Component {
   constructor(props) {
     super(props)
