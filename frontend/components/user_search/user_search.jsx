@@ -10,6 +10,7 @@ class UserSearch extends React.Component {
     this.state = {
       selected: {},
       search: {},
+      searchValue: "",
       topic: "",
       name: "",
       modal: {
@@ -47,10 +48,12 @@ class UserSearch extends React.Component {
     
   closeModal(e) {
     this.setState({
-       selected: { [this.props.currentUser.id]: this.props.users[this.props.currentUser.id] },
-       modal: { 
-         modalId: 'closed', 
-         overlayId: 'closed'
+      selected: { [this.props.currentUser.id]: this.props.users[this.props.currentUser.id] },
+      search: this.props.users,
+      searchValue: "",
+      modal: { 
+        modalId: 'closed', 
+        overlayId: 'closed'
         } 
       })
   }
@@ -66,7 +69,10 @@ class UserSearch extends React.Component {
         search = merge(search, user)
         }
       });
-     this.setState({search: search})
+     this.setState({
+       searchValue: e.currentTarget.value,
+       search: search
+      })
   }
 
   handleSubmit(e) {
@@ -123,7 +129,7 @@ class UserSearch extends React.Component {
         
         <div className={this.state.modal.modalId}>
           <form className='user-search-form'>
-            <input onChange={this.update} type="text"/>
+            <input onChange={this.update} type="text" value={this.state.searchValue}/>
             <div></div>
           </form>
           <span className='user-search-text'>searching all users</span>
