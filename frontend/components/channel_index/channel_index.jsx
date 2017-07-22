@@ -26,6 +26,7 @@ class ChannelIndex extends React.Component {
     if (Object.keys(this.props.channels).length !== 0 && 
     this.props.channels[servers[serverId].channels[0]]) {
       let channelArray = this.props.servers[serverId].channels
+      let currentChannel = Number(this.props.match.params.channelId)
       return (
         <div className='channel-index'>
           <header className='server-header' >
@@ -35,16 +36,22 @@ class ChannelIndex extends React.Component {
             <CreateChannelContainer />
 
           <ul>
-            {channelArray.map((key) => (
-            <li key={key} className='channel-name-wrapper'>
-              <div className='channel-name-highlight'>
-                <span id='hashtag'>#</span>  
-                <Link to={`/app/channels/${serverId}/${key}`} className='channel-name'>
-                {this.props.channels[key].name}</Link>
-              </div>
-                <EditChannelContainer channel={this.props.channels[key]}/>
-            </li>
-            ))}
+            {channelArray.map((key) => {
+              let selected = key === currentChannel ? 'selected-channel' : '' 
+              return (
+                <li key={key} className='channel-name-wrapper'>
+                  <Link to={`/app/channels/${serverId}/${key}`} className=''>
+                    <div className='channel-name-highlight' id={selected}>
+                      <span id='hashtag'>#</span>  
+                      <div className='channel-name'>
+                        {this.props.channels[key].name}
+                      </div>
+                    </div>
+                  </Link>
+                  <EditChannelContainer channel={this.props.channels[key]}/>
+                </li>
+              )
+            })}
           </ul>
           <CurrentUserContainer />
         </div>
