@@ -21,9 +21,6 @@
   letter-spacing: .8px;
 }
 
-li.user-index-item {
-  margin: 15px 0;
-}
 
 .user-index-item {
   display: flex;
@@ -40,7 +37,6 @@ li.user-index-item {
   width: 30px;
   height: 30px;
   margin-right: 10px;
-  position: relative;
   bottom: 15px;
 }
 
