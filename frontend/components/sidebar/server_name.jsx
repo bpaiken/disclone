@@ -21,6 +21,7 @@ class ServerIndexItem extends React.Component {
   render() {
     return (
       <div className='server-index-item-wrapper'>
+        <div className={`server-name-highlight ${this.props.selected}`}></div>
         <Link to={`/app/channels/${this.props.server.id}/${this.props.server.defaultId}`}>
           <img className='server-avatar' src={this.props.server.avatarUrl}
           onMouseEnter={this.show} onMouseLeave={this.hide}>

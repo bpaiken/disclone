@@ -24,7 +24,7 @@ class Core extends React.Component {
       
     <div className="core-wrapper">
       <SidebarContainer />
-    
+      
       <Route path="/app/channels/:serverId/:channelId" component={ChannelIndexContainer} />
 
       <Route path="/app/directs" component={DirectIndexContainer} />

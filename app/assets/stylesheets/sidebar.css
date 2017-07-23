@@ -68,6 +68,26 @@ box-shadow: -2px 3px 3px 0px rgba(0,0,0,0.54);;
   position: relative;
 }
 
+.server-name-highlight {
+  position: absolute;
+  background-color: #535559;
+  height: 10px;
+  width: 10px;
+  right: 65px;
+  top: 20px;
+  border-radius: 5px;
+}
+
+.selected-server {
+  webkit-transition: height .25s ease-in-out,margin-top .25s ease-in-out;
+  transition: height .25s ease-in-out,margin-top .25s ease-in-out;
+  height: 40px;
+  border-radius: 20px;
+  background: #fff;
+  margin-top: -20px;
+  top: 50%;
+}
+
 .server-name-tooltip {
  top: 15px;
  left: 56px;

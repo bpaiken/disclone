@@ -7,6 +7,8 @@ import { pusher } from '../../util/pusher.js'
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
+
+    this.getServerId = this.getServerId.bind(this)
   }
 
   componentDidMount() {
@@ -15,9 +17,16 @@ class Sidebar extends React.Component {
       this.props.receiveUser(user)
     })
   }
+
+  getServerId() {
+    let regex = /\d+/g
+    let location = this.props.location.pathname
+    return location.match(regex)[0]
+  }
   
   render() {
     let servers = this.props.servers;
+    let serverId = this.props.location.pathname.includes('channels') ? this.getServerId() : ''
       return (
         <div className='sidebar-wrapper'>
         
@@ -32,10 +41,13 @@ class Sidebar extends React.Component {
           <span className='sidebar-text'>Servers</span>
          
           <ul className="index-item-wrapper">
-            {Object.keys(servers).map((key)=>
-              <ServerIndexItem className='server-index-item'
-               key={key} server={servers[key]}/>
-            )}
+            {Object.keys(servers).map(key => {
+              let selected = key === serverId ? 'selected-server' : ''
+              return (
+                <ServerIndexItem className='server-index-item' 
+                key={key} server={servers[key]} selected={selected}/>
+              ) 
+            })}
           </ul>
 
           <div className="add-server-button circle-base">
@@ -49,6 +61,7 @@ class Sidebar extends React.Component {
 
 ////////////////// CONTAINER /////////////////////////
 import { receiveUsers } from '../../actions/user_actions.js'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
   return {
@@ -62,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar)
+)(Sidebar))
