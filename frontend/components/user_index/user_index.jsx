@@ -18,8 +18,8 @@ class UserIndex extends React.Component {
     if (Object.keys(users).length > 0) { 
     return (
       <div className='user-index-container'>
+        <div className='user-index-text'>MEMBERS - {Object.keys(users).length}</div>
         <ul className='user-index'>
-          <div className='user-index-text'>MEMBERS - {Object.keys(users).length}</div>
           {userArray.map(key => {
             return (
             <li key={key} className='user-index-item'>

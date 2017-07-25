@@ -6,7 +6,6 @@
 }
 
 .user-index {
-  display: flex;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -15,10 +14,9 @@
 .user-index-text {
   color: #9b9b9b;;
   font-size: 13px;
-  margin: 5px 0;
-  position: relative;
   left: 26px;
   letter-spacing: .8px;
+  padding: 6px 0 12px 20px;
 }
 
 
