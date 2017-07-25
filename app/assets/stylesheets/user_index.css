@@ -64,6 +64,6 @@
   width: 140px;
   color: #9b9b9b;;
   font-size: 17px;
-em 'bullet'  display: flex;
+  display: flex;
   align-items: center;
 }
