@@ -8,7 +8,7 @@ class PusherController < ApplicationController
       webhook.events.each do |event|
         if event['channel'] != 'users' && event['channel'].include?('user')
           id = event['channel'][4..-1].to_i
-          # user_is_online(id) if event['name'] == 'channel_occupied'
+          user_is_online(id) if event['name'] == 'channel_occupied'
           user_is_offline(id) if event['name'] == 'channel_vacated'
         end
       end
@@ -22,6 +22,13 @@ class PusherController < ApplicationController
     def user_is_offline(id)
       user = User.find(id)
       user.online = false
+      user.save
+      push_user(user)
+    end
+
+    def user_is_online(id)
+      user = User.find(id)
+      user.online = true
       user.save
       push_user(user)
     end
