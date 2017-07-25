@@ -11,11 +11,15 @@ class ApplicationController < ActionController::Base
 
   def login(user)
     session[:session_token] = user.reset_session_token
+    user.online = true
+    user.save
   end
 
   def logout(user)
     session[:session_token] = nil
     user.reset_session_token
+    user.online = false
+    user.save
   end
 
   def logged_in?
