@@ -13,16 +13,28 @@ class ApplicationController < ActionController::Base
     session[:session_token] = user.reset_session_token
     user.online = true
     user.save
+    push_user(user)
   end
 
   def logout(user)
+    user.online = false
+    push_user(user)
     session[:session_token] = nil
     user.reset_session_token
-    user.online = false
     user.save
   end
 
   def logged_in?
     !!current_user
+  end
+
+  def push_user(user)
+    Pusher.trigger('users', 'newUser', {
+      users: {
+        user.id => {
+          online: user.online
+        }
+      }
+    })
   end
 end

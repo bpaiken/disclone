@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'static_pages#root'
+  
+post '/pusher', to: 'pusher#webhook'
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show, :index, :update]

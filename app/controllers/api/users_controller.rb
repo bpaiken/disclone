@@ -41,7 +41,8 @@ class Api::UsersController < ApplicationController
         user.id => {
           id: user.id,
           username: user.username,
-          avatarUrl: ActionController::Base.helpers.asset_path(user.avatar.url)
+          avatarUrl: ActionController::Base.helpers.asset_path(user.avatar.url),
+          online: user.online
         }
       }
     })

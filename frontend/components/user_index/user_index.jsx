@@ -21,8 +21,10 @@ class UserIndex extends React.Component {
         <div className='user-index-text'>MEMBERS - {Object.keys(users).length}</div>
         <ul className='user-index'>
           {userArray.map(key => {
+            let onlineStatus = users[key].online ? 'online' : 'offline' 
             return (
             <li key={key} className='user-index-item'>
+            <div className={`onlineStatus ${onlineStatus}`}></div>
               <div className='user-avatar-wrapper circle-base'>
                 <img className="circle-base" src={users[key].avatarUrl} alt=""/>
               </div>
