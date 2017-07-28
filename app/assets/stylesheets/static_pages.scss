@@ -48,20 +48,3 @@ body {
   background-color: black;
 } 
 
-.default-message-page {
-  display: flex;
-  flex-direction: column;
-  background-color: #2C2F33;
-  -webkit-filter: brightness(125%);
-  width: 100%;
-}
-
-.default-message-page > img {
-  margin: auto auto;
-  width: 25em;
-  height: auto;
-}
-
-input {
-  box-sizing: border-box;
-}

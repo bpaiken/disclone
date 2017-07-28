@@ -1,0 +1,48 @@
+.default-message-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #2C2F33;
+  -webkit-filter: brightness(125%);
+  width: 100%;
+}
+
+.default-message-page > img {
+  margin: 30px auto;
+  width: 75%;
+  height: auto;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+#default-header {
+  color: #b9bbbe;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#default-header > p {
+  color: #9b9b9b;
+  font-size: 19px;
+  font-weight: normal;
+}
+
+#default-info {
+  color: #9b9b9b;
+  font-size: 19px;
+  list-style-type: circle;
+  margin-left: 30px;
+}
+
+#default-info > li {
+  padding:  5px 0;
+}
+
+.strong {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #b9bbbe;
+}

@@ -176,6 +176,8 @@
 .index-item-control > img {
   width: 38px;
   height: 38px;
+  position: relative;
+  right: 15px;
 }
 
 .direct-link-wrapper {
@@ -186,6 +188,16 @@
   cursor: pointer;
 }
 
+.direct-onlineStatus {
+  width: 12px;
+  height: 12px;
+  border-radius: 7px;
+  position: relative;
+  top: 12px;
+  left: 28px;
+  border: 2px solid #2C2F33;
+  z-index: 1
+}
 
 .direct-link-wrapper:hover {
   background-color: rgba(30, 33, 36, .50)
@@ -195,10 +207,18 @@
   padding: 5px 0;
 }
 
-.direct-index-name {
+.group-index-name {
   color: #72767d;
   margin-left: 10px;
   background: transparent
+}
+
+.direct-index-name {
+  color: #72767d;
+  margin-left: 10px;
+  background: transparent;
+  position: relative;
+  right: 15px;
 }
 
 #selected-direct {
