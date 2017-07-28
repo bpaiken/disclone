@@ -38,7 +38,7 @@ class DirectIndexItem extends React.Component {
           <div className='group-message-control circle-base'>
             <i className="fa fa-users fa-lg circle-base group-message-icon" aria-hidden="true"></i>
           </div>
-          <div className='direct-index-name' id={selected}>{this.channelUserNames()}</div>
+          <div className='group-index-name' id={selected}>{this.channelUserNames()}</div>
          </div>
        )
 
@@ -47,8 +47,10 @@ class DirectIndexItem extends React.Component {
           //TODO: take a look at/refactor...possible validation needed.
       } else {
         let friendId = channelUsers.filter(id => id !== this.props.currentUserId)[0]
-       Item = () => (
+        let onlineStatus = users[friendId].online ? 'online' : 'offline'
+        Item = () => (
           <div className='index-item-control'>
+            <div className={`direct-onlineStatus ${onlineStatus}`}></div>
             <img src={users[friendId].avatarUrl} alt=""/>
             <div className='direct-index-name' id={selected}>{users[friendId].username}</div>
           </div>
