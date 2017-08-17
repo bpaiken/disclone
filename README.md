@@ -55,6 +55,74 @@ def create
   end
 ```
 
+### Create Server Channels 
+
+Server channels belong to servers, and have many messages.  Server channels can be accessed by any users that subscribe to the server that holds the channel. All servers are created with a channel named 'general', but users have the ability to create new channels for each server.  Users also have the ability to edit those channels' names and topics.  This is done through the create & edit channel modals.
+
+![alt text][create_edit_channel]
+
+[create_edit_channel]: ./docs/gifs/create_edit_channel.gif
+
+### Start Direct/Group Channels
+Unlike server channels (which are accessible by all users subscribed to the server), direct and group messages are only accessible by the users selected during channel creation.  Any user can create a direct channel through the UserSearch component, which is accessed by through the direct channel index and 'Start a Conversation' feature.  The UserSearch component allows users to search for and select other users to be included in a direct/group channel.
+
+![alt text][direct_message]
+
+[direct_message]: ./docs/gifs/direct_message.gif
+
+### Edit User Avatar
+
+User avatars are displayed with the users username in several locations throughout the application.  Users have the option to edit their avatar by uploading files from their own device.  The is accomplished through the `EditUser` component, a modal that is opened by clicking the cog button in the `CurrentUser` component.  Users are able to preview an uploaded image prior to saving the change.  
+
+![alt text][edit_user]
+
+[edit_user]: ./docs/gifs/edit_avatar.gif
+
+Upon uploading and saving an avatar image, the image is sent to the database via an ajax post.  Rather than save the image in the local database, the Ruby gem Paperclip is used to post the image to an Amazon Simple Storage Service (S3) bucket.  The image url is than saved as a property on the user model.
+
+### Who's Online?
+
+Disclone lets users know other users' online status.  Online status is displayed in each server's User Index, as well as each user's direct channel index:
+
+![alt text][online_status]
+
+[online_status]: ./docs/images/online_status.png
+
+Online status updates are accomplished with the help of Webhooks via Pusher. When ever a user logs into, logs out of, or exits the browser, a request hits the server and is routed to the Pusher Controller.  Based on the data in the request, the webhook action will update a users online status in the database, as well as trigger an event via the pusher variable.  The event data holds an individual user's online status, and is constructed so that it can be easily merged into the an applications global state on the front end...
+
+```ruby
+class PusherController < ApplicationController
+ ...
+   def webhook
+    webhook = Pusher::WebHook.new(request)
+    if webhook.valid?
+      webhook.events.each do |event|
+        if event['channel'] != 'users' && event['channel'].include?('user')
+          user_id = event['channel'][4..-1].to_i
+          user_is_online(user_id) if event['name'] == 'channel_occupied'
+          user_is_offline(user_id) if event['name'] == 'channel_vacated'
+        end
+      end
+      render text: 'ok'
+    else
+      render text: 'invalid', status: 401
+    end
+  end
+  
+  ...
+
+  def push_user(user)
+    Pusher.trigger('users', 'newUser', {
+      users: {
+        user.id => {
+          online: user.online
+        }
+      }
+    })
+  end
+end
+```
+
 ### Message Blocks
 
 Messages are displayed and managed by the `MessageIndex` component.  Rather than display each message individually, messages are organized into blocks.  Message blocks are used to display one or more consecutive messages by an individual user, as well as that user's avatar, username, and a message timestamp.  
@@ -129,30 +197,7 @@ render() {
 
 When a new message is received, the `messageBlocks` slice of internal state is updated.  The new message's `userId` is compared to the previous message's `userId` to determine whether it warrants or its own message block or should be pushed into the previous message block.
 
-### Create Server Channels 
 
-Server channels belong to servers, and have many messages.  Server channels can be accessed by any users that subscribe to the server that holds the channel. All servers are created with a channel named 'general', but users have the ability to create new channels for each server.  Users also have the ability to edit those channels' names and topics.  This is done through the create & edit channel modals.
-
-![alt text][create_edit_channel]
-
-[create_edit_channel]: ./docs/gifs/create_edit_channel.gif
-
-### Start Direct/Group Channels
-Unlike server channels (which are accessible by all users subscribed to the server), direct and group messages are only accessible by the users selected during channel creation.  Any user can create a direct channel through the UserSearch component, which is accessed by through the direct channel index and 'Start a Conversation' feature.  The UserSearch component allows users to search for and select other users to be included in a direct/group channel.
-
-![alt text][direct_message]
-
-[direct_message]: ./docs/gifs/direct_message.gif
-
-### Edit User Avatar
-
-User avatars are displayed with the users username in several locations throughout the application.  Users have the option to edit their avatar by uploading files from their own device.  The is accomplished through the `EditUser` component, a modal that is opened by clicking the cog button in the `CurrentUser` component.  Users are able to preview an uploaded image prior to saving the change.  
-
-![alt text][edit_user]
-
-[edit_user]: ./docs/gifs/edit_avatar.gif
-
-Upon uploading and saving an avatar image, the image is sent to the database via an ajax post.  Rather than save the image in the local database, the Ruby gem Paperclip is used to post the image to an Amazon Simple Storage Service (S3) bucket.  The image url is than saved as a property on the user model.
 
 ## Future of the Project
 
