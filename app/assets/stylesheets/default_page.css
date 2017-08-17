@@ -8,7 +8,7 @@
 
 .default-message-page > img {
   margin: 30px auto;
-  width: 75%;
+  width: 70%;
   height: auto;
 }
 
@@ -30,19 +30,25 @@ input {
   font-weight: normal;
 }
 
+#default-info-wrapper {
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
 #default-info {
   color: #9b9b9b;
-  font-size: 19px;
+  font-size: 2.1vh;
   list-style-type: circle;
   margin-left: 30px;
 }
 
 #default-info > li {
-  padding:  5px 0;
+  padding:  6px 0;
 }
 
 .strong {
   text-decoration: underline;
   font-weight: bold;
   color: #b9bbbe;
+  letter-spacing: 1px;
 }
