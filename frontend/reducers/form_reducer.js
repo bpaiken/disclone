@@ -11,12 +11,14 @@ export default (state = initialState, action) => {
   Object.freeze(state); 
   let nextState = merge({}, state);
     switch (action.type) {
+    
     case RECEIVE_ERRORS:
-    nextState.sessionErrors = nextState.sessionErrors.concat(action.errors.responseJSON);
-    return nextState; 
+      nextState.sessionErrors = []
+      nextState.sessionErrors.push(action.errors.responseJSON);
+      return nextState; 
 
     case CLEAR_ERRORS:
-    return initialState;
+      return initialState;
      
     default:
       return state;
