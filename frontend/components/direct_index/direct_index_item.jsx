@@ -51,7 +51,7 @@ class DirectIndexItem extends React.Component {
         Item = () => (
           <div className='index-item-control'>
             <div className={`direct-onlineStatus ${onlineStatus}`}></div>
-            <img src={users[friendId].avatarUrl} alt=""/>
+            <img className='.circle-base' src={users[friendId].avatarUrl} alt=""/>
             <div className='direct-index-name' id={selected}>{users[friendId].username}</div>
           </div>
           )
