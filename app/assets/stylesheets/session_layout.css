@@ -154,7 +154,7 @@ form.session-form {
 .guest-link {
   cursor: pointer;
   color: white;
-  /*margin-left: 2px*/
+  margin-left: 4px
 }
 
 .guest-link:hover {
