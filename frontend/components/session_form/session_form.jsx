@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
   }
 
   loginGuest() {
-    this.props.submitForm({password: 'password', username: 'guest'})
+    this.props.loginGuest({password: 'password', username: 'guest'})
   }
 
   render() {

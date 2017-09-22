@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     submitForm: (user) => dispatch(login(user)), 
     clearErrors: () => dispatch(clearErrors()),
+    loginGuest: (guest) => dispatch(login(guest)),
   };
 };
 
